@@ -9,12 +9,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class HomebankingApplication {
-	LocalDateTime date = LocalDateTime.now();
-	LocalDateTime date1 = LocalDateTime.now().plusDays(1);
+	LocalDate date = LocalDate.now();
+	LocalDate date1 = LocalDate.now().plusDays(1);
 
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingApplication.class, args);
