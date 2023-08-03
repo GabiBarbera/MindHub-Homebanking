@@ -30,6 +30,15 @@ public class HomebankingApplication {
 			repositoryClient.save(client);
 			accountRepository.save(account1);
 			accountRepository.save(account2);
+
+			Account account3 = new Account("VIN003",this.date, 50000);
+			Account account4 = new Account("VIN004",this.date1,75000);
+			Client client2 = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com");
+			client2.addAccount(account3);
+			client2.addAccount(account4);
+			repositoryClient.save(client2);
+			accountRepository.save(account3);
+			accountRepository.save(account4);
 		};
 	}
 }

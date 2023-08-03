@@ -65,4 +65,12 @@ public class Account {
     public Client getOwner() {
         return owner;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
 }
