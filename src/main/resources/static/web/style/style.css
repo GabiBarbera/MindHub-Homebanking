@@ -48,8 +48,8 @@ form {
 /* tarjetas de credito */
 
 .card {
-    width: 325px !important;
-    height: 210px !important;
+    width: 28rem !important;
+    height: 14rem !important;
     background: lightgrey;
     position: relative;
     border-radius: 15px;
@@ -242,6 +242,8 @@ footer {
 .footer-bottom p {
     margin: 0;
 }
+
+/* seccion de turnos y ayuda */
 
 #turnos {
     background-color: rgb(6 33 70);

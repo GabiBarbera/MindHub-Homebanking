@@ -84,9 +84,10 @@
         </header>
 
         <main class="flex-grow-1 w-100">
-            <div class="d-flex flex-column justify-content-center m-5">
+            <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
                 <h1 class="text-center">Welcome, {{clients.firstName}}</h1>
-                <div class="d-flex flex-row justify-content-center">
+                <h4 class="text-center">Your accounts:</h4>
+                <div class="d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
                     <template v-for="account of accounts">
                         <div class="card m-5 d-flex flex-row">
                             <div class="foreground">
@@ -157,7 +158,7 @@
                     <button type="button" class="btn btn-outline-light btnTurno fw-bold">I do not have access</button>
                 </div>
             </section>
-            <section class="d-flex gap-5 align-items-center justify-content-center" id="knowMore">
+            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
                 <img src="./images/customer_comes_first.svg" class="imgKnow" alt="">
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <h2>We want to ensure inclusive and accessible care</h2>
