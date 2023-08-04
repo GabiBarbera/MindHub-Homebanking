@@ -111,6 +111,10 @@ form {
     font-size: large;
 }
 
+.shadow-lg {
+    box-shadow: 20px 4rem 1rem 7px rgba(0, 0, 0, .175) !important;
+}
+
 /* boton de logout */
 
 .Btn {
