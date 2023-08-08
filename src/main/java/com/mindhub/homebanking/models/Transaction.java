@@ -70,7 +70,7 @@ public class Transaction {
         return account;
     }
 
-    public void setaccount(Account account) {
+    public void setAccount(Account account) {
         this.account = account;
     }
 }

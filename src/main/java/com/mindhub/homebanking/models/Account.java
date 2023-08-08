@@ -17,7 +17,7 @@ public class Account {
    private String number;
    private LocalDate creationDate;
    private double balance;
-   private TransactionType type;
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
@@ -27,15 +27,6 @@ public class Account {
     private Set<Transaction> transactions = new HashSet<>();
 
     public Account() {
-    }
-
-    public Account(long id, String number, LocalDate creationDate, double balance, TransactionType type, Client owner) {
-        this.id = id;
-        this.number = number;
-        this.creationDate = creationDate;
-        this.balance = balance;
-        this.type = type;
-        this.owner = owner;
     }
 
     public Account(String number, LocalDate creationDate, double balance) {
@@ -85,7 +76,7 @@ public class Account {
     }
 
     public void addTransaction(Transaction transaction){
-        transaction.setaccount(this);
+        transaction.setAccount(this);
         transactions.add(transaction);
     }
 }
