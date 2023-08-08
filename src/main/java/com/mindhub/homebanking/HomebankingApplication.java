@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 public class HomebankingApplication {
 	LocalDate date = LocalDate.now();
 	LocalDate date1 = LocalDate.now().plusDays(1);
+	LocalDateTime date3 = LocalDateTime.now().plusDays(4);
 
 	LocalDateTime date2 = LocalDateTime.now();
 
@@ -31,7 +32,7 @@ public class HomebankingApplication {
 			Account account1 = new Account("VIN001",this.date, 5000);
 			Account account2 = new Account("VIN002",this.date1,7500);
 			Transaction transaction1 = new Transaction(-1500,"Shopping",date2, TransactionType.DEBIT);
-			Transaction transaction2 = new Transaction(+2500,"Food",date2,TransactionType.CREDIT);
+			Transaction transaction2 = new Transaction(+2500,"Food",date3,TransactionType.CREDIT);
 			account1.addTransaction(transaction1);
 			account1.addTransaction(transaction2);
 			client.addAccount(account1);
@@ -46,13 +47,16 @@ public class HomebankingApplication {
 			Account account3 = new Account("VIN003",this.date, 50000);
 			Account account4 = new Account("VIN004",this.date1,75000);
 			Transaction transaction3 = new Transaction(2000,"Food",date2,TransactionType.CREDIT);
+			Transaction transaction4 = new Transaction(-10000,"Car",date3,TransactionType.DEBIT);
 			account4.addTransaction(transaction3);
+			account4.addTransaction(transaction4);
 			client2.addAccount(account3);
 			client2.addAccount(account4);
 			repositoryClient.save(client2);
 			accountRepository.save(account3);
 			accountRepository.save(account4);
 			transactionRepository.save(transaction3);
+			transactionRepository.save(transaction4);
 		};
 	}
 }

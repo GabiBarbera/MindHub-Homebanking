@@ -21,7 +21,7 @@ createApp({
                     const idParameters = parameters.get("id")
                     const allAccounts = response.data
                     this.accountId = allAccounts.find(idAccount => idAccount.id == idParameters)
-                    this.transactions = this.accountId.transactionDTOSet
+                    this.transactions = this.accountId.transactionDTOSet.sort((a, b) => b.id - a.id)
                 })
                 .catch(error => console.error('Error:', error));
         }
