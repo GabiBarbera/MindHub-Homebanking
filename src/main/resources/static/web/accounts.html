@@ -84,7 +84,7 @@
             <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
                 <h1 class="text-center">Welcome, {{clients.firstName}}</h1>
                 <i class="bi bi-person-down fs-1 text-center"></i>
-                <div class="d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
+                <div class="d-flex flex-row justify-content-center ms-5 me-5 gap-5 flex-wrap">
                     <template v-if="accounts.length > 0" v-for="account of accounts">
                         <div data-aos="zoom-out" class="card m-5 d-flex flex-row shadow-lg">
                             <div class="foreground">
@@ -143,59 +143,68 @@
                         </div>
                     </template>
                 </div>
+                <div class="d-flex flex-row justify-content-around ms-5 mb-5 me-5 flex-wrap">
+                    <template v-if="accounts.length > 0" v-for="account of accounts">
+                        <button id="btnDetails"> <a :href="'./account.html?id=' + account.id" class="btn">
+                                <h5>Details account {{account.number}}</h5>
+                            </a>
+                        </button>
+                    </template>
+                </div>
             </div>
-            <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
-                <div>
-                    <h1 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
-                        turn:</h1>
-                    <h6 class="text-white text-center">You can request your turn to be attended at branches by entering
-                        Online Banking.</h6>
-                </div>
-                <div class="d-flex gap-5">
-                    <button type="button" class="btn btn-outline-light btnturno fw-bold">Take your turn</button>
-                    <button type="button" class="btn btn-outline-light btnTurno fw-bold">I do not have access</button>
-                </div>
-            </section>
-            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
-                <img src="./images/customer_comes_first.svg" class="imgKnow" alt="">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
-                    <h6>If you need help, go to a branch and request a sign language interpreter to assist you.</h6>
-                </div>
-                <div class="btn btn-dark d-flex" id="btnKnow">
-                    <button type="button" class="btn btn-dark fw-bold">Know more</button>
-                </div>
-            </section>
-        </main>
+    </div>
+    <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
+        <div>
+            <h1 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
+                turn:</h1>
+            <h6 class="text-white text-center">You can request your turn to be attended at branches by entering
+                Online Banking.</h6>
+        </div>
+        <div class="d-flex gap-5">
+            <button type="button" class="btn btn-outline-light btnturno fw-bold">Take your turn</button>
+            <button type="button" class="btn btn-outline-light btnTurno fw-bold">I do not have access</button>
+        </div>
+    </section>
+    <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
+        <img src="./images/customer_comes_first.svg" class="imgKnow" alt="">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
+            <h6>If you need help, go to a branch and request a sign language interpreter to assist you.</h6>
+        </div>
+        <div class="btn btn-dark d-flex" id="btnKnow">
+            <button type="button" class="btn btn-dark fw-bold">Know more</button>
+        </div>
+    </section>
+    </main>
 
-        <footer class="col-12">
-            <div class="d-flex align-items-center justify-content-around">
-                <div class="footer-logo">
-                    <img src="./images/word.png" alt="Logo del Banco">
-                </div>
-                <div class="footer-links">
-                    <ul>
-                        <li><a href="./manager.html">Home</a></li>
-                        <li><a href="#">Services</a></li>
-                        <li><a href="#">Loans</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Branch Offices</a></li>
-                        <li><a href="#">Frequent Questions</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact d-flex flex-column gap-5">
-                    <a class="text-decoration-none text-white" href="tel:+1139145523"><i
-                            class="bi bi-telephone-forward"></i> Phone: +11-3914-5523</a>
-                    <a class="text-decoration-none text-white" href="mailto:gabriel.barberaa@gmail.com"><i
-                            class="bi bi-envelope-at"></i> Email:
-                        gabriel.barberaa@gmail.com</a>
-                    <p><i class="bi bi-geo-alt"></i> Address: Street of Bank, 1234</p>
-                </div>
+    <footer class="col-12">
+        <div class="d-flex align-items-center justify-content-around">
+            <div class="footer-logo">
+                <img src="./images/word.png" alt="Logo del Banco">
             </div>
-            <div class="footer-bottom">
-                <p>All rights reserved &copy; Bank of Mindhub cohort-49</p>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="./manager.html">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Loans</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Branch Offices</a></li>
+                    <li><a href="#">Frequent Questions</a></li>
+                </ul>
             </div>
-        </footer>
+            <div class="footer-contact d-flex flex-column gap-5">
+                <a class="text-decoration-none text-white" href="tel:+1139145523"><i
+                        class="bi bi-telephone-forward"></i> Phone: +11-3914-5523</a>
+                <a class="text-decoration-none text-white" href="mailto:gabriel.barberaa@gmail.com"><i
+                        class="bi bi-envelope-at"></i> Email:
+                    gabriel.barberaa@gmail.com</a>
+                <p><i class="bi bi-geo-alt"></i> Address: Street of Bank, 1234</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>All rights reserved &copy; Bank of Mindhub cohort-49</p>
+        </div>
+    </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

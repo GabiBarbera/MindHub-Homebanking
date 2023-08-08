@@ -18,7 +18,6 @@ createApp({
                 .then(response => {
                     this.clients = response.data
                     this.accounts = response.data.accounts
-                    this.jsonRest = JSON.stringify(response.data, null, 1);
                 })
                 .catch(error => console.error('Error:', error));
         }

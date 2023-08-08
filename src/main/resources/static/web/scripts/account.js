@@ -1,12 +1,12 @@
 const { createApp } = Vue
 
-const url = 'http://localhost:8080/api/accounts/${id}'
+const url = 'http://localhost:8080/api/accounts'
 
 createApp({
     data() {
         return {
-            accounts: [],
-            clients: [],
+            accountId: [],
+            transactions: [],
         }
     },
     created() {
@@ -16,9 +16,12 @@ createApp({
         loadData() {
             axios.get(url)
                 .then(response => {
-                    this.clients = response.data
-                    this.accounts = response.data.accounts
-                    this.jsonRest = JSON.stringify(response.data, null, 1);
+                    const parameter = location.search
+                    const parameters = new URLSearchParams(parameter)
+                    const idParameters = parameters.get("id")
+                    const allAccounts = response.data
+                    this.accountId = allAccounts.find(idAccount => idAccount.id == idParameters)
+                    this.transactions = this.accountId.transactionDTOSet
                 })
                 .catch(error => console.error('Error:', error));
         }

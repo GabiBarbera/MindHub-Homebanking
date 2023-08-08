@@ -25,7 +25,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav d-flex align-items-center justify-content-around w-100">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Accounts <i
+                                <a class="nav-link active" aria-current="page" href="./accounts.html">Accounts <i
                                         class="bi bi-person-circle text-white"></i></a>
                             </li>
                             <li class="nav-item">
@@ -82,22 +82,20 @@
 
         <main class="flex-grow-1 w-100">
             <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
-                <h1 class="text-center">Welcome, {{clients.firstName}}</h1>
+                <h1 class="text-center">Your selected account: {{accountId.number}}</h1>
                 <i class="bi bi-person-down fs-1 text-center"></i>
                 <div class="d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
-                    <template v-if="accounts.length > 0" v-for="account of accounts">
-                        <div data-aos="zoom-out" class="card m-5 d-flex flex-row shadow-lg">
-                            <div class="foreground">
-                                <div class="credit-card-header">
-                                    <div class="category">Account number: </div>
-                                    <div class="bank">{{account.number}}</div>
-                                </div>
-                                <div class="credit-card-chip-container">
-                                    <svg xml:space="preserve" viewBox="0 0 511 511"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
-                                        id="Capa_1" version="1.1" width="800px" height="800px" fill="#d4af37"
-                                        class="chip">
-                                        <path d="M455.5,56h-400C24.897,56,0,80.897,0,111.5v288C0,430.103,24.897,455,55.5,455h400c30.603,0,55.5-24.897,55.5-55.5v-288
+                    <div data-aos="zoom-out" class="card m-5 d-flex flex-row shadow-lg">
+                        <div class="foreground">
+                            <div class="credit-card-header">
+                                <div class="category">Account number:</div>
+                                <div class="bank">{{accountId.number}}</div>
+                            </div>
+                            <div class="credit-card-chip-container">
+                                <svg xml:space="preserve" viewBox="0 0 511 511"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"
+                                    id="Capa_1" version="1.1" width="800px" height="800px" fill="#d4af37" class="chip">
+                                    <path d="M455.5,56h-400C24.897,56,0,80.897,0,111.5v288C0,430.103,24.897,455,55.5,455h400c30.603,0,55.5-24.897,55.5-55.5v-288
                                        C511,80.897,486.103,56,455.5,56z M464,248H343v-56.5c0-4.687,3.813-8.5,8.5-8.5H464V248z M343,263h121v65H343V263z M479,223h17v65
                                        h-17V223z M479,208v-65h17v65H479z M464,168H351.5c-12.958,0-23.5,10.542-23.5,23.5V408H183V103h272.5c4.687,0,8.5,3.813,8.5,8.5
                                        V168z M168,248H47v-65h121V248z M32,288H15v-65h17V288z M47,263h121v65H47V263z M263,88V71h137v17H263z M248,88H111V71h137V88z
@@ -107,43 +105,66 @@
                                        C477.832,71,496,89.168,496,111.5z M55.5,71H96v17H55.5C42.542,88,32,98.542,32,111.5V128H15v-16.5C15,89.168,33.168,71,55.5,71z
                                         M15,399.5V383h17v16.5c0,12.958,10.542,23.5,23.5,23.5H96v17H55.5C33.168,440,15,421.832,15,399.5z M455.5,440H415v-17h40.5
                                        c12.958,0,23.5-10.542,23.5-23.5V383h17v16.5C496,421.832,477.832,440,455.5,440z">
-                                        </path>
-                                    </svg>
-                                </div>
-                                <div class="info-container">
-                                    <p class="names">{{clients.firstName}} {{clients.lastName}}</p>
-                                    <p class="expire">Amount: $ {{account.balance}}</p>
-                                    <p class="serial">creation date: {{account.creationDate}}</p>
-                                </div>
+                                    </path>
+                                </svg>
                             </div>
-                            <svg viewBox="0 0 1600 800" height="100%" width="100%" class="background">
-                                <rect height="800" width="1600" fill="#ff9d00"></rect>
-                                <g transform="rotate(-30 500 100)" stroke-opacity="0.05" stroke-width="66.7"
-                                    stroke="#000">
-                                    <circle r="1800" cy="0" cx="0" fill="#ff9d00"></circle>
-                                    <circle r="1700" cy="0" cx="0" fill="#fb8d17"></circle>
-                                    <circle r="1600" cy="0" cx="0" fill="#f47d24"></circle>
-                                    <circle r="1500" cy="0" cx="0" fill="#ed6e2d"></circle>
-                                    <circle r="1400" cy="0" cx="0" fill="#e35f34"></circle>
-                                    <circle r="1300" cy="0" cx="0" fill="#d85239"></circle>
-                                    <circle r="1200" cy="0" cx="0" fill="#cc453e"></circle>
-                                    <circle r="1100" cy="0" cx="0" fill="#be3941"></circle>
-                                    <circle r="1000" cy="0" cx="0" fill="#b02f43"></circle>
-                                    <circle r="900" cy="0" cx="0" fill="#a02644"></circle>
-                                    <circle r="800" cy="0" cx="0" fill="#901e44"></circle>
-                                    <circle r="700" cy="0" cx="0" fill="#801843"></circle>
-                                    <circle r="600" cy="0" cx="0" fill="#6f1341"></circle>
-                                    <circle r="500" cy="0" cx="0" fill="#5e0f3d"></circle>
-                                    <circle r="400" cy="0" cx="0" fill="#4e0c38"></circle>
-                                    <circle r="300" cy="0" cx="0" fill="#3e0933"></circle>
-                                    <circle r="200" cy="0" cx="0" fill="#2e062c"></circle>
-                                    <circle r="100" cy="0" cx="0" fill="#210024"></circle>
-                                </g>
-                            </svg>
+                            <div class="info-container">
+                                <p class="names"></p>
+                                <p class="expire">Amount: $ {{accountId.balance}}</p>
+                                <p class="serial">creation date: {{accountId.creationDate}} </p>
+                            </div>
                         </div>
-                    </template>
+                        <svg viewBox="0 0 1600 800" height="100%" width="100%" class="background">
+                            <rect height="800" width="1600" fill="#ff9d00"></rect>
+                            <g transform="rotate(-30 500 100)" stroke-opacity="0.05" stroke-width="66.7" stroke="#000">
+                                <circle r="1800" cy="0" cx="0" fill="#ff9d00"></circle>
+                                <circle r="1700" cy="0" cx="0" fill="#fb8d17"></circle>
+                                <circle r="1600" cy="0" cx="0" fill="#f47d24"></circle>
+                                <circle r="1500" cy="0" cx="0" fill="#ed6e2d"></circle>
+                                <circle r="1400" cy="0" cx="0" fill="#e35f34"></circle>
+                                <circle r="1300" cy="0" cx="0" fill="#d85239"></circle>
+                                <circle r="1200" cy="0" cx="0" fill="#cc453e"></circle>
+                                <circle r="1100" cy="0" cx="0" fill="#be3941"></circle>
+                                <circle r="1000" cy="0" cx="0" fill="#b02f43"></circle>
+                                <circle r="900" cy="0" cx="0" fill="#a02644"></circle>
+                                <circle r="800" cy="0" cx="0" fill="#901e44"></circle>
+                                <circle r="700" cy="0" cx="0" fill="#801843"></circle>
+                                <circle r="600" cy="0" cx="0" fill="#6f1341"></circle>
+                                <circle r="500" cy="0" cx="0" fill="#5e0f3d"></circle>
+                                <circle r="400" cy="0" cx="0" fill="#4e0c38"></circle>
+                                <circle r="300" cy="0" cx="0" fill="#3e0933"></circle>
+                                <circle r="200" cy="0" cx="0" fill="#2e062c"></circle>
+                                <circle r="100" cy="0" cx="0" fill="#210024"></circle>
+                            </g>
+                        </svg>
+                    </div>
                 </div>
             </div>
+            <section v-if="transactions.length > 0" data-aos="zoom-out"
+                class="d-flex flex-column align-items-center mb-5">
+                <h2 class="mb-4">Transactions Resume:</h2>
+                <table class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Date</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template v-for="transaction of transactions">
+                            <tr>
+                                <td>{{transaction.type}}</td>
+                                <td>{{transaction.amount}}</td>
+                                <td>{{transaction.date}}</td>
+                                <td>{{transaction.description}}</td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </section>
+            <h2 v-else class="text-center m-5">No transaction</h2>
             <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
                 <div>
                     <h1 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
