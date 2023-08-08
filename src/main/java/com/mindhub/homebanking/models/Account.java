@@ -79,4 +79,12 @@ public class Account {
         transaction.setAccount(this);
         transactions.add(transaction);
     }
+
+    public Set<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(Set<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 }
