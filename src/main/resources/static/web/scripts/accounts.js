@@ -17,7 +17,7 @@ createApp({
             axios.get(url)
                 .then(response => {
                     this.clients = response.data
-                    this.accounts = response.data.accounts
+                    this.accounts = response.data.accounts.sort((a, b) => a.id - b.id)
                 })
                 .catch(error => console.error('Error:', error));
         }

@@ -298,3 +298,9 @@ footer {
 #btnDetails:hover::before {
     width: 100%;
 }
+
+/* tabla transacciones */
+
+#tableTransactions {
+    width: 45rem !important;
+}

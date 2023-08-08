@@ -143,7 +143,8 @@
             <section v-if="transactions.length > 0" data-aos="zoom-out"
                 class="d-flex flex-column align-items-center mb-5">
                 <h2 class="mb-4">Transactions Resume:</h2>
-                <table class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded">
+                <table class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded"
+                    id="tableTransactions">
                     <thead>
                         <tr>
                             <th>Type</th>
@@ -155,8 +156,9 @@
                     <tbody>
                         <template v-for="transaction of transactions">
                             <tr>
-                                <td v-if="transaction.type == 'DEBIT'" class="text-danger">{{transaction.type}}</td>
-                                <td v-else class="text-success">{{transaction.type}}</td>
+                                <td v-if="transaction.type == 'DEBIT'" class="text-danger fw-bolder">
+                                    {{transaction.type}}</td>
+                                <td v-else class="text-success fw-bolder">{{transaction.type}}</td>
                                 <td>{{transaction.amount}}</td>
                                 <td>{{transaction.date}}</td>
                                 <td>{{transaction.description}}</td>
