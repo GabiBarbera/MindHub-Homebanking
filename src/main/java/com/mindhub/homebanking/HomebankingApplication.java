@@ -19,9 +19,8 @@ public class HomebankingApplication {
 	LocalDate date = LocalDate.now();
 	LocalDate date1 = LocalDate.now().plusDays(1);
 	LocalDateTime date3 = LocalDateTime.now().withNano(0).plusDays(4);
-
 	LocalDateTime date2 = LocalDateTime.now().withNano(0);
-
+LocalDateTime date4 = LocalDateTime.now().withNano(0).plusDays(6);
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
@@ -33,8 +32,10 @@ public class HomebankingApplication {
 			Account account2 = new Account("VIN002",this.date1,7500);
 			Transaction transaction1 = new Transaction(-1500,"Shopping",date2, TransactionType.DEBIT);
 			Transaction transaction2 = new Transaction(+2500,"Food",date3,TransactionType.CREDIT);
+			Transaction transaction5 = new Transaction(-5000,"Dinner",date4,TransactionType.DEBIT);
 			account1.addTransaction(transaction1);
 			account1.addTransaction(transaction2);
+			account1.addTransaction(transaction5);
 			client.addAccount(account1);
 			client.addAccount(account2);
 			repositoryClient.save(client);
@@ -42,6 +43,7 @@ public class HomebankingApplication {
 			accountRepository.save(account2);
 			transactionRepository.save(transaction1);
 			transactionRepository.save(transaction2);
+			transactionRepository.save(transaction5);
 
 			Client client2 = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com");
 			Account account3 = new Account("VIN003",this.date, 50000);

@@ -20,12 +20,7 @@ createApp({
             axios.get(url + idParameters)
                 .then(response => {
                     this.account = response.data
-                    console.log(this.account);
-                    this.transactions = this.account.transactionDTOSet
-                    console.log(this.transactions);
-                    // const account = response.data
-                    // this.accountId = allAccounts.find(idAccount => idAccount.id == idParameters)
-                    // this.transactions = this.accountId.transactionDTOSet.sort((a, b) => b.id - a.id)
+                    this.transactions = this.account.transactionDTOSet.sort((a, b) => b.id - a.id)
                 })
                 .catch(error => console.error('Error:', error));
         }
