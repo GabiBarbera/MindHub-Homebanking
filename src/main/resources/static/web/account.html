@@ -154,13 +154,13 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template v-for="transaction of transactions">
+                        <template v-for="(transaction, index) of transactions">
                             <tr>
                                 <td v-if="transaction.type == 'DEBIT'" class="text-danger fw-bolder">
                                     {{transaction.type}}</td>
                                 <td v-else class="text-success fw-bolder">{{transaction.type}}</td>
-                                <td>{{transaction.amount}}</td>
-                                <td>{{transaction.date}}</td>
+                                <td>$ {{transaction.amount}}</td>
+                                <td>{{dateForm.date[index]}} {{dateForm.hour[index]}}</td>
                                 <td>{{transaction.description}}</td>
                             </tr>
                         </template>

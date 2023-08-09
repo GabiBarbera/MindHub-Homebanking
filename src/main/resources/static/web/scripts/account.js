@@ -7,6 +7,9 @@ createApp({
         return {
             account: [],
             transactions: [],
+            date: [],
+            hour: [],
+            dateForm: {},
         }
     },
     created() {
@@ -21,6 +24,10 @@ createApp({
                 .then(response => {
                     this.account = response.data
                     this.transactions = this.account.transactionDTOSet.sort((a, b) => b.id - a.id)
+                    this.date = this.transactions.map(tr => tr.date.slice(0, -16))
+                    this.hour = this.transactions.map(tr => tr.date.slice(11, -7))
+                    this.dateForm.date = this.date
+                    this.dateForm.hour = this.hour
                 })
                 .catch(error => console.error('Error:', error));
         }
