@@ -82,14 +82,14 @@
 
         <main class="flex-grow-1 w-100">
             <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
-                <h1 class="text-center">Your selected account: {{accountId.number}}</h1>
+                <h1 class="text-center">Your selected account: {{account.number}}</h1>
                 <i class="bi bi-person-down fs-1 text-center"></i>
                 <div class="d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
                     <div data-aos="zoom-out" class="card m-5 d-flex flex-row shadow-lg">
                         <div class="foreground">
                             <div class="credit-card-header">
                                 <div class="category">Account number:</div>
-                                <div class="bank">{{accountId.number}}</div>
+                                <div class="bank">{{account.number}}</div>
                             </div>
                             <div class="credit-card-chip-container">
                                 <svg xml:space="preserve" viewBox="0 0 511 511"
@@ -110,8 +110,8 @@
                             </div>
                             <div class="info-container">
                                 <p class="names"></p>
-                                <p class="expire">Amount: $ {{accountId.balance}}</p>
-                                <p class="serial">creation date: {{accountId.creationDate}} </p>
+                                <p class="expire">Amount: $ {{account.balance}}</p>
+                                <p class="serial">creation date: {{account.creationDate}} </p>
                             </div>
                         </div>
                         <svg viewBox="0 0 1600 800" height="100%" width="100%" class="background">
@@ -167,11 +167,11 @@
                     </tbody>
                 </table>
             </section>
-            <h2 v-else class="text-center m-5">No transactions</h2>
+            <h2 v-else class="text-center m-5">This account has no movements.</h2>
             <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
                 <div>
-                    <h1 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
-                        turn:</h1>
+                    <h2 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
+                        turn:</h2>
                     <h6 class="text-white text-center">You can request your turn to be attended at branches by entering
                         Online Banking.</h6>
                 </div>
