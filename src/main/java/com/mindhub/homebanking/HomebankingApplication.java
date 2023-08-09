@@ -18,9 +18,9 @@ import java.time.LocalDateTime;
 public class HomebankingApplication {
 	LocalDate date = LocalDate.now();
 	LocalDate date1 = LocalDate.now().plusDays(1);
-	LocalDateTime date3 = LocalDateTime.now().plusDays(4);
-	LocalDateTime date2 = LocalDateTime.now();
-    LocalDateTime date4 = LocalDateTime.now().plusDays(6);
+	LocalDateTime date3 = LocalDateTime.now().plusDays(4).plusHours(8).plusMinutes(40);
+	LocalDateTime date2 = LocalDateTime.now().plusHours(3).plusMinutes(15);
+    LocalDateTime date4 = LocalDateTime.now().plusDays(6).plusHours(2).plusMinutes(23);
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
