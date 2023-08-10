@@ -18,6 +18,7 @@ createApp({
                 .then(response => {
                     this.clients = response.data
                     this.accounts = response.data.accounts.sort((a, b) => a.id - b.id)
+                    localStorage.setItem('clients', JSON.stringify(this.clients));
                 })
                 .catch(error => console.error('Error:', error));
         }

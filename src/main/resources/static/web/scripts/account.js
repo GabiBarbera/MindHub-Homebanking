@@ -10,6 +10,7 @@ createApp({
             date: [],
             hour: [],
             dateForm: {},
+            client: [],
         }
     },
     created() {
@@ -17,6 +18,8 @@ createApp({
     },
     methods: {
         loadData() {
+            const storedClients = localStorage.getItem('clients');
+            this.client = JSON.parse(storedClients);
             const parameter = location.search
             const parameters = new URLSearchParams(parameter)
             const idParameters = parameters.get("id")
