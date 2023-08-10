@@ -155,7 +155,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template v-for="(transaction, index) of transactions">
+                        <template v-if="transactions.length > 0" v-for="(transaction, index) of transactions">
                             <tr>
                                 <td v-if="transaction.type == 'DEBIT'" class="text-danger fw-bolder">
                                     {{transaction.type}}</td>
