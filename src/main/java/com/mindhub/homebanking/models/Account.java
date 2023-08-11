@@ -5,26 +5,27 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
 public class Account {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private long id;
-   private String number;
-   private LocalDate creationDate;
-   private double balance;
-
+    private String number;
+    private LocalDate creationDate;
+    private double balance;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "owner_id")
     private Client owner;
 
-    @OneToMany(mappedBy = "account",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<Transaction> transactions = new HashSet<>();
+    @ElementCollection
+    private List<Integer> payments;
 
     public Account() {
     }
@@ -66,6 +67,7 @@ public class Account {
     public void setOwner(Client client) {
         this.owner = client;
     }
+
     @JsonIgnore
     public Client getOwner() {
         return owner;
@@ -75,7 +77,7 @@ public class Account {
         this.balance = balance;
     }
 
-    public void addTransaction(Transaction transaction){
+    public void addTransaction(Transaction transaction) {
         transaction.setAccount(this);
         this.transactions.add(transaction);
     }
@@ -87,4 +89,14 @@ public class Account {
     public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
     }
+
+
+    public List<Integer> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Integer> payments) {
+        this.payments = payments;
+    }
+
 }
