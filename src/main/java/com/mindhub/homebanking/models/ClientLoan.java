@@ -1,8 +1,6 @@
 package com.mindhub.homebanking.models;
 
-import com.mindhub.homebanking.repositories.LoanRepository;
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity

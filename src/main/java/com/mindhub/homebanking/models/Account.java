@@ -5,7 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -24,8 +23,6 @@ public class Account {
 
     @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private Set<Transaction> transactions = new HashSet<>();
-    @ElementCollection
-    private List<Integer> payments;
 
     public Account() {
     }
@@ -88,15 +85,6 @@ public class Account {
 
     public void setTransactions(Set<Transaction> transactions) {
         this.transactions = transactions;
-    }
-
-
-    public List<Integer> getPayments() {
-        return payments;
-    }
-
-    public void setPayments(List<Integer> payments) {
-        this.payments = payments;
     }
 
 }
