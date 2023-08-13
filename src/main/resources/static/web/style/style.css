@@ -301,6 +301,7 @@ footer {
 
 /* tabla transacciones */
 
-#tableTransactions {
+#tableTransactions,
+#tableLoans {
     width: 45rem !important;
 }

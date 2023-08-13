@@ -153,59 +153,82 @@
                     </template>
                 </div>
             </div>
-    </div>
-    <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
-        <div>
-            <h1 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
-                turn:</h1>
-            <h6 class="text-white text-center">You can request your turn to be attended at branches by entering
-                Online Banking.</h6>
-        </div>
-        <div class="d-flex gap-5">
-            <button type="button" class="btn btn-outline-light btnturno fw-bold">Take your turn</button>
-            <button type="button" class="btn btn-outline-light btnTurno fw-bold">I do not have access</button>
-        </div>
-    </section>
-    <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
-        <img src="./images/customer_comes_first.svg" class="imgKnow" alt="">
-        <div class="d-flex flex-column justify-content-center align-items-center">
-            <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
-            <h6>If you need help, go to a branch and request a sign language interpreter to assist you.</h6>
-        </div>
-        <div class="btn btn-dark d-flex" id="btnKnow">
-            <button type="button" class="btn btn-dark fw-bold">Know more</button>
-        </div>
-    </section>
-    </main>
+            <section data-aos="zoom-out" class="d-flex flex-column align-items-center mb-5">
+                <h2 class="mb-4">Your loans:</h2>
+                <table class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded"
+                    id="tableLoans">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                            <th>Payments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template v-if="loans.length > 0" v-for="(loan, index) of loans">
+                            <tr>
+                                <td>{{loan.loanName}}</td>
+                                <td>$ {{loansConvert[index]}}</td>
+                                <td>{{loan.payments}} </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </section>
+            <h2 v-else class="text-center m-5">This account has no loans.</h2>
+            <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
+                <div>
+                    <h1 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
+                        turn:</h1>
+                    <h6 class="text-white text-center">You can request your turn to be attended at branches by entering
+                        Online Banking.</h6>
+                </div>
+                <div class="d-flex gap-5">
+                    <button type="button" class="btn btn-outline-light btnturno fw-bold">Take your turn</button>
+                    <button type="button" class="btn btn-outline-light btnTurno fw-bold">I do not have access</button>
+                </div>
+            </section>
+            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
+                <img src="./images/customer_comes_first.svg" class="imgKnow" alt="">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
+                    <h6>If you need help, go to a branch and request a sign language interpreter to assist you.</h6>
+                </div>
+                <div class="btn btn-dark d-flex" id="btnKnow">
+                    <button type="button" class="btn btn-dark fw-bold">Know more</button>
+                </div>
+            </section>
+        </main>
 
-    <footer class="col-12">
-        <div class="d-flex align-items-center justify-content-around">
-            <div class="footer-logo">
-                <img src="./images/word.png" alt="Logo del Banco">
+
+        <footer class="col-12">
+            <div class="d-flex align-items-center justify-content-around">
+                <div class="footer-logo">
+                    <img src="./images/word.png" alt="Logo del Banco">
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="./manager.html">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Loans</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Branch Offices</a></li>
+                        <li><a href="#">Frequent Questions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact d-flex flex-column gap-5">
+                    <a class="text-decoration-none text-white" href="tel:+1139145523"><i
+                            class="bi bi-telephone-forward"></i> Phone: +11-3914-5523</a>
+                    <a class="text-decoration-none text-white" href="mailto:gabriel.barberaa@gmail.com"><i
+                            class="bi bi-envelope-at"></i> Email:
+                        gabriel.barberaa@gmail.com</a>
+                    <p><i class="bi bi-geo-alt"></i> Address: Street of Bank, 1234</p>
+                </div>
             </div>
-            <div class="footer-links">
-                <ul>
-                    <li><a href="./manager.html">Home</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Loans</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Branch Offices</a></li>
-                    <li><a href="#">Frequent Questions</a></li>
-                </ul>
+            <div class="footer-bottom">
+                <p>All rights reserved &copy; Bank of Mindhub cohort-49</p>
             </div>
-            <div class="footer-contact d-flex flex-column gap-5">
-                <a class="text-decoration-none text-white" href="tel:+1139145523"><i
-                        class="bi bi-telephone-forward"></i> Phone: +11-3914-5523</a>
-                <a class="text-decoration-none text-white" href="mailto:gabriel.barberaa@gmail.com"><i
-                        class="bi bi-envelope-at"></i> Email:
-                    gabriel.barberaa@gmail.com</a>
-                <p><i class="bi bi-geo-alt"></i> Address: Street of Bank, 1234</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>All rights reserved &copy; Bank of Mindhub cohort-49</p>
-        </div>
-    </footer>
+        </footer>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"

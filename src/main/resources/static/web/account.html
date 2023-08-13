@@ -160,7 +160,7 @@
                                 <td v-if="transaction.type == 'DEBIT'" class="text-danger fw-bolder">
                                     {{transaction.type}}</td>
                                 <td v-else class="text-success fw-bolder">{{transaction.type}}</td>
-                                <td>$ {{transaction.amount}}</td>
+                                <td>$ {{transaction.amount.toLocaleString(1)}}</td>
                                 <td>{{dateForm.date[index]}} {{dateForm.hour[index]}}</td>
                                 <td>{{transaction.description}}</td>
                             </tr>
