@@ -155,7 +155,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template v-if="transactions.length > 0" v-for="(transaction, index) of transactions">
+                        <template v-for="(transaction, index) of transactions">
                             <tr>
                                 <td v-if="transaction.type == 'DEBIT'" class="text-danger fw-bolder">
                                     {{transaction.type}}</td>
@@ -200,7 +200,7 @@
                 </div>
                 <div class="footer-links">
                     <ul>
-                        <li><a href="./manager.html">Home</a></li>
+                        <li><a href="./accounts.html">Home</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Loans</a></li>
                         <li><a href="#">Contact</a></li>

@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="info-container">
                                     <p class="names">{{clients.firstName}} {{clients.lastName}}</p>
-                                    <p class="expire">Amount: $ {{account.balance}}</p>
+                                    <p class="expire">Amount: $ {{account.balance.toLocaleString(1)}}</p>
                                     <p class="serial">creation date: {{account.creationDate}}</p>
                                 </div>
                             </div>
@@ -153,7 +153,7 @@
                     </template>
                 </div>
             </div>
-            <section data-aos="zoom-out" class="d-flex flex-column align-items-center mb-5">
+            <section v-if="loans.length > 0" data-aos="zoom-out" class="d-flex flex-column align-items-center mb-5">
                 <h2 class="mb-4">Your loans:</h2>
                 <table class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded"
                     id="tableLoans">
@@ -165,7 +165,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <template v-if="loans.length > 0" v-for="(loan, index) of loans">
+                        <template v-for="(loan, index) of loans">
                             <tr>
                                 <td>{{loan.loanName}}</td>
                                 <td>$ {{loansConvert[index]}}</td>
