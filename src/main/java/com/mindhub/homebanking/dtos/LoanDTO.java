@@ -1,15 +1,24 @@
 package com.mindhub.homebanking.dtos;
 
-import com.mindhub.homebanking.models.ClientLoan;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import com.mindhub.homebanking.models.Loan;
 
 public class LoanDTO {
     private long id;
     private String name;
-    private Double maxAmount;
-    private List<Integer> payments;
-    private Set<ClientLoan> clientLoans = new HashSet<>();
 
+    public LoanDTO() {
+    }
+
+    public LoanDTO(Loan loan) {
+        this.id = loan.getId();
+        this.name = loan.getName();
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
