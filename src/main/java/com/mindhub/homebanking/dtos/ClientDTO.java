@@ -10,7 +10,7 @@ public class ClientDTO {
     private String firstName;
     private String lastName;
     private String email;
-    private Set<AccountDTO> accounts = new HashSet<>();
+    private Set<AccountDTO> accounts;
     private Set<ClientLoanDTO> loans;
 
     public ClientDTO() {
@@ -49,7 +49,7 @@ public class ClientDTO {
         return accounts;
     }
 
-    public Set<ClientLoanDTO> getClientLoans() {
+    public Set<ClientLoanDTO> getLoans() {
         return loans;
     }
 }

@@ -20,10 +20,9 @@ createApp({
                 .then(response => {
                     this.clients = response.data
                     this.accounts = response.data.accounts.sort((a, b) => a.id - b.id)
-                    this.loans = this.clients.clientLoans
+                    this.loans = this.clients.loans
                     this.loansConvert = this.loans.map(loan => loan.amount.toLocaleString(1))
                     localStorage.setItem('clients', JSON.stringify(this.clients));
-                    console.log(this.loansConvert);
                 })
                 .catch(error => console.error('Error:', error));
         }
