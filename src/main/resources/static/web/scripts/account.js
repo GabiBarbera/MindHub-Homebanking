@@ -26,7 +26,7 @@ createApp({
             axios.get(url + idParameters)
                 .then(response => {
                     this.account = response.data
-                    this.transactions = this.account.transactionDTOSet.sort((a, b) => b.id - a.id)
+                    this.transactions = this.account.transactions.sort((a, b) => b.id - a.id)
                     this.date = this.transactions.map(tr => tr.date.slice(0, -16))
                     this.hour = this.transactions.map(tr => tr.date.slice(11, -7))
                     this.dateForm.date = this.date
