@@ -13,6 +13,7 @@ import java.util.Arrays;
 @SpringBootApplication
 public class HomebankingApplication {
 	LocalDate date = LocalDate.now();
+	LocalDate dateYears = LocalDate.now().plusYears(5);
 	LocalDate date1 = LocalDate.now().plusDays(1);
 	LocalDateTime date3 = LocalDateTime.now().plusDays(4).plusHours(8).plusMinutes(40);
 	LocalDateTime date2 = LocalDateTime.now().plusHours(3).plusMinutes(15);
@@ -38,7 +39,8 @@ public class HomebankingApplication {
 			Transaction transaction5 = new Transaction(-5000,"Dinner",date4,TransactionType.DEBIT);
 			ClientLoan gabrielBarberaLoanM = new ClientLoan(400000.0,60);
 			ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0,12);
-			Card card1 = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date,date1);
+			Card cardGolGb = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date,dateYears);
+			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",321,date,dateYears);
 			gabrielBarbera.addAccount(account1);
 			gabrielBarbera.addAccount(account2);
 			account1.addTransaction(transaction1);
@@ -48,7 +50,8 @@ public class HomebankingApplication {
 			gabrielBarbera.addClientLoan(gabrielBarberaLoanP);
 			loanMortgage.addClientLoan(gabrielBarberaLoanM);
 			loanPersonal.addClientLoan(gabrielBarberaLoanP);
-			gabrielBarbera.addCard(card1);
+			gabrielBarbera.addCard(cardGolGb);
+			gabrielBarbera.addCard(cardTitaniumGb);
 			repositoryClient.save(gabrielBarbera);
 			accountRepository.save(account1);
 			accountRepository.save(account2);
@@ -57,7 +60,8 @@ public class HomebankingApplication {
 			transactionRepository.save(transaction5);
 			clientLoanRepository.save(gabrielBarberaLoanM);
 			clientLoanRepository.save(gabrielBarberaLoanP);
-			cardRepository.save(card1);
+			cardRepository.save(cardGolGb);
+			cardRepository.save(cardTitaniumGb);
 
 			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com");
 			Account account3 = new Account("VIN003",this.date, 50000);
@@ -66,6 +70,7 @@ public class HomebankingApplication {
 			Transaction transaction4 = new Transaction(-10000,"Car",date3,TransactionType.DEBIT);
 			ClientLoan brunoFerreiraLoanP = new ClientLoan(10000.0,24);
 			ClientLoan brunoFerreiraLoanA = new ClientLoan(20000.0,36);
+			Card cardSilverBf = new Card("Bruno Ferreira",CardType.DEBIT,CardColor.SILVER,"4567-4567-4567-4567",345,date,dateYears);
 			brunoFerreira.addAccount(account3);
 			brunoFerreira.addAccount(account4);
 			account4.addTransaction(transaction3);
@@ -74,6 +79,7 @@ public class HomebankingApplication {
 			brunoFerreira.addClientLoan(brunoFerreiraLoanA);
 			loanPersonal.addClientLoan(brunoFerreiraLoanP);
 			loanAutomotive.addClientLoan(brunoFerreiraLoanA);
+			brunoFerreira.addCard(cardSilverBf);
 			repositoryClient.save(brunoFerreira);
 			accountRepository.save(account3);
 			accountRepository.save(account4);
@@ -81,6 +87,7 @@ public class HomebankingApplication {
 			transactionRepository.save(transaction4);
 			clientLoanRepository.save(brunoFerreiraLoanP);
 			clientLoanRepository.save(brunoFerreiraLoanA);
+			cardRepository.save(cardSilverBf);
 		};
 	}
 }

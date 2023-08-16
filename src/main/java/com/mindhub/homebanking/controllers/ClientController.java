@@ -10,15 +10,16 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @RestController
+@RequestMapping("/api")
 public class ClientController {
     @Autowired
     private ClientRepository clientRepository;
 
-    @RequestMapping("/api/clients")
+    @RequestMapping("/clients")
     public List<ClientDTO> getClients() {
         return clientRepository.findAll().stream().map(client -> new ClientDTO(client)).collect(toList());
     }
- @RequestMapping("/api/clients/{id}")
+ @RequestMapping("/clients/{id}")
     public ClientDTO getClient(@PathVariable Long id){
         return new ClientDTO(clientRepository.findById(id).orElse(null));
  }

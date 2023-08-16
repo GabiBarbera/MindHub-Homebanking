@@ -9,7 +9,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="shortcut icon" href="./images/banco.png" type="image/x-icon">
-    <title>HomeBanking | Accounts</title>
+    <title>Account | HomeBanking</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav d-flex align-items-center justify-content-around w-100">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Accounts <i
+                                <a class="nav-link active" aria-current="page" href="./accounts.html">Accounts <i
                                         class="bi bi-person-circle text-white"></i></a>
                             </li>
                             <li class="nav-item">
@@ -81,52 +81,61 @@
         </header>
 
         <main class="flex-grow-1 w-100">
-            <div class="d-flex flex-column align-items-start m-5 flex-wrap">
-                <h1 class="text-center">Welcome, {{clients.firstName}} <i
-                        class="bi bi-person-down fs-1 text-center"></i></h1>
-                <div class="d-flex flex-row justify-content-center ms-5 me-5 gap-5 flex-wrap">
-                    <template v-if="accounts.length > 0" v-for="account of accounts">
+            <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
+                <h1 class="text-center">Yours cards: <i class="bi bi-credit-card-2-front"></i></h1>
+                <div class="d-flex flex-row justify-content-center ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
+                    <template v-if="cards.length > 0" v-for="card of cards">
                         <div data-aos="zoom-out">
-                            <div class="plan">
-                                <div class="inner d-flex flex-column justify-content-around">
-                                    <p class="titleP">Account: {{account.number}}</p>
-                                    <p class="infoP">{{clients.firstName}} {{clients.lastName}}</p>
-                                    <p class="amountP">Amount: $ {{account.balance.toLocaleString(1)}}</p>
-                                    <p class="creationDateP">creation date: {{account.creationDate}}</p>
-                                    <div class="action">
-                                        <a class="button" :href="'./account.html?id=' + account.id">
-                                            Details
-                                        </a>
+                            <div class="cards">
+                                <div class="card__info">
+                                    <div class="card__logo">MINDHUB BROTHERS</div>
+                                    <div class="card__chip">
+                                        <svg class="card__chip-lines" role="img" width="20px" height="20px"
+                                            viewBox="0 0 100 100" aria-label="Chip">
+                                            <g opacity="0.8">
+                                                <polyline points="0,50 35,50" fill="none" stroke="#000"
+                                                    stroke-width="2">
+                                                </polyline>
+                                                <polyline points="0,20 20,20 35,35" fill="none" stroke="#000"
+                                                    stroke-width="2"></polyline>
+                                                <polyline points="50,0 50,35" fill="none" stroke="#000"
+                                                    stroke-width="2">
+                                                </polyline>
+                                                <polyline points="65,35 80,20 100,20" fill="none" stroke="#000"
+                                                    stroke-width="2"></polyline>
+                                                <polyline points="100,50 65,50" fill="none" stroke="#000"
+                                                    stroke-width="2">
+                                                </polyline>
+                                                <polyline points="35,35 65,35 65,65 35,65 35,35" fill="none"
+                                                    stroke="#000" stroke-width="2"></polyline>
+                                                <polyline points="0,80 20,80 35,65" fill="none" stroke="#000"
+                                                    stroke-width="2"></polyline>
+                                                <polyline points="50,100 50,65" fill="none" stroke="#000"
+                                                    stroke-width="2">
+                                                </polyline>
+                                                <polyline points="65,65 80,80 100,80" fill="none" stroke="#000"
+                                                    stroke-width="2"></polyline>
+                                            </g>
+                                        </svg>
+                                        <div class="card__chip-texture"></div>
                                     </div>
+                                    <div class="card__type">{{card.type}}</div>
+                                    <div class="card__number">
+                                        <p class="numberOfCard">{{card.number}}</p>
+                                    </div>
+                                    <div class="card__valid-thru" aria-label="Valid thru">Valid<br>from</div>
+                                    <div class="card__exp-date">{{card.fromDate}}</div>
+                                    <div class="card__valid-thru" aria-label="Valid thru">Valid<br>thru</div>
+                                    <div class="card__exp-date">{{card.thruDate}}</div>
+                                    <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
+                                    <div class="card__vendor" role="img" aria-labelledby="card-vendor">
+                                        <span id="card-vendor" class="card__vendor-sr">Mastercard</span>
+                                    </div>
+                                    <div class="card__texture"></div>
                                 </div>
                             </div>
                         </div>
                     </template>
-                    <section v-if="loans.length > 0" data-aos="zoom-out"
-                        class="d-flex flex-column align-items-center mb-5">
-                        <h2 class="mb-4">These are your loans: <i class="bi bi-cash-coin fs-3 text-center"></i></h2>
-                        <table
-                            class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded m-5"
-                            id="tableLoans">
-                            <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Amount</th>
-                                    <th>Payments</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <template v-for="(loan, index) of loans">
-                                    <tr>
-                                        <td>{{loan.loanName}}</td>
-                                        <td>$ {{loansConvert[index]}}</td>
-                                        <td>{{loan.payments}} </td>
-                                    </tr>
-                                </template>
-                            </tbody>
-                        </table>
-                    </section>
-                    <h2 v-else class="text-center m-5">This account has no loans.</h2>
                 </div>
             </div>
             <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
@@ -153,7 +162,6 @@
             </section>
         </main>
 
-
         <footer class="col-12">
             <div class="d-flex align-items-center justify-content-around">
                 <div class="footer-logo">
@@ -161,7 +169,7 @@
                 </div>
                 <div class="footer-links">
                     <ul>
-                        <li><a href="./manager.html">Home</a></li>
+                        <li><a href="./accounts.html">Home</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Loans</a></li>
                         <li><a href="#">Contact</a></li>
@@ -189,7 +197,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="./scripts/accounts.js"></script>
+    <script src="./scripts/cards.js"></script>
     <script>
         AOS.init();
     </script>
