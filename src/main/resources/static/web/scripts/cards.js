@@ -20,7 +20,7 @@ createApp({
                     this.clients = response.data
                     this.accounts = response.data.accounts.sort((a, b) => a.id - b.id)
                     this.loans = this.clients.loans
-                    this.cards = this.clients.cards
+                    this.cards = this.clients.cards.sort((a, b) => b.id - a.id)
                     this.loansConvert = this.loans.map(loan => loan.amount.toLocaleString(1))
                     localStorage.setItem('clients', JSON.stringify(this.clients));
                 })

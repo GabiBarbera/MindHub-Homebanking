@@ -84,13 +84,13 @@
             <div class="d-flex flex-column align-items-start m-5 flex-wrap">
                 <h1 class="text-center">Welcome, {{clients.firstName}} <i
                         class="bi bi-person-down fs-1 text-center"></i></h1>
-                <div class="d-flex flex-row justify-content-center ms-5 me-5 gap-5 flex-wrap">
+                <div class="d-flex flex-row justify-content-center ms-3 me-5 mt-5 gap-5 flex-wrap">
                     <template v-if="accounts.length > 0" v-for="account of accounts">
                         <div data-aos="zoom-out">
                             <div class="plan">
                                 <div class="inner d-flex flex-column justify-content-around">
                                     <p class="titleP">Account: {{account.number}}</p>
-                                    <p class="infoP">{{clients.firstName}} {{clients.lastName}}</p>
+                                    <p class="infoP fw-bolder">{{clients.firstName}} {{clients.lastName}}</p>
                                     <p class="amountP">Amount: $ {{account.balance.toLocaleString(1)}}</p>
                                     <p class="creationDateP">creation date: {{account.creationDate}}</p>
                                     <div class="action">
@@ -103,7 +103,7 @@
                         </div>
                     </template>
                     <section v-if="loans.length > 0" data-aos="zoom-out"
-                        class="d-flex flex-column align-items-center mb-5">
+                        class="d-flex flex-column align-items-center mb-5 ms-3">
                         <h2 class="mb-4">These are your loans: <i class="bi bi-cash-coin fs-3 text-center"></i></h2>
                         <table
                             class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded m-5"

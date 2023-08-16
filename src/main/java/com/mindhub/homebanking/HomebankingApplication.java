@@ -41,6 +41,7 @@ public class HomebankingApplication {
 			ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0,12);
 			Card cardGolGb = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date,dateYears);
 			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",321,date,dateYears);
+			Card cardSilverGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.SILVER,"9876-9876-9876-9876",987,date,dateYears);
 			gabrielBarbera.addAccount(account1);
 			gabrielBarbera.addAccount(account2);
 			account1.addTransaction(transaction1);
@@ -52,6 +53,7 @@ public class HomebankingApplication {
 			loanPersonal.addClientLoan(gabrielBarberaLoanP);
 			gabrielBarbera.addCard(cardGolGb);
 			gabrielBarbera.addCard(cardTitaniumGb);
+			gabrielBarbera.addCard(cardSilverGb);
 			repositoryClient.save(gabrielBarbera);
 			accountRepository.save(account1);
 			accountRepository.save(account2);
@@ -62,6 +64,7 @@ public class HomebankingApplication {
 			clientLoanRepository.save(gabrielBarberaLoanP);
 			cardRepository.save(cardGolGb);
 			cardRepository.save(cardTitaniumGb);
+			cardRepository.save(cardSilverGb);
 
 			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com");
 			Account account3 = new Account("VIN003",this.date, 50000);

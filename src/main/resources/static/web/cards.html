@@ -86,7 +86,8 @@
                 <div class="d-flex flex-row justify-content-center ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
                     <template v-if="cards.length > 0" v-for="card of cards">
                         <div data-aos="zoom-out">
-                            <div class="cards">
+                            <div
+                                :class="{'cards cardGold':card.cardColor == 'GOLD','cards cardTitanium':card.cardColor == 'TITANIUM','cards cardSilver':card.cardColor == 'SILVER'}">
                                 <div class="card__info">
                                     <div class="card__logo">MINDHUB BROTHERS</div>
                                     <div class="card__chip">
@@ -121,12 +122,11 @@
                                     </div>
                                     <div class="card__type">{{card.type}}</div>
                                     <div class="card__number">
-                                        <p class="numberOfCard">{{card.number}}</p>
+                                        <p class="numberOfCard">{{card.cardHolder}}</p>
                                     </div>
-                                    <div class="card__valid-thru" aria-label="Valid thru">Valid<br>from</div>
-                                    <div class="card__exp-date">{{card.fromDate}}</div>
                                     <div class="card__valid-thru" aria-label="Valid thru">Valid<br>thru</div>
                                     <div class="card__exp-date">{{card.thruDate}}</div>
+                                    <div class="card__exp-number card__number">{{card.number}}</div>
                                     <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
                                     <div class="card__vendor" role="img" aria-labelledby="card-vendor">
                                         <span id="card-vendor" class="card__vendor-sr">Mastercard</span>
@@ -136,6 +136,7 @@
                             </div>
                         </div>
                     </template>
+                    <h2 v-else>You do not have cards</h2>
                 </div>
             </div>
             <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
