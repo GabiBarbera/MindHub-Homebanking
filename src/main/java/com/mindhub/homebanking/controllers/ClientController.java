@@ -16,7 +16,7 @@ public class ClientController {
 
     @RequestMapping("/api/clients")
     public List<ClientDTO> getClients() {
-        return clientRepository.findAll().stream().map(ClientDTO::new).collect(toList());
+        return clientRepository.findAll().stream().map(client -> new ClientDTO(client)).collect(toList());
     }
  @RequestMapping("/api/clients/{id}")
     public ClientDTO getClient(@PathVariable Long id){

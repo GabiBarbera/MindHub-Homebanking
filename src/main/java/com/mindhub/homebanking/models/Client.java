@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+
 import static java.util.stream.Collectors.toList;
 
 @Entity
@@ -69,8 +71,8 @@ public class Client {
         accounts.add(account);
     }
 
-    public List<String> getLoans() {
-        return clientLoans.stream().map(clientLoan -> clientLoan.getLoan().getName()).collect(toList());
+    public Set<String> getLoans() {
+        return clientLoans.stream().map(clientLoan -> clientLoan.getLoan().getName()).collect(Collectors.toSet());
     }
 
     public Set<ClientLoan> getClientLoans() {

@@ -17,7 +17,7 @@ public class AccountController {
     private AccountRepository accountRepository;
     @RequestMapping("/api/accounts")
     public List<AccountDTO> getClients() {
-        return accountRepository.findAll().stream().map(AccountDTO::new).collect(toList());
+        return accountRepository.findAll().stream().map(account -> new AccountDTO(account)).collect(toList());
     }
     @RequestMapping("/api/accounts/{id}")
     public AccountDTO getClient(@PathVariable Long id){
