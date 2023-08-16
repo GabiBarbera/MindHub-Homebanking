@@ -21,7 +21,7 @@ public class HomebankingApplication {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
 	@Bean
-	public CommandLineRunner initData(ClientRepository repositoryClient, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository) {
+	public CommandLineRunner initData(ClientRepository repositoryClient, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
 		return (args) -> {
 			Loan loanMortgage = new Loan("Mortgage", 500000.0, Arrays.asList(12, 24, 36, 48, 60));
 			Loan loanPersonal = new Loan("Personal", 100000.0, Arrays.asList(6,12,24));
@@ -38,6 +38,7 @@ public class HomebankingApplication {
 			Transaction transaction5 = new Transaction(-5000,"Dinner",date4,TransactionType.DEBIT);
 			ClientLoan gabrielBarberaLoanM = new ClientLoan(400000.0,60);
 			ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0,12);
+			Card card1 = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date,date1);
 			gabrielBarbera.addAccount(account1);
 			gabrielBarbera.addAccount(account2);
 			account1.addTransaction(transaction1);
@@ -47,6 +48,7 @@ public class HomebankingApplication {
 			gabrielBarbera.addClientLoan(gabrielBarberaLoanP);
 			loanMortgage.addClientLoan(gabrielBarberaLoanM);
 			loanPersonal.addClientLoan(gabrielBarberaLoanP);
+			gabrielBarbera.addCard(card1);
 			repositoryClient.save(gabrielBarbera);
 			accountRepository.save(account1);
 			accountRepository.save(account2);
@@ -55,6 +57,7 @@ public class HomebankingApplication {
 			transactionRepository.save(transaction5);
 			clientLoanRepository.save(gabrielBarberaLoanM);
 			clientLoanRepository.save(gabrielBarberaLoanP);
+			cardRepository.save(card1);
 
 			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com");
 			Account account3 = new Account("VIN003",this.date, 50000);
