@@ -6,8 +6,9 @@ createApp({
     data() {
         return {
             accounts: [],
-            clients: [],
-            cards: [],
+            credit: [],
+            debit: [],
+            cards: []
         }
     },
     created() {
@@ -18,11 +19,10 @@ createApp({
             axios.get(url)
                 .then(response => {
                     this.clients = response.data
-                    this.accounts = response.data.accounts.sort((a, b) => a.id - b.id)
-                    this.loans = this.clients.loans
+                    this.cards = this.clients.cards
+                    this.debit = this.cards.filter(card => card.type == 'DEBIT')
+                    this.credit = this.cards.filter(card => card.type == 'CREDIT')
                     this.cards = this.clients.cards.sort((a, b) => b.id - a.id)
-                    this.loansConvert = this.loans.map(loan => loan.amount.toLocaleString(1))
-                    localStorage.setItem('clients', JSON.stringify(this.clients));
                 })
                 .catch(error => console.error('Error:', error));
         }

@@ -402,7 +402,7 @@ footer {
 }
 
 
-/* tarjeta de cards html */
+/* tarjetas de cards html */
 
 .cards,
 .card__chip {
@@ -727,4 +727,79 @@ footer {
 .cardsAccount:hover>.cardD:not(:hover) {
     filter: blur(10px);
     transform: scale(0.9, 0.9);
+}
+
+
+/* section de solicitar tarjerta */
+
+.requestCard {
+    height: 22rem;
+    background-color: rgb(6 33 70);
+    color: white;
+}
+
+.inputRc {
+    position: relative;
+    max-width: 190px;
+    border: none;
+    box-shadow: 0px 1.5px 0px 0px #858585;
+    padding: .5rem;
+    transition: all 200ms ease-in-out;
+    opacity: .8;
+}
+
+.inputRc-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputRc-label {
+    font-size: .625rem;
+    font-weight: bold;
+    color: #858585;
+    margin-bottom: 4px;
+    margin-left: 1px;
+}
+
+.inputRc-helper {
+    color: #858585;
+    font-size: .5rem;
+    margin-top: 6px;
+    margin-left: 1px;
+    visibility: hidden;
+    transform: translateY(-.5rem);
+    transition: all 100ms linear;
+    z-index: -1;
+}
+
+.inputRc::placeholder {
+    color: rgb(145, 145, 145);
+    font-size: .75rem;
+}
+
+.inputRc::after {
+    content: attr(placeholder);
+    position: absolute;
+    color: #161616;
+    top: 0;
+    left: 0;
+}
+
+.inputRc:focus {
+    border: none;
+    box-shadow: 0px 1.5px 0px 0px #72E985;
+    outline: none;
+}
+
+.inputRc:focus+.inputRc-helper {
+    visibility: visible;
+    transform: translateY(0rem);
+}
+
+.inputRc:focus::placeholder {
+    visibility: hidden;
+}
+
+.cardImg {
+    width: 23rem;
 }
