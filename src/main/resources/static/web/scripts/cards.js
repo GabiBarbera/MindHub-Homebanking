@@ -9,7 +9,6 @@ createApp({
             credit: [],
             debit: [],
             cards: [],
-            date: [],
             dateDebit: [],
             fromDateDebit: [],
             dateCredit: [],

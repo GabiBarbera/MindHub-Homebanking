@@ -12,11 +12,13 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class HomebankingApplication {
-	private final LocalDate date = LocalDate.now();
+	private final LocalDate date = LocalDate.now().plusMonths(1);
+	private final LocalDate date5 = LocalDate.now().plusMonths(3);
+	private final LocalDate date6 = LocalDate.now().plusMonths(2);
 	private final LocalDate dateYears = LocalDate.now().plusMonths(2).plusYears(5);
 	private final LocalDate dateYears2 = LocalDate.now().plusYears(3);
 	private final LocalDate dateYears3 = LocalDate.now().plusMonths(1).plusYears(4);
-	private final LocalDate date1 = LocalDate.now().plusDays(1);
+	private final LocalDate date1 = LocalDate.now().plusMonths(2);
 	private final LocalDateTime date3 = LocalDateTime.now().plusDays(4).plusHours(8).plusMinutes(40);
 	private final LocalDateTime date2 = LocalDateTime.now().plusHours(3).plusMinutes(15);
 	private final LocalDateTime date4 = LocalDateTime.now().plusDays(6).plusHours(2).plusMinutes(23);
@@ -41,9 +43,11 @@ public class HomebankingApplication {
 			Transaction transaction5 = new Transaction(-5000,"Dinner",date4,TransactionType.DEBIT);
 			ClientLoan gabrielBarberaLoanM = new ClientLoan(400000.0,60);
 			ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0,12);
-			Card cardGolGb = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date,dateYears);
-			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",321,date1,dateYears3);
-			Card cardSilverGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.SILVER,"9876-9876-9876-9876",987,date,dateYears2);
+			System.out.println(date1);
+			Card cardGolGb = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date6,dateYears);
+			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",476,date1,dateYears3);
+			Card cardSilverGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.SILVER,"9876-9876-9876-9876",983,date5,dateYears2);
+				Card cardSilverGb2 = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.SILVER,"4567-4567-7654-7654",654,date,dateYears2);
 			gabrielBarbera.addAccount(account1);
 			gabrielBarbera.addAccount(account2);
 			account1.addTransaction(transaction1);
@@ -56,6 +60,7 @@ public class HomebankingApplication {
 			gabrielBarbera.addCard(cardGolGb);
 			gabrielBarbera.addCard(cardTitaniumGb);
 			gabrielBarbera.addCard(cardSilverGb);
+			gabrielBarbera.addCard(cardSilverGb2);
 			repositoryClient.save(gabrielBarbera);
 			accountRepository.save(account1);
 			accountRepository.save(account2);
@@ -67,6 +72,7 @@ public class HomebankingApplication {
 			cardRepository.save(cardGolGb);
 			cardRepository.save(cardTitaniumGb);
 			cardRepository.save(cardSilverGb);
+			cardRepository.save(cardSilverGb2);
 
 			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com");
 			Account account3 = new Account("VIN003",this.date, 50000);

@@ -137,8 +137,10 @@
                                         <div class="card__number">
                                             <p class="numberOfCard">{{card.cardHolder}}</p>
                                         </div>
-                                        <div class="card__valid-thru" aria-label="Valid thru">Valid<br>thru</div>
-                                        <div class="card__exp-date">{{dateCredit[index]}}</div><span></span>
+                                        <div class="card__valid-thru" aria-label="Valid thru">Valid<br>from</div>
+                                        <div class="card__exp-date w-50">{{fromDateCredit[index]}}</div>
+                                        <div class="card__valid-thru w-25" aria-label="Valid thru">Valid<br>thru</div>
+                                        <div class="card__exp-date">{{dateCredit[index]}}</div>
                                         <div class="card__exp-number card__number">{{card.number}}</div>
                                         <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
                                         <div class="card__vendor" role="img" aria-labelledby="card-vendor">
@@ -195,7 +197,9 @@
                                         <div class="card__number">
                                             <p class="numberOfCard">{{card.cardHolder}}</p>
                                         </div>
-                                        <div class="card__valid-thru" aria-label="Valid thru">Valid<br>thru</div>
+                                        <div class="card__valid-thru" aria-label="Valid thru">Valid<br>from</div>
+                                        <div class="card__exp-date w-50">{{fromDateDebit[index]}}</div>
+                                        <div class="card__valid-thru w-25" aria-label="Valid thru">Valid<br>thru</div>
                                         <div class="card__exp-date">{{dateDebit[index]}}</div>
                                         <div class="card__exp-number card__number">{{card.number}}</div>
                                         <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
