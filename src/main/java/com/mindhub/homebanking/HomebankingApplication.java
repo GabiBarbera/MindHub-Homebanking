@@ -12,12 +12,14 @@ import java.util.Arrays;
 
 @SpringBootApplication
 public class HomebankingApplication {
-	LocalDate date = LocalDate.now();
-	LocalDate dateYears = LocalDate.now().plusYears(5);
-	LocalDate date1 = LocalDate.now().plusDays(1);
-	LocalDateTime date3 = LocalDateTime.now().plusDays(4).plusHours(8).plusMinutes(40);
-	LocalDateTime date2 = LocalDateTime.now().plusHours(3).plusMinutes(15);
-    LocalDateTime date4 = LocalDateTime.now().plusDays(6).plusHours(2).plusMinutes(23);
+	private final LocalDate date = LocalDate.now();
+	private final LocalDate dateYears = LocalDate.now().plusMonths(2).plusYears(5);
+	private final LocalDate dateYears2 = LocalDate.now().plusYears(3);
+	private final LocalDate dateYears3 = LocalDate.now().plusMonths(1).plusYears(4);
+	private final LocalDate date1 = LocalDate.now().plusDays(1);
+	private final LocalDateTime date3 = LocalDateTime.now().plusDays(4).plusHours(8).plusMinutes(40);
+	private final LocalDateTime date2 = LocalDateTime.now().plusHours(3).plusMinutes(15);
+	private final LocalDateTime date4 = LocalDateTime.now().plusDays(6).plusHours(2).plusMinutes(23);
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
@@ -40,8 +42,8 @@ public class HomebankingApplication {
 			ClientLoan gabrielBarberaLoanM = new ClientLoan(400000.0,60);
 			ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0,12);
 			Card cardGolGb = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date,dateYears);
-			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",321,date,dateYears);
-			Card cardSilverGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.SILVER,"9876-9876-9876-9876",987,date,dateYears);
+			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",321,date1,dateYears3);
+			Card cardSilverGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.SILVER,"9876-9876-9876-9876",987,date,dateYears2);
 			gabrielBarbera.addAccount(account1);
 			gabrielBarbera.addAccount(account2);
 			account1.addTransaction(transaction1);

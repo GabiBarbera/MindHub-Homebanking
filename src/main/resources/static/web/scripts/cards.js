@@ -10,6 +10,10 @@ createApp({
             debit: [],
             cards: [],
             date: [],
+            dateDebit: [],
+            fromDateDebit: [],
+            dateCredit: [],
+            fromDateCredit: [],
         }
     },
     created() {
@@ -20,11 +24,13 @@ createApp({
             axios.get(url)
                 .then(response => {
                     this.clients = response.data
-                    this.cards = this.clients.cards
+                    this.cards = this.clients.cards.sort((a, b) => b.id - a.id)
                     this.debit = this.cards.filter(card => card.type == 'DEBIT')
                     this.credit = this.cards.filter(card => card.type == 'CREDIT')
-                    this.date = this.cards.map(date => date.thruDate.slice(2, 7).replace(/-/g, '/'))
-                    this.cards = this.clients.cards.sort((a, b) => b.id - a.id)
+                    this.dateDebit = this.debit.map(date => date.thruDate.slice(2, 7).replace(/-/g, '/'))
+                    this.fromDateDebit = this.debit.map(date => date.fromDate.slice(2, 7).replace(/-/g, '/'))
+                    this.dateCredit = this.credit.map(date => date.thruDate.slice(2, 7).replace(/-/g, '/'))
+                    this.fromDateCredit = this.credit.map(date => date.fromDate.slice(2, 7).replace(/-/g, '/'))
                 })
                 .catch(error => console.error('Error:', error));
         }
