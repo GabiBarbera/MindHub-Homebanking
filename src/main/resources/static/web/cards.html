@@ -84,8 +84,8 @@
             <section class="requestCard d-flex flex-column align-items-center justify-content-around pt-5">
                 <h2 class="mt-5">Discover the ideal MB card for you and try it. A bonus year!</h2>
                 <div class="d-flex align-items-center">
-                    <h5>What are you waiting for to be a BBVA customer?
-                        <br> Get your card and start traveling around Argentina and the world with Mindhub Brothers.
+                    <h5 class="h5">What are you waiting for to be a MB customer?
+                        <br> Get your card and start traveling around the world with Mindhub Brothers.
                     </h5>
                     <div class="d-flex justify-content-end w-100">
                         <img class="cardImg" src="./images/tarjeta.png" alt="">
@@ -97,7 +97,7 @@
                 <section class="credit w-100">
                     <div class="d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
                         <h2>Credit:</h2>
-                        <template v-if="credit.length > 0" v-for="card of credit">
+                        <template v-if="credit.length > 0" v-for="(card,index) of credit">
                             <div data-aos="zoom-out" class="m-5">
                                 <div
                                     :class="{'cards cardGold':card.cardColor == 'GOLD','cards cardTitanium':card.cardColor == 'TITANIUM','cards cardSilver':card.cardColor == 'SILVER'}">
@@ -138,7 +138,7 @@
                                             <p class="numberOfCard">{{card.cardHolder}}</p>
                                         </div>
                                         <div class="card__valid-thru" aria-label="Valid thru">Valid<br>thru</div>
-                                        <div class="card__exp-date">{{card.thruDate}}</div>
+                                        <div class="card__exp-date">{{date[index]}}</div>
                                         <div class="card__exp-number card__number">{{card.number}}</div>
                                         <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
                                         <div class="card__vendor" role="img" aria-labelledby="card-vendor">
@@ -155,7 +155,7 @@
                 <section class="debit w-100">
                     <div class="d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
                         <h2>Debit:</h2>
-                        <template v-if="debit.length > 0" v-for="card of debit">
+                        <template v-if="debit.length > 0" v-for="(card, index) of debit">
                             <div data-aos="zoom-out" class="m-5">
                                 <div
                                     :class="{'cards cardGold':card.cardColor == 'GOLD','cards cardTitanium':card.cardColor == 'TITANIUM','cards cardSilver':card.cardColor == 'SILVER'}">
@@ -196,7 +196,7 @@
                                             <p class="numberOfCard">{{card.cardHolder}}</p>
                                         </div>
                                         <div class="card__valid-thru" aria-label="Valid thru">Valid<br>thru</div>
-                                        <div class="card__exp-date">{{card.thruDate}}</div>
+                                        <div class="card__exp-date">{{date[index]}}</div>
                                         <div class="card__exp-number card__number">{{card.number}}</div>
                                         <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
                                         <div class="card__vendor" role="img" aria-labelledby="card-vendor">

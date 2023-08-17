@@ -8,7 +8,8 @@ createApp({
             accounts: [],
             credit: [],
             debit: [],
-            cards: []
+            cards: [],
+            date: [],
         }
     },
     created() {
@@ -22,6 +23,8 @@ createApp({
                     this.cards = this.clients.cards
                     this.debit = this.cards.filter(card => card.type == 'DEBIT')
                     this.credit = this.cards.filter(card => card.type == 'CREDIT')
+                    this.date = this.cards.map(date => date.thruDate.slice(2, 7).replace(/-/g, '/'))
+                    console.log(this.date);
                     this.cards = this.clients.cards.sort((a, b) => b.id - a.id)
                 })
                 .catch(error => console.error('Error:', error));
