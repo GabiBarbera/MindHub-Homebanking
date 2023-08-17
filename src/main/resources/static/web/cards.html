@@ -29,7 +29,7 @@
                                         class="bi bi-person-circle text-white"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="W">Cards <i
+                                <a class="nav-link active" href="#">Cards <i
                                         class="bi bi-credit-card-2-back text-white"></i></a>
                             </li>
                             <img src="./images/word.png" id="logo" alt="">
@@ -82,7 +82,7 @@
 
         <main class="flex-grow-1 w-100">
             <section class="requestCard d-flex flex-column align-items-center justify-content-around pt-5">
-                <h2 class="mt-5">Discover the ideal MB card for you and try it. A bonus year!</h2>
+                <h2 class="mt-1">Discover the ideal MB card for you and try it. A bonus year!</h2>
                 <div class="d-flex align-items-center">
                     <h5 class="h5">What are you waiting for to be a MB customer?
                         <br> Get your card and start traveling around the world with Mindhub Brothers.
@@ -95,7 +95,7 @@
             <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
                 <h1 class="text-center">Yours cards: <i class="bi bi-credit-card-2-front"></i></h1>
                 <section class="credit w-100">
-                    <div class="d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
+                    <div class="sectionCards d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
                         <h2>Credit:</h2>
                         <template v-if="credit.length > 0" v-for="(card,index) of credit">
                             <div data-aos="zoom-out" class="m-5">
@@ -153,7 +153,7 @@
                     </div>
                 </section>
                 <section class="debit w-100">
-                    <div class="d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
+                    <div class="sectionCards d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
                         <h2>Debit:</h2>
                         <template v-if="debit.length > 0" v-for="(card, index) of debit">
                             <div data-aos="zoom-out" class="m-5">

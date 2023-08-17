@@ -43,6 +43,12 @@ form {
 
 /* Description de cuentas en accounts */
 
+.sectionAccounts {
+    padding-top: 1rem;
+    background: #f4f4f4;
+    padding-bottom: 2rem;
+}
+
 .plan {
     border-radius: 16px;
     box-shadow: 0 30px 30px -25px rgba(0, 38, 255, 0.205);
@@ -403,6 +409,11 @@ footer {
 
 
 /* tarjetas de cards html */
+
+.sectionCards {
+    background-color: #f4f4f4;
+    padding: 2rem;
+}
 
 .cards,
 .card__chip {
@@ -806,7 +817,7 @@ footer {
 }
 
 .cardImg {
-    width: 23rem;
+    width: 17rem;
 }
 
 /* section de people en accounts */
