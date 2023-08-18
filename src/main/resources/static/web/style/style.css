@@ -413,6 +413,7 @@ footer {
 .sectionCards {
     background-color: #f4f4f4;
     padding: 2rem;
+    box-shadow: inset 0px 0rem 2rem 20px rgba(0, 0, 0, .175) !important;
 }
 
 .cards,
@@ -928,8 +929,10 @@ footer {
 .sectionImages {
     background-color: #f4f4f4;
     height: 18rem;
+    gap: 8rem;
 }
 
 .imgAccount {
     height: 10rem;
+    margin-bottom: 1.5rem;
 }

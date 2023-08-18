@@ -43,7 +43,6 @@ public class HomebankingApplication {
 			Transaction transaction5 = new Transaction(-5000,"Dinner",date4,TransactionType.DEBIT);
 			ClientLoan gabrielBarberaLoanM = new ClientLoan(400000.0,60);
 			ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0,12);
-			System.out.println(date1);
 			Card cardGolGb = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date6,dateYears);
 			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",476,date1,dateYears3);
 			Card cardSilverGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.SILVER,"9876-9876-9876-9876",983,date5,dateYears2);
