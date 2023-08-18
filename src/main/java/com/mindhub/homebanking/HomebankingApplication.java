@@ -2,10 +2,13 @@ package com.mindhub.homebanking;
 
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -22,6 +25,8 @@ public class HomebankingApplication {
 	private final LocalDateTime date3 = LocalDateTime.now().plusDays(4).plusHours(8).plusMinutes(40);
 	private final LocalDateTime date2 = LocalDateTime.now().plusHours(3).plusMinutes(15);
 	private final LocalDateTime date4 = LocalDateTime.now().plusDays(6).plusHours(2).plusMinutes(23);
+	@Autowired
+	private PasswordEncoder passwordEnconder;
 	public static void main(String[] args) {
 		SpringApplication.run(HomebankingApplication.class, args);
 	}
@@ -35,7 +40,7 @@ public class HomebankingApplication {
 			loanRepository.save(loanPersonal);
 			loanRepository.save(loanAutomotive);
 
-			Client gabrielBarbera = new Client("Gabriel", "Barbera","gabriel.barberaa@gmail.com");
+			Client gabrielBarbera = new Client("Gabriel", "Barbera","gabriel.barberaa@gmail.com",passwordEnconder.encode("gabrielhomebanking"));
 			Account account1 = new Account("VIN001",this.date, 5000);
 			Account account2 = new Account("VIN002",this.date1,7500);
 			Transaction transaction1 = new Transaction(-1500,"Shopping",date2, TransactionType.DEBIT);
@@ -73,7 +78,7 @@ public class HomebankingApplication {
 			cardRepository.save(cardSilverGb);
 			cardRepository.save(cardSilverGb2);
 
-			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com");
+			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com",passwordEnconder.encode("brunohomebanking"));
 			Account account3 = new Account("VIN003",this.date, 50000);
 			Account account4 = new Account("VIN004",this.date1,75000);
 			Transaction transaction3 = new Transaction(2000,"Food",date2,TransactionType.CREDIT);
