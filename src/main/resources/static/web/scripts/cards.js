@@ -5,7 +5,6 @@ const url = 'http://localhost:8080/api/clients/1'
 createApp({
     data() {
         return {
-            accounts: [],
             credit: [],
             debit: [],
             cards: [],
