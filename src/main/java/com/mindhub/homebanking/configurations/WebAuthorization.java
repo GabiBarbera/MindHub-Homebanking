@@ -20,6 +20,7 @@ public class WebAuthorization {
                 .antMatchers("/web/index.html").permitAll()
                 .antMatchers("/web/scripts/**").permitAll()
                 .antMatchers("/web/style/**").permitAll()
+                .antMatchers("/web/images/**").permitAll()
                 .antMatchers("/api/**").hasAuthority("CLIENT")
                 .antMatchers("/rest/**").hasAnyAuthority("ADMIN")
                 .antMatchers("/h2-console/**").hasAnyAuthority("ADMIN")

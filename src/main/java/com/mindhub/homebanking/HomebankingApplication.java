@@ -39,7 +39,7 @@ public class HomebankingApplication {
 			loanRepository.save(loanPersonal);
 			loanRepository.save(loanAutomotive);
 
-			Client gabrielBarbera = new Client("Gabriel", "Barbera","gabriel.barberaa@gmail.com",passwordEnconder.encode("gabrielhomebanking"));
+			Client gabrielBarbera = new Client("Gabriel", "Barbera","gabriel.barberaa@gmail.com",passwordEnconder.encode("1234"));
 			Account account1 = new Account("VIN001",this.date, 5000);
 			Account account2 = new Account("VIN002",this.date1,7500);
 			Transaction transaction1 = new Transaction(-1500,"Shopping",date2, TransactionType.DEBIT);
@@ -77,7 +77,7 @@ public class HomebankingApplication {
 			cardRepository.save(cardSilverGb);
 			cardRepository.save(cardSilverGb2);
 
-			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com",passwordEnconder.encode("brunohomebanking"));
+			Client brunoFerreira = new Client("Bruno", "Ferreira","fbrunomarcos@gmail.com",passwordEnconder.encode("1234"));
 			Account account3 = new Account("VIN003",this.date, 50000);
 			Account account4 = new Account("VIN004",this.date1,75000);
 			Transaction transaction3 = new Transaction(2000,"Food",date2,TransactionType.CREDIT);

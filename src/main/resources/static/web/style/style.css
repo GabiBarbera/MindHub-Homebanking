@@ -939,6 +939,13 @@ footer {
 
 /* index html  */
 
+#indexhtml {
+    background-image: url(./clay-banks-oO6Gm16Cqcg-unsplash.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 30%;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -946,7 +953,7 @@ footer {
     padding-left: 2em;
     padding-right: 2em;
     padding-bottom: 0.4em;
-    background-color: #171717;
+    background-color: #ffffff3b;
     border-radius: 25px;
     transition: .4s ease-in-out;
     width: 26rem;
