@@ -8,7 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
@@ -51,7 +50,7 @@ public class HomebankingApplication {
 			Card cardGolGb = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.GOLD,"1234-1234-1234-1234",123,date6,dateYears);
 			Card cardTitaniumGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.TITANIUM,"4321-4321-4321-4321",476,date1,dateYears3);
 			Card cardSilverGb = new Card("Gabriel Barbera",CardType.CREDIT,CardColor.SILVER,"9876-9876-9876-9876",983,date5,dateYears2);
-				Card cardSilverGb2 = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.SILVER,"4567-4567-7654-7654",654,date,dateYears2);
+			Card cardSilverGb2 = new Card("Gabriel Barbera",CardType.DEBIT,CardColor.SILVER,"4567-4567-7654-7654",654,date,dateYears2);
 			gabrielBarbera.addAccount(account1);
 			gabrielBarbera.addAccount(account2);
 			account1.addTransaction(transaction1);

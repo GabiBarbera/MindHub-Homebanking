@@ -31,6 +31,12 @@ createApp({
                     this.fromDateCredit = this.credit.map(date => date.fromDate.slice(2, 7).replace(/-/g, '/'))
                 })
                 .catch(error => console.error('Error:', error));
+        },
+        logout() {
+            axios.post('http://localhost:8080/api/logout')
+                .then(response => {
+                    location.href = '/web/index.html';
+                })
         }
     }
 }).mount('#app')
