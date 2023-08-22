@@ -18,15 +18,15 @@ public class WebAuthorization {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/rest/**").hasAnyAuthority("ADMIN")
-                .antMatchers("/h2-console/**").hasAnyAuthority("ADMIN")
-                .antMatchers("/manager.html").hasAnyAuthority("ADMIN")
-                .antMatchers("/api/clients").hasAnyAuthority("ADMIN")
-                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/clients","/api/login","api/logout").permitAll()
                 .antMatchers("/web/index.html").permitAll()
                 .antMatchers("/web/scripts/**").permitAll()
                 .antMatchers("/web/style/**").permitAll()
                 .antMatchers("/web/images/**").permitAll()
+                .antMatchers("/rest/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/h2-console/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/manager.html").hasAnyAuthority("ADMIN")
+                .antMatchers("/api/clients").hasAnyAuthority("ADMIN")
                 .antMatchers("/web/**").hasAnyAuthority("CLIENT")
                 .anyRequest().authenticated();
         http.formLogin()

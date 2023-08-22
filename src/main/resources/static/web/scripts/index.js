@@ -6,7 +6,6 @@ createApp({
         return {
             email: '',
             password: '',
-            errorMessage: '',
             firstName: '',
             lastName: '',
         }
