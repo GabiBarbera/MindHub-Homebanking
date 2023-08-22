@@ -18,15 +18,16 @@ public class WebAuthorization {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
+                .antMatchers("/rest/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/h2-console/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/manager.html").hasAnyAuthority("ADMIN")
+                .antMatchers("/api/clients").hasAnyAuthority("ADMIN")
+                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
                 .antMatchers("/web/index.html").permitAll()
                 .antMatchers("/web/scripts/**").permitAll()
                 .antMatchers("/web/style/**").permitAll()
                 .antMatchers("/web/images/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
-//                .antMatchers("/api/**").hasAuthority("CLIENT")
-                .antMatchers("/manager.html").hasAnyAuthority("ADMIN")
-                .antMatchers("/rest/**").hasAnyAuthority("ADMIN")
-                .antMatchers("/h2-console/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/web/**").hasAnyAuthority("CLIENT")
                 .anyRequest().authenticated();
         http.formLogin()
                 .usernameParameter("email")
@@ -35,6 +36,7 @@ public class WebAuthorization {
                 .permitAll();
         http.logout().logoutUrl("/api/logout");
         http.csrf().disable();
+        http.headers().frameOptions().disable();
         http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
         http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));
         http.formLogin().failureHandler((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));

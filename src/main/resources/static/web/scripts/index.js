@@ -15,7 +15,11 @@ createApp({
         login() {
             axios.post('http://localhost:8080/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
-                    location.href = '/web/accounts.html';
+                    if ("admin@admin".includes(this.email)) {
+                        location.href = '../manager.html';
+                    } else {
+                        location.href = './accounts.html';
+                    }
                 })
                 .catch(error => {
                     this.errorMessage = "Error";

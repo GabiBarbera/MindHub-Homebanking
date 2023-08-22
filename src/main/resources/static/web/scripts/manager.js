@@ -45,6 +45,12 @@ createApp({
                     this.loadData();
                 })
                 .catch(error => console.error('Error:', error));
+        },
+        logout() {
+            axios.post('http://localhost:8080/api/logout')
+                .then(response => {
+                    location.href = '/web/index.html';
+                })
         }
     }
 }).mount('#app')

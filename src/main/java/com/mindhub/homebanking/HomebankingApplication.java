@@ -39,6 +39,9 @@ public class HomebankingApplication {
 			loanRepository.save(loanPersonal);
 			loanRepository.save(loanAutomotive);
 
+			Client admin = new Client("admin","admin","admin@admin",passwordEnconder.encode("1234"));
+			repositoryClient.save(admin);
+
 			Client gabrielBarbera = new Client("Gabriel", "Barbera","gabriel.barberaa@gmail.com",passwordEnconder.encode("1234"));
 			Account account1 = new Account("VIN001",this.date, 5000);
 			Account account2 = new Account("VIN002",this.date1,7500);

@@ -871,245 +871,111 @@ footer {
     background-position-y: 30%;
 }
 
-.form {
+
+.main {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    padding-left: 2em;
-    padding-right: 2em;
-    padding-bottom: 0.4em;
-    background-color: #ffffff3b;
-    border-radius: 25px;
-    transition: .4s ease-in-out;
-    width: 26rem;
+    max-height: 420px;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
-.form:hover {
-    transform: scale(1.05);
-    border: 1px solid black;
-}
-
-#heading {
-    text-align: center;
-    margin: 2em;
-    color: rgb(255, 255, 255);
-    font-size: 1.2em;
-}
-
-.field {
+.form2 {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5em;
-    border-radius: 25px;
-    padding: 0.6em;
-    border: none;
-    outline: none;
-    color: white;
-    background-color: #171717;
-    box-shadow: inset 2px 5px 10px rgb(5, 5, 5);
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    width: 14rem;
+    background-color: rgb(208 226 255 / 0%);
 }
 
-.input-icon {
-    height: 1.3em;
-    width: 1.3em;
-    fill: white;
+/*checkbox to switch from sign up to login*/
+#chk {
+    display: none;
 }
 
-.input-field {
-    background: none;
-    border: none;
-    outline: none;
-    width: 100%;
-    color: #d3d3d3;
-}
-
-.form .btn {
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 2.5em;
-}
-
-.button1 {
-    padding: 0.5em;
-    padding-left: 1.1em;
-    padding-right: 1.1em;
-    border-radius: 5px;
-    margin-right: 0.5em;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-}
-
-.button1:hover {
-    background-color: black;
-    color: white;
-}
-
-.button2 {
-    padding: 0.5em;
-    padding-left: 2.3em;
-    padding-right: 2.3em;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-}
-
-.button2:hover {
-    background-color: black;
-    color: white;
-}
-
-.button3 {
-    margin-bottom: 3em;
-    padding: 0.5em;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    transition: .4s ease-in-out;
-    background-color: #252525;
-    color: white;
-}
-
-.button3:hover {
-    background-color: red;
-    color: white;
-}
+/*Login*/
 
 .loginIndex {
     height: 100vh;
 }
 
-
-/* register index.html */
-
-
-.title2 {
-    font-size: 28px;
-    color: white;
-    font-weight: 600;
-    letter-spacing: -1px;
+.login {
     position: relative;
-    display: flex;
-    align-items: center;
-    padding-left: 30px;
-}
-
-.title2::before,
-.title2::after {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    left: 0px;
-    background-color: white;
-}
-
-.title2::before {
-    width: 18px;
-    height: 18px;
-    background-color: white;
-}
-
-.title2::after {
-    width: 18px;
-    height: 18px;
-    animation: pulse 1s linear infinite;
-}
-
-.message,
-.signin {
-    color: white;
-    font-size: 18px;
-}
-
-.signin {
-    text-align: center;
-}
-
-.signin a {
-    color: royalblue;
-}
-
-.signin a:hover {
-    text-decoration: underline royalblue;
-}
-
-.flex {
-    display: flex;
     width: 100%;
-    gap: 6px;
+    height: 100%;
 }
 
-.form2 label {
-    position: relative;
+.login label {
+    margin: 25% 0 5%;
 }
 
-.form2 label .input {
+label {
+    color: #fff;
+    font-size: 2rem;
+    justify-content: center;
+    display: flex;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s ease-in-out;
+}
+
+.input2 {
     width: 100%;
-    padding: 10px 10px 20px 10px;
-    outline: 0;
-    border: 1px solid rgba(105, 105, 105, 0.397);
-    border-radius: 10px;
-}
-
-.form2 label .input+span {
-    position: absolute;
-    left: 10px;
-    top: 15px;
-    color: grey;
-    font-size: 0.9em;
-    cursor: text;
-    transition: 0.3s ease;
-}
-
-.form2 label .input:placeholder-shown+span {
-    top: 15px;
-    font-size: 0.9em;
-}
-
-.form2 label .input:focus+span,
-.form2 label .input:valid+span {
-    top: 0px;
-    font-size: 0.7em;
-    font-weight: 600;
-}
-
-.form2 label .input:valid+span {
-    color: green;
-}
-
-.submit {
+    height: 40px;
+    background: #e0dede;
+    padding: 10px;
     border: none;
     outline: none;
-    background-color: black;
-    padding: 10px;
-    border-radius: 10px;
+    border-radius: 4px;
+}
+
+/*Register*/
+.register {
+    background: #eee;
+    border-radius: 60% / 10%;
+    transform: translateY(5%);
+    transition: .8s ease-in-out;
+}
+
+.register label {
+    color: black;
+    transform: scale(.6);
+}
+
+#chk:checked~.register {
+    transform: translateY(-60%);
+}
+
+#chk:checked~.register label {
+    transform: scale(1);
+    margin: 10% 0 5%;
+}
+
+#chk:checked~.login label {
+    transform: scale(.6);
+    margin: 5% 0 5%;
+}
+
+/*Button*/
+.form2 button {
+    width: 85%;
+    height: 40px;
+    margin: 12px auto 10%;
     color: #fff;
-    font-size: 16px;
-    transform: .3s ease;
-}
-
-.submit:hover {
-    background-color: white;
+    background: black;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
+    transition: .2s ease-in;
+    border: solid 1px white;
 }
 
-@keyframes pulse {
-    from {
-        transform: scale(0.9);
-        opacity: 1;
-    }
-
-    to {
-        transform: scale(1.8);
-        opacity: 0;
-    }
+.form2 button:hover {
+    background-color: white;
+    color: black;
+    border: solid 2px black;
 }
