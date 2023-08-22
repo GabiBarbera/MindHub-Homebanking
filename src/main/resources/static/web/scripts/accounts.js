@@ -1,6 +1,6 @@
 const { createApp } = Vue
 
-const url = 'http://localhost:8080/api/clients/1'
+const url = 'http://localhost:8080/api/clients/current'
 
 createApp({
     data() {

@@ -18,7 +18,7 @@
         </header>
 
         <main class="flex-grow-1 w-100" id="indexhtml">
-            <div class="d-flex align-items-center justify-content-center loginIndex">
+            <div class="d-flex align-items-center justify-content-around loginIndex gap-2">
                 <form class="form" @submit.prevent="login">
                     <p id="heading" class="fw-bolder fs-4">Login</p>
                     <div class="field">
@@ -44,9 +44,23 @@
                     <div class="btn">
                         <button
                             class="button1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                        <button class="button2">Sign Up</button>
                     </div>
                     <button class="button3">Forgot Password</button>
+                </form>
+                <form class="form" @submit.prevent="signUp">
+                    <p class="title2">Register </p>
+                    <p class="message">Signup now and get full access to our app. </p>
+                    <div class="flex flex-column">
+                        <input class="input" type="text" placeholder="Firstname" v-model="firstName" id="firstName"
+                            required>
+                        <input class="input" type="text" placeholder="Lastname" v-model="lastName" id="lastName"
+                            required>
+                        <input class="input" type="email" placeholder="Email" v-model="email" id="emailRegister"
+                            required>
+                        <input class="input" type="password" placeholder="Password" v-model="password"
+                            id="passwordRegister" required>
+                    </div>
+                    <button class="button1">Submit</button>
                 </form>
             </div>
         </main>

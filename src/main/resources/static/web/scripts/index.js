@@ -1,6 +1,5 @@
 const { createApp } = Vue
 
-const url = 'http://localhost:8080/api/login'
 
 createApp({
     data() {
@@ -8,13 +7,14 @@ createApp({
             email: '',
             password: '',
             errorMessage: '',
+            firstName: '',
+            lastName: '',
         }
     },
     methods: {
         login() {
-            axios.post(url, `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post('http://localhost:8080/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
-                    console.log(response);
                     location.href = '/web/accounts.html';
                 })
                 .catch(error => {
@@ -27,6 +27,18 @@ createApp({
                 .then(response => {
                     location.href = '/web/index.html';
                 })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        },
+        signUp() {
+            axios.post('http://localhost:8080/api/clients', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                .then(response => {
+                    this.login()
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
     }
 }).mount('#app')
