@@ -979,3 +979,41 @@ label {
     color: black;
     border: solid 2px black;
 }
+
+.errorMessage {
+    background-color: #00000091;
+    color: red;
+    padding: 8px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* alert de errores */
+
+.swal2-popup.custom-alert {
+    background-color: #ffcccc;
+    color: #990000;
+}
+
+.swal2-styled.swal2-confirm {
+    background-color: black !important;
+}
+
+.swal2-confirm.custom-alert {
+    background-color: #ff0000 !important;
+    color: #ffffff !important;
+}
+
+.swal2-icon.swal2-error [class^=swal2-x-mark-line] {
+    background-color: red !important;
+    color: red !important;
+}
+
+.swal2-icon.swal2-error {
+    border-color: red !important;
+    color: red !important;
+}
+
+.swal2-title {
+    color: black !important;
+}

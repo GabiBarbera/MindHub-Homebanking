@@ -1,6 +1,5 @@
 const { createApp } = Vue
 
-
 createApp({
     data() {
         return {
@@ -8,6 +7,7 @@ createApp({
             password: '',
             firstName: '',
             lastName: '',
+            errorMessage: '',
         }
     },
     methods: {
@@ -21,14 +21,22 @@ createApp({
                     }
                 })
                 .catch(error => {
-                    this.errorMessage = "Error";
                     console.error('Error:', error);
-                });
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid email or password',
+                        text: 'Please try again.',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            popup: 'custom-alert',
+                        }
+                    });
+                })
         },
         logout() {
             axios.post('http://localhost:8080/api/logout')
                 .then(response => {
-                    location.href = '/web/index.html';
+                    location.href = './web/index.html';
                 })
                 .catch(error => {
                     console.error('Error:', error);
@@ -41,7 +49,16 @@ createApp({
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                });
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Invalid Email',
+                        text: 'Please try again.',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            popup: 'custom-alert',
+                        }
+                    });
+                })
         }
     }
 }).mount('#app')
