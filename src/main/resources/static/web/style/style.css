@@ -908,7 +908,9 @@ footer {
 }
 
 .login label {
-    margin: 25% 0 5%;
+    margin: 23% 0 5%;
+    border-radius: 4px;
+    background-color: #00000078;
 }
 
 label {
