@@ -31,6 +31,35 @@ createApp({
                 .then(response => {
                     location.href = '/web/index.html';
                 })
+        },
+        createAccount() {
+            Swal.fire({
+                title: 'Do you want to create a new account?',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Sure',
+                showLoaderOnConfirm: true,
+                preConfirm: (login) => {
+                    return axios.post(`/api/clients/current/accounts`)
+                        .then(response => {
+                            location.href = './accounts.html'
+                        })
+                        .catch(error => {
+                            Swal.fire({
+                                icon: 'error',
+                                title: error.response.data,
+                                text: "You can only have a maximum of three accounts.",
+                                confirmButtonText: 'OK',
+                                customClass: {
+                                    popup: 'custom-alert',
+                                }
+                            });
+                        })
+                },
+                allowOutsideClick: () => !Swal.isLoading(),
+            })
         }
     }
 }).mount('#app')

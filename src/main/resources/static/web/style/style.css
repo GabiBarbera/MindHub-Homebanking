@@ -1029,3 +1029,11 @@ label {
     transform: rotate(-43deg);
     font-family: cursive;
 }
+
+.imgLogoIndex {
+    position: absolute;
+    height: 6rem;
+    margin-top: -18rem;
+    margin-left: -30rem;
+    transform: rotate(-43deg);
+}
