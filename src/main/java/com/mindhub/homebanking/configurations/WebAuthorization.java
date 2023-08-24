@@ -18,7 +18,7 @@ public class WebAuthorization {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/api/clients","/api/login","api/logout").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/clients", "/api/login", "api/logout").permitAll()
                 .antMatchers("/web/index.html").permitAll()
                 .antMatchers("/web/scripts/**").permitAll()
                 .antMatchers("/web/style/**").permitAll()
@@ -43,6 +43,7 @@ public class WebAuthorization {
         http.logout().logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler());
         return http.build();
     }
+
     private void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {

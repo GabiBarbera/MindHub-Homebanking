@@ -3,6 +3,7 @@ package com.mindhub.homebanking.dtos;
 import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.CardColor;
 import com.mindhub.homebanking.models.CardType;
+
 import java.time.LocalDate;
 
 public class CardDTO {
@@ -18,7 +19,7 @@ public class CardDTO {
     public CardDTO() {
     }
 
-    public CardDTO(Card card){
+    public CardDTO(Card card) {
         this.id = card.getId();
         this.cardHolder = card.getCardHolder();
         this.type = card.getType();
@@ -60,6 +61,4 @@ public class CardDTO {
     public LocalDate getThruDate() {
         return thruDate;
     }
-
-
 }

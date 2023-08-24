@@ -13,7 +13,7 @@ public class ClientDTO {
     private final Set<ClientLoanDTO> loans;
     private final Set<CardDTO> cards;
 
-    public  ClientDTO(Client client) {
+    public ClientDTO(Client client) {
         this.id = client.getId();
         this.firstName = client.getFirstName();
         this.lastName = client.getLastName();
@@ -21,7 +21,7 @@ public class ClientDTO {
         this.accounts = client.getAccounts().stream().map(AccountDTO::new).collect(Collectors.toSet());
         this.loans = client.getClientLoans().stream().map(ClientLoanDTO::new).collect(Collectors.toSet());
         this.cards = client.getCards().stream().map(CardDTO::new).collect(Collectors.toSet());
-        }
+    }
 
     public long getId() {
         return id;

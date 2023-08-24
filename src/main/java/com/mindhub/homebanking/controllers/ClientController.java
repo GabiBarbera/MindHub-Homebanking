@@ -37,7 +37,7 @@ public class ClientController {
         if (firstName.isEmpty() || lastName.isEmpty() || email.isEmpty() || password.isEmpty()) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
-        if (clientRepository.findByEmail(email) !=  null) {
+        if (clientRepository.findByEmail(email) != null) {
             return new ResponseEntity<>("Name already in use", HttpStatus.FORBIDDEN);
         }
         clientRepository.save(new Client(firstName, lastName, email, passwordEncoder.encode(password)));

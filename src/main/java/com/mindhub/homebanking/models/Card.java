@@ -7,8 +7,8 @@ import java.time.LocalDate;
 @Entity
 public class Card {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
-    @GenericGenerator(name= "native", strategy = "native")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
+    @GenericGenerator(name = "native", strategy = "native")
     private long id;
     private String cardHolder;
     private CardType type;
@@ -18,14 +18,14 @@ public class Card {
     private LocalDate fromDate;
     private LocalDate thruDate;
 
-@ManyToOne(fetch = FetchType.EAGER)
-@JoinColumn(name = "client_id")
-private Client owner;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "client_id")
+    private Client owner;
 
     public Card() {
     }
 
-    public Card(String cardHolder, CardType type, CardColor cardColor, String number, int cvv, LocalDate fromDate , LocalDate thruDate) {
+    public Card(String cardHolder, CardType type, CardColor cardColor, String number, int cvv, LocalDate fromDate, LocalDate thruDate) {
         this.cardHolder = cardHolder;
         this.type = type;
         this.cardColor = cardColor;

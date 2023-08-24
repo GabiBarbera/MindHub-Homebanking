@@ -29,7 +29,7 @@ public class Client {
     public Client() {
     }
 
-    public Client( String firstName, String lastName, String email, String password) {
+    public Client(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -68,7 +68,7 @@ public class Client {
         return accounts;
     }
 
-    public void addAccount(Account account){
+    public void addAccount(Account account) {
         account.setOwner(this);
         accounts.add(account);
     }
@@ -81,12 +81,12 @@ public class Client {
         return clientLoans;
     }
 
-    public void addClientLoan(ClientLoan clientLoan){
+    public void addClientLoan(ClientLoan clientLoan) {
         clientLoan.setClient(this);
         this.clientLoans.add(clientLoan);
     }
 
-    public void addCard(Card card){
+    public void addCard(Card card) {
         card.setOwner(this);
         this.cards.add(card);
     }

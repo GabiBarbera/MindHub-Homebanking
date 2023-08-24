@@ -15,7 +15,7 @@ public class AccountDTO {
     public AccountDTO() {
     }
 
-    public AccountDTO(Account account){
+    public AccountDTO(Account account) {
         this.id = account.getId();
         this.number = account.getNumber();
         this.creationDate = account.getCreationDate();
