@@ -25,7 +25,7 @@ createApp({
                     Swal.fire({
                         icon: 'error',
                         title: 'Invalid email or password',
-                        text: 'Please try again.',
+                        text: error.message,
                         confirmButtonText: 'OK',
                         customClass: {
                             popup: 'custom-alert',
@@ -52,7 +52,7 @@ createApp({
                     Swal.fire({
                         icon: 'error',
                         title: 'Invalid Email',
-                        text: 'Please try again.',
+                        text: error.message,
                         confirmButtonText: 'OK',
                         customClass: {
                             popup: 'custom-alert',
