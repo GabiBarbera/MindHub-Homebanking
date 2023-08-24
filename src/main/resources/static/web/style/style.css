@@ -1019,3 +1019,13 @@ label {
 .swal2-title {
     color: black !important;
 }
+
+/* titulo en index */
+
+.titleIndex {
+    position: absolute;
+    margin-top: -25rem;
+    margin-left: -35rem;
+    transform: rotate(-43deg);
+    font-family: cursive;
+}
