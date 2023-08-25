@@ -2,6 +2,7 @@ package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.AccountDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,15 @@ public class AccountController {
         return accountRepository.findAll().stream().map(account -> new AccountDTO(account)).collect(toList());
     }
 
-    @RequestMapping("/accounts/{id}")
-    public AccountDTO getClient(@PathVariable Long id) {
-        return new AccountDTO(accountRepository.findById(id).orElse(null));
+    @RequestMapping("/clients/accounts/{id}")
+    public ResponseEntity<Object>  getAccount(@PathVariable Long id, Authentication authentication){
+        Client client = clientRepository.findByEmail(authentication.getName());
+        Account acc = accountRepository.findById(id).orElse(null);
+        if (client.getId() == acc.getOwner().getId()){
+            return new ResponseEntity<>(new AccountDTO(acc),HttpStatus.OK);
+        }else{
+            return new ResponseEntity<>("Not your account.", HttpStatus.FORBIDDEN);
+        }
     }
 
     @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)

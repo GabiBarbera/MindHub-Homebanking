@@ -1,6 +1,6 @@
 const { createApp } = Vue
 
-const url = 'http://localhost:8080/api/accounts/'
+const url = 'http://localhost:8080/api/clients/accounts/'
 
 createApp({
     data() {
@@ -32,12 +32,25 @@ createApp({
                     this.dateForm.date = this.date
                     this.dateForm.hour = this.hour
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        title: error.response.data,
+                        text: "You don't have permissions, not your account.",
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            popup: 'custom-alert',
+                        }
+                    });
+                })
         },
         logout() {
             axios.post('http://localhost:8080/api/logout')
                 .then(response => {
                     location.href = '/web/index.html';
+                })
+                .catch(error => {
+                    console.error('Error:', error);
                 })
         }
     }
