@@ -85,6 +85,11 @@
             <div class="d-flex flex-column align-items-start m-5 flex-wrap sectionAccounts">
                 <h1 class="text-center m-4">Welcome, {{clients.firstName}} <i
                         class="bi bi-person-down fs-1 text-center"></i></h1>
+                <div v-if="accounts.length < 3">
+                    <h4 class="ms-4">Do you want to create a new account?</h4>
+                    <button @click.prevent="createAccount" class="btnCreateAccount">Create</button>
+                </div>
+                <h4 v-else class="ms-4">You own the maximum number of accounts possible</h4>
                 <div class="d-flex flex-row justify-content-center ms-3 me-5 mt-5 gap-5 flex-wrap">
                     <template v-if="accounts.length > 0" v-for="account of accounts">
                         <div data-aos="zoom-out">
@@ -103,7 +108,6 @@
                             </div>
                         </div>
                     </template>
-                    <button @click.prevent="createAccount" class="btn btn-primary">Create a new account</button>
                     <section v-if="loans.length > 0" data-aos="zoom-out"
                         class="d-flex flex-column align-items-center mb-5 ms-3">
                         <h2 class="mb-4">These are your loans: <i class="bi bi-cash-coin fs-3 text-center"></i></h2>

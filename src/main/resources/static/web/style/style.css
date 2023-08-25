@@ -992,18 +992,16 @@ label {
 
 /* alert de errores */
 
-.swal2-popup.custom-alert {
-    background-color: #ffcccc;
-    color: #990000;
+.swal2-popup {
+    background-color: #d0e2ff !important;
 }
 
 .swal2-styled.swal2-confirm {
-    background-color: black !important;
+    background-color: rgb(6 33 70) !important;
 }
 
-.swal2-confirm.custom-alert {
-    background-color: #ff0000 !important;
-    color: #ffffff !important;
+.swal2-container.swal2-center>.swal2-popup {
+    border: 2px solid black !important;
 }
 
 .swal2-icon.swal2-error [class^=swal2-x-mark-line] {
@@ -1036,4 +1034,17 @@ label {
     margin-top: -18rem;
     margin-left: -30rem;
     transform: rotate(-43deg);
+}
+
+/* boton de crear cuenta en accounts  */
+
+.btnCreateAccount {
+    background-color: rgb(6 33 70);
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.125rem;
+    border: 0;
+    padding: 0.625em 0.75em;
+    margin-left: 9.7rem;
 }

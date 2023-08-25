@@ -45,8 +45,8 @@ public class HomebankingApplication {
             repositoryClient.save(admin);
 
             Client gabrielBarbera = new Client("Gabriel", "Barbera", "gabriel.barberaa@gmail.com", passwordEnconder.encode("1234"));
-            Account account1 = new Account("VIN001", this.date, 5000);
-            Account account2 = new Account("VIN002", this.date1, 7500);
+            Account account1 = new Account("VIN-001", this.date, 5000);
+            Account account2 = new Account("VIN-002", this.date1, 7500);
             Transaction transaction1 = new Transaction(-1500, "Shopping", date2, TransactionType.DEBIT);
             Transaction transaction2 = new Transaction(+2500, "Food", date3, TransactionType.CREDIT);
             Transaction transaction5 = new Transaction(-5000, "Dinner", date4, TransactionType.DEBIT);
@@ -83,8 +83,8 @@ public class HomebankingApplication {
             cardRepository.save(cardSilverGb2);
 
             Client brunoFerreira = new Client("Bruno", "Ferreira", "fbrunomarcos@gmail.com", passwordEnconder.encode("1234"));
-            Account account3 = new Account("VIN003", this.date, 50000);
-            Account account4 = new Account("VIN004", this.date1, 75000);
+            Account account3 = new Account("VIN-003", this.date, 50000);
+            Account account4 = new Account("VIN-004", this.date1, 75000);
             Transaction transaction3 = new Transaction(2000, "Food", date2, TransactionType.CREDIT);
             Transaction transaction4 = new Transaction(-10000, "Car", date3, TransactionType.DEBIT);
             ClientLoan brunoFerreiraLoanP = new ClientLoan(10000.0, 24);
