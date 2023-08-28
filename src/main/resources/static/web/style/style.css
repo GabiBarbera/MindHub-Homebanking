@@ -1052,11 +1052,15 @@ label {
     font-family: cursive;
 }
 
+.nameOfBank {
+    color: #03c1f0;
+}
+
 .imgLogoIndex {
     position: absolute;
     height: 6rem;
-    margin-top: -18rem;
-    margin-left: -30rem;
+    margin-top: -24rem;
+    margin-left: -25rem;
     transform: rotate(-43deg);
 }
 

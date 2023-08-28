@@ -26,22 +26,34 @@ createApp({
                 })
         },
         createCard() {
-            axios.post('http://localhost:8080/api/clients/current/cards', `type=${this.cardType}&color=${this.cardColor}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
-                .then(response => {
-                    location.href = './cards.html'
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: error.response.data,
-                        text: `Please create a card you don't own`,
-                        confirmButtonText: 'OK',
-                        customClass: {
-                            popup: 'custom-alert',
-                        }
-                    });
-                })
+            Swal.fire({
+                title: 'Do you want to create a new card?',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Sure',
+                showLoaderOnConfirm: true,
+                preConfirm: (login) => {
+                    return axios.post('http://localhost:8080/api/clients/current/cards', `type=${this.cardType}&color=${this.cardColor}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                        .then(response => {
+                            location.href = './cards.html'
+                        })
+                        .catch(error => {
+                            console.error('Error:', error);
+                            Swal.fire({
+                                icon: 'error',
+                                title: error.response.data,
+                                text: `Please create a card you don't own`,
+                                confirmButtonText: 'OK',
+                                customClass: {
+                                    popup: 'custom-alert',
+                                }
+                            });
+                        })
+                },
+                allowOutsideClick: () => !Swal.isLoading(),
+            })
         }
     }
 }).mount('#app')
