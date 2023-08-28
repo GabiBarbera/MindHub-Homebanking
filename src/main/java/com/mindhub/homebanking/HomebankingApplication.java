@@ -52,10 +52,10 @@ public class HomebankingApplication {
             Transaction transaction5 = new Transaction(-5000, "Dinner", date4, TransactionType.DEBIT);
             ClientLoan gabrielBarberaLoanM = new ClientLoan(400000.0, 60);
             ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0, 12);
-            Card cardGolGb = new Card("Gabriel Barbera", CardType.DEBIT, CardColor.GOLD, "1234-1234-1234-1234", 123, date6, dateYears);
-            Card cardTitaniumGb = new Card("Gabriel Barbera", CardType.CREDIT, CardColor.TITANIUM, "4321-4321-4321-4321", 476, date1, dateYears3);
-            Card cardSilverGb = new Card("Gabriel Barbera", CardType.CREDIT, CardColor.SILVER, "9876-9876-9876-9876", 983, date5, dateYears2);
-            Card cardSilverGb2 = new Card("Gabriel Barbera", CardType.DEBIT, CardColor.SILVER, "4567-4567-7654-7654", 654, date, dateYears2);
+            Card cardGolGb = new Card(gabrielBarbera.getFirstName() + " " + gabrielBarbera.getLastName(), CardType.DEBIT, CardColor.GOLD, "1234-1234-1234-1234", 123, date6, dateYears);
+            Card cardTitaniumGb = new Card(gabrielBarbera.getFirstName() + " " + gabrielBarbera.getLastName(), CardType.CREDIT, CardColor.TITANIUM, "4321-4321-4321-4321", 476, date1, dateYears3);
+            Card cardSilverGb = new Card(gabrielBarbera.getFirstName() + " " + gabrielBarbera.getLastName(), CardType.CREDIT, CardColor.SILVER, "9876-9876-9876-9876", 983, date5, dateYears2);
+            Card cardSilverGb2 = new Card(gabrielBarbera.getFirstName() + " " + gabrielBarbera.getLastName(), CardType.DEBIT, CardColor.SILVER, "4567-4567-7654-7654", 654, date, dateYears2);
             gabrielBarbera.addAccount(account1);
             gabrielBarbera.addAccount(account2);
             account1.addTransaction(transaction1);
@@ -89,7 +89,7 @@ public class HomebankingApplication {
             Transaction transaction4 = new Transaction(-10000, "Car", date3, TransactionType.DEBIT);
             ClientLoan brunoFerreiraLoanP = new ClientLoan(10000.0, 24);
             ClientLoan brunoFerreiraLoanA = new ClientLoan(20000.0, 36);
-            Card cardSilverBf = new Card("Bruno Ferreira", CardType.DEBIT, CardColor.SILVER, "4567-4567-4567-4567", 345, date, dateYears);
+            Card cardSilverBf = new Card(brunoFerreira.getFirstName() + " " + brunoFerreira.getLastName(), CardType.DEBIT, CardColor.SILVER, "4567-4567-4567-4567", 345, date, dateYears);
             brunoFerreira.addAccount(account3);
             brunoFerreira.addAccount(account4);
             account4.addTransaction(transaction3);

@@ -34,15 +34,7 @@ createApp({
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    Swal.fire({
-                        icon: 'error',
-                        title: error.response.data,
-                        text: "You don't have permissions, not your account.",
-                        confirmButtonText: 'OK',
-                        customClass: {
-                            popup: 'custom-alert',
-                        }
-                    });
+                    location.href = './error.html';
                 })
         },
         logout() {

@@ -85,11 +85,16 @@
         <main class="flex-grow-1 w-100">
             <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
                 <h1 class="text-center">Yours cards: <i class="bi bi-credit-card-2-front"></i></h1>
-                <section class="credit w-100">
-                    <div class="sectionCards d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
-                        <h2>Credit:</h2>
+                <div v-if="cards.length < 6">
+                    <h4 class="ms-5">Do you want to create a new card?</h4>
+                    <a href="./create-cards.html"> <button class="btnCreateAccount">Create</button></a>
+                </div>
+                <h4 v-else class="ms-1">You have the maximum number of cards allowed</h4>
+                <section class="credit w-100 mt-4">
+                    <h2>Credit:</h2>
+                    <div class="sectionCards d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
                         <template v-if="credit.length > 0" v-for="(card,index) of credit">
-                            <div data-aos="zoom-out" class="m-5">
+                            <div data-aos="zoom-out">
                                 <div
                                     :class="{'cards cardGold':card.cardColor == 'GOLD','cards cardTitanium':card.cardColor == 'TITANIUM','cards cardSilver':card.cardColor == 'SILVER'}">
                                     <div class="card__info">
@@ -146,10 +151,10 @@
                     </div>
                 </section>
                 <section class="debit w-100">
-                    <div class="sectionCards d-flex flex-row justify-content-start ms-5 mb-5 me-5 mt-5 gap-5 flex-wrap">
-                        <h2>Debit:</h2>
+                    <h2>Debit:</h2>
+                    <div class="sectionCards d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
                         <template v-if="debit.length > 0" v-for="(card, index) of debit">
-                            <div data-aos="zoom-out" class="m-5">
+                            <div data-aos="zoom-out">
                                 <div
                                     :class="{'cards cardGold':card.cardColor == 'GOLD','cards cardTitanium':card.cardColor == 'TITANIUM','cards cardSilver':card.cardColor == 'SILVER'}">
                                     <div class="card__info">

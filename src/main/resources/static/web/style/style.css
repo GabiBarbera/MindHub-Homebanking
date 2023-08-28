@@ -1046,5 +1046,20 @@ label {
     font-size: 1.125rem;
     border: 0;
     padding: 0.625em 0.75em;
-    margin-left: 9.7rem;
+    margin-left: 5rem;
+}
+
+/* formulario para crear tarjetas */
+
+.formCreateCard {
+    background-color: rgb(6 33 70);
+}
+
+.sectionCreateCard {
+    margin: 3rem;
+    background-color: #f4f4f4;
+}
+
+.buttonCreate {
+    background-color: white;
 }
