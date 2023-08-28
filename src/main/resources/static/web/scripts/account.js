@@ -33,6 +33,7 @@ createApp({
                     this.dateForm.hour = this.hour
                 })
                 .catch(error => {
+                    console.error('Error:', error);
                     Swal.fire({
                         icon: 'error',
                         title: error.response.data,

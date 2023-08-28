@@ -30,7 +30,7 @@ public class AccountController {
     private String randomNumber() {
         String random;
         do {
-            int number = (int) (Math.random() * 100 + 999);
+            int number = (int) (Math.random() * 99999999 + 1);
             random = "VIN-" + number;
         } while (accountRepository.findByNumber(random) != null);
         return random;
@@ -44,9 +44,9 @@ public class AccountController {
     @RequestMapping("/clients/accounts/{id}")
     public ResponseEntity<Object>  getAccount(@PathVariable Long id, Authentication authentication){
         Client client = clientRepository.findByEmail(authentication.getName());
-        Account acc = accountRepository.findById(id).orElse(null);
-        if (client.getId() == acc.getOwner().getId()){
-            return new ResponseEntity<>(new AccountDTO(acc),HttpStatus.OK);
+        Account account = accountRepository.findById(id).orElse(null);
+        if (client.getId() == account.getOwner().getId()){
+            return new ResponseEntity<>(new AccountDTO(account),HttpStatus.OK);
         }else{
             return new ResponseEntity<>("Not your account.", HttpStatus.FORBIDDEN);
         }
