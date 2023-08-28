@@ -102,8 +102,7 @@
                             </div>
                         </div>
                     </div>
-                    <section v-if="transactions.length > 0" data-aos="zoom-out"
-                        class="d-flex flex-column align-items-center mb-5">
+                    <div class="d-flex align-items-center">
                         <a href="./cards.html">
                             <button class="learn-more mb-5" id="seeCards">
                                 <span class="circle" aria-hidden="true">
@@ -112,6 +111,9 @@
                                 <span class="button-text">See my cards</span>
                             </button>
                         </a>
+                    </div>
+                    <section v-if="transactions.length > 0" data-aos="zoom-out"
+                        class="d-flex flex-column align-items-center mt-5">
                         <h2>Transactions Resume: <i class="bi bi-wallet2 fs-1 text-center"></i></h2>
                         <table
                             class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded m-1"
