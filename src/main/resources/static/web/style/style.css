@@ -11,6 +11,20 @@
     display: none !important;
 }
 
+nav {
+    background-color: #043263;
+}
+
+.nav-link,
+.navbar-brand {
+    color: white !important;
+}
+
+.nav-link.active {
+    color: white !important;
+    font-weight: bolder;
+}
+
 /* formulario de manager html */
 
 input {
@@ -254,8 +268,8 @@ form {
 /* footer  */
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #043263;
+    color: white;
     padding: 30px 0;
 }
 
@@ -543,6 +557,7 @@ footer {
 .card__exp-number {
     width: 18rem;
     font-size: 1.5rem;
+    margin-left: 2rem;
 }
 
 .nameHolder {
@@ -1075,4 +1090,9 @@ label {
 
 .buttonCreate {
     background-color: white;
+}
+
+.buttonCreate:hover {
+    background-color: black;
+    color: white;
 }

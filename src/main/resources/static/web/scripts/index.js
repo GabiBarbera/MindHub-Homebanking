@@ -51,8 +51,8 @@ createApp({
                     console.error('Error:', error);
                     Swal.fire({
                         icon: 'error',
-                        title: 'Invalid Email',
-                        text: error.message,
+                        title: error.response.data,
+                        text: 'Please enter another email.',
                         confirmButtonText: 'OK',
                         customClass: {
                             popup: 'custom-alert',

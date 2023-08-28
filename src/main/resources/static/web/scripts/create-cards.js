@@ -32,6 +32,15 @@ createApp({
                 })
                 .catch(error => {
                     console.error('Error:', error);
+                    Swal.fire({
+                        icon: 'error',
+                        title: error.response.data,
+                        text: `Please create a card you don't own`,
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            popup: 'custom-alert',
+                        }
+                    });
                 })
         }
     }
