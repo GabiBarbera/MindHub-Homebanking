@@ -5,8 +5,8 @@ const url = 'http://localhost:8080/api/clients/current'
 createApp({
     data() {
         return {
-            cardType: [],
-            cardColor: [],
+            cardType: "",
+            cardColor: "",
         }
     },
     created() {

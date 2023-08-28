@@ -9,7 +9,7 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./style/style.css">
     <link rel="shortcut icon" href="./images/banco.png" type="image/x-icon">
-    <title>Cards | HomeBanking</title>
+    <title> Create cards | HomeBanking</title>
 </head>
 
 <body>
@@ -29,7 +29,7 @@
                                         class="bi bi-person-circle text-white"></i></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="#">Cards <i
+                                <a class="nav-link" href="./cards.html">Cards <i
                                         class="bi bi-credit-card-2-back text-white"></i></a>
                             </li>
                             <img src="./images/word.png" id="logo" alt="">
@@ -89,11 +89,10 @@
                     <div class="mb-3">
                         <label for="cardType" class="form-label">Card Type:</label>
                         <select v-model="cardType" id="cardType" class="form-select" required>
-                            <option value="DEBIT">Debit</option>
                             <option value="CREDIT">Credit</option>
+                            <option value="DEBIT">Debit</option>
                         </select>
                     </div>
-
                     <div class="mb-3">
                         <label for="cardColor" class="form-label">Card Color:</label>
                         <select v-model="cardColor" id="cardColor" class="form-select" required>

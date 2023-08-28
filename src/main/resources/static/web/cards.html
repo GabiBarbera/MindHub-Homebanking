@@ -85,8 +85,8 @@
         <main class="flex-grow-1 w-100">
             <div class="d-flex flex-column justify-content-center m-5 flex-wrap">
                 <h1 class="text-center">Yours cards: <i class="bi bi-credit-card-2-front"></i></h1>
-                <div v-if="cards.length < 6">
-                    <h4 class="ms-5">Do you want to create a new card?</h4>
+                <div v-if="cards.length < 6" class="d-flex align-items-center">
+                    <h4>Do you want to create a new card?</h4>
                     <a href="./create-cards.html"> <button class="btnCreateAccount">Create</button></a>
                 </div>
                 <h4 v-else class="ms-1">You have the maximum number of cards allowed</h4>

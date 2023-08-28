@@ -83,9 +83,9 @@
 
         <main class="flex-grow-1 w-100">
             <div class="d-flex flex-column align-items-start m-5 flex-wrap">
-                <h1 class="text-center"><i class="bi bi-person-down fs-1 text-center"></i> Your selected account:
+                <h1 class="text-center w-100"><i class="bi bi-person-down fs-1 text-center"></i> Your selected account:
                     {{account.number}}</h1>
-                <div class="d-flex flex-row justify-content-around mt-5 ms-5 me-5 gap-5 flex-wrap w-100">
+                <div class="d-flex flex-row justify-content-around mt-5 gap-5 flex-wrap w-100 descriptionAccount">
                     <div data-aos="zoom-out">
                         <div class="cardsAccount">
                             <div class="cardD red">
@@ -141,6 +141,16 @@
                     <h2 v-else class="text-center m-5">This account has no movements.</h2>
                 </div>
             </div>
+            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
+                <img src="./images/customer_comes_first.svg" class="imgKnow" alt="">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
+                    <h6>If you need help, go to a branch and request a sign language interpreter to assist you.</h6>
+                </div>
+                <div class="btn btn-dark d-flex" id="btnKnow">
+                    <button type="button" class="btn btn-dark fw-bold">Know more</button>
+                </div>
+            </section>
             <section class="d-flex justify-content-evenly sectionImages align-items-center m-5">
                 <a class="text-decoration-none d-flex flex-column align-items-center text-black" href="#"> <img
                         class="imgAccount" src="./images/pc.png" alt="">
@@ -154,16 +164,6 @@
                     Find a Branch</a>
                 <a class="text-decoration-none d-flex flex-column align-items-center text-black" href="#"> <img
                         class="imgAccount" src="./images/chat.png" alt="">Learn More</a>
-            </section>
-            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
-                <img src="./images/customer_comes_first.svg" class="imgKnow" alt="">
-                <div class="d-flex flex-column justify-content-center align-items-center">
-                    <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
-                    <h6>If you need help, go to a branch and request a sign language interpreter to assist you.</h6>
-                </div>
-                <div class="btn btn-dark d-flex" id="btnKnow">
-                    <button type="button" class="btn btn-dark fw-bold">Know more</button>
-                </div>
             </section>
             <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
                 <div>
