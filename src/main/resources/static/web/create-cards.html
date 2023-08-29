@@ -90,6 +90,7 @@
                     <div class="mb-3">
                         <label for="cardType" class="form-label">Card Type:</label>
                         <select v-model="cardType" id="cardType" class="form-select" required>
+                            <option value="" disabled>Choose card type</option>
                             <option value="CREDIT">Credit</option>
                             <option value="DEBIT">Debit</option>
                         </select>
@@ -97,6 +98,7 @@
                     <div class="mb-3">
                         <label for="cardColor" class="form-label">Card Color:</label>
                         <select v-model="cardColor" id="cardColor" class="form-select" required>
+                            <option value="" disabled>Choose card color</option>
                             <option value="GOLD">Gold</option>
                             <option value="TITANIUM">Titanium</option>
                             <option value="SILVER">Silver</option>
