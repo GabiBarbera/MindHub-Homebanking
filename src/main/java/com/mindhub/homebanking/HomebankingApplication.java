@@ -41,9 +41,9 @@ public class HomebankingApplication {
             loanRepository.save(loanPersonal);
             loanRepository.save(loanAutomotive);
 
-            Client admin = new Client("admin", "admin", "admin1@admin.mind-hub", passwordEnconder.encode("1234"));
+            Client admin = new Client("admin", "admin", "admin.mindhub1@gmail.com", passwordEnconder.encode("1234"));
             repositoryClient.save(admin);
-            Client admin2 = new Client("admin", "admin", "admin2@admin.mind-hub", passwordEnconder.encode("1234"));
+            Client admin2 = new Client("admin", "admin", "admin.mindhub2@gmail.com", passwordEnconder.encode("1234"));
             repositoryClient.save(admin2);
 
             Client gabrielBarbera = new Client("Gabriel", "Barbera", "gabriel.barberaa@gmail.com", passwordEnconder.encode("1234"));
