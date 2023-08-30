@@ -31,6 +31,11 @@ nav {
     color: rgb(3 193 240);
 }
 
+.textBank {
+    color: white;
+    font-size: 10px;
+}
+
 /* formulario de manager html */
 
 input {

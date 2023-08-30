@@ -14,7 +14,7 @@ createApp({
         login() {
             axios.post('http://localhost:8080/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
-                    if ("admin@admin" === this.email) {
+                    if (this.email.includes("@admin.mind-hub")) {
                         location.href = '../manager.html';
                     } else {
                         location.href = './accounts.html';

@@ -1,14 +1,14 @@
 const { createApp } = Vue
 
-const url = 'http://localhost:8080/api/clients/current'
+const url = 'http://localhost:8080/api/clients/current/accounts'
 
 createApp({
     data() {
         return {
-            accounts: [],
-            clients: [],
-            loans: [],
-            loansConvert: [],
+            amount: "",
+            description: "",
+            accountOrigin: "",
+            accountDestiny: "",
         }
     },
     created() {
@@ -18,11 +18,8 @@ createApp({
         loadData() {
             axios.get(url)
                 .then(response => {
-                    this.clients = response.data
-                    this.accounts = this.clients.accounts.sort((a, b) => a.id - b.id)
-                    this.loans = this.clients.loans
-                    this.loansConvert = this.loans.map(loan => loan.amount.toLocaleString(1))
-                    localStorage.setItem('clients', JSON.stringify(this.clients));
+                    this.accounts = response.data
+                    console.log(this.accounts);
                 })
                 .catch(error => console.error('Error:', error));
         },
@@ -32,9 +29,9 @@ createApp({
                     location.href = '/web/index.html';
                 })
         },
-        createAccount() {
+        createTransfer() {
             Swal.fire({
-                title: 'Do you want to create a new account?',
+                title: 'Do you want to create a new card?',
                 inputAttributes: {
                     autocapitalize: 'off',
                 },
@@ -42,15 +39,16 @@ createApp({
                 confirmButtonText: 'Sure',
                 showLoaderOnConfirm: true,
                 preConfirm: (login) => {
-                    return axios.post(`/api/clients/current/accounts`)
+                    return axios.post(`localhost:8080/api/transactions`, `amount=${this.amount}&description=${this.description}&accountOrigin=${this.accountOrigin}&accountDestiny=${this.accountDestiny}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                         .then(response => {
-                            location.href = './accounts.html'
+                            location.href = './cards.html'
                         })
                         .catch(error => {
+                            console.error('Error:', error);
                             Swal.fire({
                                 icon: 'error',
                                 title: error.response.data,
-                                text: "You can only have a maximum of three accounts.",
+                                text: `Please create a card you don't own`,
                                 confirmButtonText: 'OK',
                                 customClass: {
                                     popup: 'custom-alert',
