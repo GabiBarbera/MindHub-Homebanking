@@ -52,6 +52,12 @@ public class AccountController {
         }
     }
 
+    @RequestMapping("/clients/current/accounts")
+    public List<AccountDTO> getAccounts(Authentication authentication) {
+        Client client = clientRepository.findByEmail(authentication.getName());
+        return client.getAccounts().stream().map(account -> new AccountDTO(account)).collect(toList());
+    }
+
     @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)
     public ResponseEntity<Object> newAccount(Authentication authentication) {
         if (clientRepository.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
