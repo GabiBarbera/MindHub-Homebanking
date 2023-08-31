@@ -1,6 +1,6 @@
 const { createApp } = Vue
 
-const url = 'http://localhost:8080/api/clients/accounts/'
+const url = '/api/clients/accounts/'
 
 createApp({
     data() {
@@ -38,7 +38,7 @@ createApp({
                 })
         },
         logout() {
-            axios.post('http://localhost:8080/api/logout')
+            axios.post('/api/logout')
                 .then(response => {
                     location.href = '/web/index.html';
                 })

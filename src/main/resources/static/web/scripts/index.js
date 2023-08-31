@@ -12,7 +12,7 @@ createApp({
     },
     methods: {
         login() {
-            axios.post('http://localhost:8080/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post('/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
                     if (this.email.includes("admin.mindhub")) {
                         location.href = '../manager.html';
@@ -34,7 +34,7 @@ createApp({
                 })
         },
         logout() {
-            axios.post('http://localhost:8080/api/logout')
+            axios.post('/api/logout')
                 .then(response => {
                     location.href = './web/index.html';
                 })
@@ -43,7 +43,7 @@ createApp({
                 });
         },
         signUp() {
-            axios.post('http://localhost:8080/api/clients', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post('/api/clients', `firstName=${this.firstName}&lastName=${this.lastName}&email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                 .then(response => {
                     this.login()
                 })

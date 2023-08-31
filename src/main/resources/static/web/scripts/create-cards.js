@@ -1,6 +1,6 @@
 const { createApp } = Vue
 
-const url = 'http://localhost:8080/api/clients/current'
+const url = '/api/clients/current'
 
 createApp({
     data() {
@@ -20,7 +20,7 @@ createApp({
                 .catch(error => console.error('Error:', error));
         },
         logout() {
-            axios.post('http://localhost:8080/api/logout')
+            axios.post('/api/logout')
                 .then(response => {
                     location.href = '/web/index.html';
                 })
@@ -35,7 +35,7 @@ createApp({
                 confirmButtonText: 'Sure',
                 showLoaderOnConfirm: true,
                 preConfirm: (login) => {
-                    return axios.post('http://localhost:8080/api/clients/current/cards', `type=${this.cardType}&color=${this.cardColor}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                    return axios.post('/api/clients/current/cards', `type=${this.cardType}&color=${this.cardColor}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                         .then(response => {
                             location.href = './cards.html'
                         })

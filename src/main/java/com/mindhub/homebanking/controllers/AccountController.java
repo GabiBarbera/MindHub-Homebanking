@@ -41,6 +41,11 @@ public class AccountController {
         return accountRepository.findAll().stream().map(account -> new AccountDTO(account)).collect(toList());
     }
 
+    @RequestMapping("/accounts/{id}")
+    public AccountDTO getClient(@PathVariable Long id) {
+        return new AccountDTO(accountRepository.findById(id).orElse(null));
+    }
+
     @RequestMapping("/clients/accounts/{id}")
     public ResponseEntity<Object>  getAccount(@PathVariable Long id, Authentication authentication){
         Client client = clientRepository.findByEmail(authentication.getName());

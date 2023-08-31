@@ -1192,3 +1192,17 @@ label {
     background-color: black;
     color: white;
 }
+
+/* formulario de transferencias  */
+
+.input {
+    width: 5%;
+}
+
+select {
+    height: 30px;
+}
+
+.inputTransactions {
+    width: 29rem;
+}
