@@ -53,7 +53,7 @@ public class TransactionController {
         if (account.getBalance() >= amount){
             account.setBalance(account.getBalance() - amount);
             accountDes.setBalance(accountDes.getBalance() + amount);
-            Transaction transactionDebit = new Transaction(amount, description, LocalDateTime.now(), TransactionType.DEBIT);
+            Transaction transactionDebit = new Transaction(amount * -1, description, LocalDateTime.now(), TransactionType.DEBIT);
             Transaction transactionCredit = new Transaction(amount, description, LocalDateTime.now(), TransactionType.CREDIT);
             account.addTransaction(transactionDebit);
             accountDes.addTransaction(transactionCredit);

@@ -90,15 +90,29 @@
         </header>
 
         <main class="flex-grow-1 w-100">
-            <div class="d-flex sectionCreateCard">
-                <h2 class="m-4">Choose your card configuration:</h2>
+            <h2 class="ms-4 me-4 mt-4">Choose your card configuration:</h2>
+            <div class="d-flex flex-wrap sectionCreateCard justify-content-center ms-5 me-5 mb-5 gap-5">
+                <div class="d-flex flex-column align-items-center justify-content-center">
+                    <div v-if="accountOrigin" class="d-flex align-items-center">
+                        <p class="text-black fw-bolder me-5">Available balance in the source account: ${{
+                            getAvailableBalance(accountOrigin).toLocaleString(1)}}
+                        </p>
+                    </div>
+                    <div v-if="accountDestiny" class="d-flex align-items-center">
+                        <p v-show="isVisible" class="text-black fw-bolder me-5">Available balance in the destination
+                            account: ${{
+                            getAvailableBalance(accountDestiny).toLocaleString(1)}}
+                        </p>
+                    </div>
+                </div>
                 <div class="d-flex flex-column align-items-center justify-content-center gap-2">
                     <label class="inputLabel align-items-center" for="own">Own account</label>
-                    <input class="input" type="radio" name="account" id="own" v-model="selectedAccountType" value="own">
+                    <input @click="toggleVisibility" class="input" type="radio" name="account" id="own"
+                        v-model="selectedAccountType" value="own">
 
                     <label class="inputLabel align-items-center" for="third">Transaction to third parties</label>
-                    <input class="input" type="radio" name="account" id="third" v-model="selectedAccountType"
-                        value="third">
+                    <input @click="toggleVisibility" class="input" type="radio" name="account" id="third"
+                        v-model="selectedAccountType" value="third">
                 </div>
 
                 <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createTransfer"
@@ -106,6 +120,7 @@
                     <label for="source">Source account:</label>
                     <select name="source" id="source" v-model="accountOrigin" required>
                         <option value="" disabled>Choose your account</option>
+                        <option value="">-</option>
                         <template v-if="numbers.length > 0" v-for="number of numbers">
                             <option>{{number}}</option>
                         </template>
@@ -121,24 +136,25 @@
                     <input class="inputTransactions" v-model="description" type="text" name="desciption"
                         id="description">
 
-                    <button type="submit" class="btn buttonCreate m-2">Create</button>
+                    <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
                 </form>
 
                 <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createTransfer"
                     v-else-if="selectedAccountType === 'own'">
-                    <label for="source">Source account:</label>
-                    <select name="source" id="source" v-model="accountOrigin" required>
+                    <label for="source2">Source account:</label>
+                    <select name="source" id="source2" v-model="accountOrigin" required>
                         <option value="" disabled>Choose your account</option>
+                        <option value="">-</option>
                         <template v-if="numbers.length > 0" v-for="number of numbers">
-                            <option>{{number}}</option>
+                            <option :disabled="number === accountDestiny">{{number}}</option>
                         </template>
                     </select>
 
                     <label for="source">Destiny account:</label>
-                    <select v-if="" name="source" id="source" v-model="accountDestiny" required>
+                    <select name="source" id="source" v-model="accountDestiny" required>
                         <option value="" disabled>Choose your other account</option>
                         <template v-for="number of numbers">
-                            <option>{{number}}</option>
+                            <option :disabled="number === accountOrigin">{{number}}</option>
                         </template>
                     </select>
 
@@ -149,7 +165,7 @@
                     <input class="inputTransactions" v-model="description" type="text" name="desciption"
                         id="description">
 
-                    <button type="submit" class="btn buttonCreate m-2">Create</button>
+                    <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
                 </form>
             </div>
             <section class="requestCard d-flex flex-column align-items-center justify-content-around pt-5">

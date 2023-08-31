@@ -436,7 +436,7 @@ footer {
 }
 
 .tableResponsive {
-    height: 150px;
+    height: 16rem;
     overflow: auto;
 }
 
@@ -732,8 +732,7 @@ footer {
 
 .descriptionAccount {
     background-color: #f4f4f4;
-    height: 28rem;
-    padding: 2rem;
+    padding: 4rem;
 }
 
 .cardsAccount .red {
@@ -1180,7 +1179,6 @@ label {
 }
 
 .sectionCreateCard {
-    margin: 3rem;
     background-color: #f4f4f4;
 }
 
@@ -1200,7 +1198,7 @@ label {
 }
 
 select {
-    height: 30px;
+    height: 36px;
 }
 
 .inputTransactions {

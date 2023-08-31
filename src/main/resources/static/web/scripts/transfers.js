@@ -10,7 +10,8 @@ createApp({
             accountOrigin: "",
             accountDestiny: "",
             numbers: "",
-            selectedAccountType: "own",
+            selectedAccountType: "third",
+            isVisible: false,
         }
     },
     created() {
@@ -44,7 +45,18 @@ createApp({
                 preConfirm: (login) => {
                     return axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&accountOrigin=${this.accountOrigin}&accountDestiny=${this.accountDestiny}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
                         .then(response => {
-                            location.href = './accounts.html'
+                            Swal.fire({
+                                icon: 'succes',
+                                title: "Transaction completed",
+                                text: `Your transfer was sent successfully.`,
+                                confirmButtonText: 'OK',
+                                customClass: {
+                                    popup: 'custom-alert',
+                                }
+                            });
+                            setTimeout(() => {
+                                location.href = './accounts.html';
+                            }, 3000);
                         })
                         .catch(error => {
                             console.error('Error:', error);
@@ -61,7 +73,17 @@ createApp({
                 },
                 allowOutsideClick: () => !Swal.isLoading(),
             })
-        }
+        },
+        getAvailableBalance(accountNumber) {
+            const account = this.accounts.find(account => account.number === accountNumber);
+            if (account) {
+                return account.balance;
+            }
+            return 0;
+        },
+        toggleVisibility() {
+            this.isVisible = !this.isVisible;
+        },
     }
 }).mount('#app')
 
