@@ -1030,8 +1030,8 @@ footer {
 }
 
 label {
-    color: #fff;
-    font-size: 2rem;
+    color: white;
+    font-size: 1.3rem;
     justify-content: center;
     display: flex;
     font-weight: bold;
@@ -1196,7 +1196,7 @@ label {
 /* formulario de transferencias  */
 
 .input {
-    width: 5%;
+    width: 1rem;
 }
 
 select {
@@ -1205,4 +1205,8 @@ select {
 
 .inputTransactions {
     width: 29rem;
+}
+
+.inputLabel {
+    color: black;
 }

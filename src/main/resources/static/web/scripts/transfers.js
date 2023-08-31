@@ -10,6 +10,7 @@ createApp({
             accountOrigin: "",
             accountDestiny: "",
             numbers: "",
+            selectedAccountType: "own",
         }
     },
     created() {
@@ -20,9 +21,8 @@ createApp({
             axios.get(url)
                 .then(response => {
                     this.accounts = response.data
+                    this.balance = this.accounts.map(account => account.balance)
                     this.numbers = this.accounts.map(account => account.number)
-                    console.log(this.accounts);
-                    console.log(this.numbers);
                 })
                 .catch(error => console.error('Error:', error));
         },
@@ -64,3 +64,9 @@ createApp({
         }
     }
 }).mount('#app')
+
+
+
+methods: {
+
+}
