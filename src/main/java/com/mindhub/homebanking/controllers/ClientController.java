@@ -26,14 +26,21 @@ public class ClientController {
     @Autowired
     private AccountRepository accountRepository;
 
-    private String randomNumber(){
-        String random;
+    private int numeroSecuencial = 0;
+    private String generarNumeroSecuencial() {
+        String numeroFormateado;
+        boolean numeroDuplicado;
         do {
-            int number = (int)(Math.random() * 99999999 + 1);
-            random = "VIN-" + String.format("%08d", number);
-        } while (accountRepository.findByNumber(random)!=null);
-        return random;
+            numeroSecuencial++;
+            numeroFormateado = String.format("%08d", numeroSecuencial);
+            numeroDuplicado = accountRepository.findByNumber("VIN-" + numeroFormateado) != null;
+            if (numeroSecuencial >= 99999999) {
+                numeroSecuencial = 0;
+            }
+        } while (numeroDuplicado);
+        return "VIN-" + numeroFormateado;
     }
+
 
     @RequestMapping("/clients")
     public List<ClientDTO> getClients() {
@@ -71,7 +78,7 @@ public class ClientController {
         }
         Client newClient = new Client(firstName, lastName, email, passwordEncoder.encode(password));
         clientRepository.save(newClient);
-        String accountNumber = randomNumber();
+        String accountNumber = generarNumeroSecuencial();
         Account newAccount = new Account(accountNumber, LocalDate.now(),0);
         newClient.addAccount(newAccount);
         accountRepository.save(newAccount);

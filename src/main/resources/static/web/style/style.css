@@ -1239,6 +1239,24 @@ select {
     padding: 4rem;
 }
 
+.articleTransactionsCards {
+    width: 31rem;
+    background-color: #f4f4f4;
+    padding: 4rem;
+}
+
+.articleTransactionsTransfers {
+    background-color: #f4f4f4;
+    padding: 4rem;
+    width: 29vw;
+}
+
+.articleTransactionsAccount {
+    width: 23rem;
+    background-color: #f4f4f4;
+    padding: 4rem;
+}
+
 .imgDibujo3 {
     width: 10rem;
 }

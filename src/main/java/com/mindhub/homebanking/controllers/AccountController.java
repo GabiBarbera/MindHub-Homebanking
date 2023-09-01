@@ -25,15 +25,19 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private ClientRepository clientRepository;
-
-    private String randomNumber() {
-        String random;
+    private ClientRepository clientRepository;    private int numeroSecuencial = 0;
+    private String generarNumeroSecuencial() {
+        String numeroFormateado;
+        boolean numeroDuplicado;
         do {
-            int number = (int) (Math.random() * 99999999 + 1);
-            random = "VIN-" + String.format("%08d", number);
-        } while (accountRepository.findByNumber(random) != null);
-        return random;
+            numeroSecuencial++;
+            numeroFormateado = String.format("%08d", numeroSecuencial);
+            numeroDuplicado = accountRepository.findByNumber("VIN-" + numeroFormateado) != null;
+            if (numeroSecuencial >= 99999999) {
+                numeroSecuencial = 0;
+            }
+        } while (numeroDuplicado);
+        return "VIN-" + numeroFormateado;
     }
 
     @RequestMapping("/accounts")
@@ -66,7 +70,7 @@ public class AccountController {
     @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)
     public ResponseEntity<Object> newAccount(Authentication authentication) {
         if (clientRepository.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
-            String accountNumber = randomNumber();
+            String accountNumber = generarNumeroSecuencial();
             Account newAccount = new Account(accountNumber, LocalDate.now(), 0);
             clientRepository.findByEmail(authentication.getName()).addAccount(newAccount);
             accountRepository.save(newAccount);
