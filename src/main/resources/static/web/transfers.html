@@ -90,7 +90,8 @@
         </header>
 
         <main class="flex-grow-1 w-100">
-            <h2 class="ms-4 me-4 mt-4">Choose your card configuration:</h2>
+            <h1 class=" text-center m-4">Transactions: <i class="bi bi-send-plus"></i></h1>
+            <h2 class=" ms-5 me-5 mt-5">Make your transfer here:</h2>
             <div class="d-flex flex-wrap sectionCreateCard justify-content-center ms-5 me-5 mb-5 gap-5">
                 <div class="d-flex flex-column align-items-center justify-content-center">
                     <div v-if="accountOrigin" class="d-flex align-items-center">
@@ -168,15 +169,30 @@
                     <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
                 </form>
             </div>
-            <section class="requestCard d-flex flex-column align-items-center justify-content-around pt-5">
-                <h2 class="mt-1">Discover the ideal MB card for you and try it. A bonus year!</h2>
-                <div class="d-flex align-items-center">
-                    <h5 class="h5">What are you waiting for to be a MB customer?
-                        <br> Get your card and start traveling around the world with Mindhub Brothers.
-                    </h5>
-                    <div class="d-flex justify-content-end w-100">
-                        <img class="cardImg" src="./images/tarjeta.png" alt="">
-                    </div>
+            <section class="d-flex flex-column align-items-center justify-content-center">
+                <h2>Manage your finances easier, faster and safer.</h2>
+                <h6>We have digital solutions and tools for you.</h6>
+                <div class="d-flex ms-5 me-5 mb-5 mt-2 gap-5">
+                    <article class="articleTransactions d-flex flex-column align-items-center">
+                        <img class="imgDibujo" src="./images/dibujo.avif" alt="">
+                        <h3 class="mt-2">Manage your other accounts, without leaving MB</h3>
+                        <h6 class="text-center">I discovered the new functionality that allows you to deposit money from
+                            the accounts of
+                            your
+                            other banks, without leaving MB!</h6>
+                    </article>
+                    <article class="articleTransactions d-flex flex-column align-items-center">
+                        <img class="imgDibujo2" src="./images/dollar.avif" alt="">
+                        <h3 class="text-center">Financial health</h3>
+                        <h6>We present you my day to day, a tool in the MB app to control the status of your accounts.
+                        </h6>
+                    </article>
+                    <article class="articleTransactions d-flex flex-column align-items-center">
+                        <img class="imgDibujo2" src="./images/bbva.avif" alt="">
+                        <h3 class="text-center">MB app</h3>
+                        <h6 class="text-center">Download the App and start making your operations simpler and safer.
+                        </h6>
+                    </article>
                 </div>
             </section>
             <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">

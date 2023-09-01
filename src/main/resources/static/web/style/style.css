@@ -39,8 +39,8 @@ nav {
 
 /* formulario de manager html */
 
-input {
-    width: 15rem;
+.inputManager {
+    width: 28rem;
 }
 
 table {
@@ -1207,4 +1207,46 @@ select {
 
 .inputLabel {
     color: black;
+}
+
+/* section en transacciones  */
+
+.imgDibujo {
+    height: 16rem;
+    width: 28rem;
+    object-fit: contain;
+}
+
+.imgDibujo:hover {
+    opacity: 0.85;
+}
+
+
+.imgDibujo2 {
+    width: 17rem;
+}
+
+.imgDibujo2:hover {
+    opacity: 0.85;
+}
+
+.articleTransactions {
+    background-color: #f4f4f4;
+    padding: 4rem;
+}
+
+.imgDibujo3 {
+    width: 10rem;
+}
+
+.imgDibujo3:hover {
+    opacity: 0.85;
+}
+
+/* section en create cards  */
+
+.sectionCreate {
+    background-color: #004481;
+    color: white;
+    padding: 3rem;
 }
