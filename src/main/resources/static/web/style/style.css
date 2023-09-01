@@ -1056,9 +1056,13 @@ label {
     transition: .8s ease-in-out;
 }
 
+.formLogin {
+    gap: 28px;
+    width: 18rem;
+}
+
 .register label {
     color: black;
-    transform: scale(.6);
 }
 
 #chk:checked~.register {
