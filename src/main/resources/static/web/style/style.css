@@ -1223,7 +1223,7 @@ select {
 
 
 .imgDibujo2 {
-    width: 17rem;
+    width: 12rem;
 }
 
 .imgDibujo2:hover {
@@ -1249,4 +1249,11 @@ select {
     background-color: #004481;
     color: white;
     padding: 3rem;
+}
+
+/* section arrepentimiento en create cards */
+
+.regret {
+    background-color: lightblue;
+    padding: 4rem;
 }

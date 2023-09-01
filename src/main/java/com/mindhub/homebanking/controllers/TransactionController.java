@@ -31,7 +31,7 @@ public class TransactionController {
 
     @Transactional
     @RequestMapping(path = "/transactions" ,method = RequestMethod.POST)
-    public ResponseEntity<Object>transaction(@RequestParam double amount, @RequestParam String description, @RequestParam String accountOrigin, @RequestParam String accountDestiny, Authentication authentication){
+    public ResponseEntity<Object>transaction(@RequestParam Double amount, @RequestParam String description, @RequestParam String accountOrigin, @RequestParam String accountDestiny, Authentication authentication){
         if (amount <= 0){
             return new ResponseEntity<>("Insufficient amount to carry out the transaction.", HttpStatus.FORBIDDEN);
         }
