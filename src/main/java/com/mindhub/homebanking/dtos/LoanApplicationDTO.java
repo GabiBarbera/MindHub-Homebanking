@@ -5,13 +5,13 @@ import java.util.List;
 public class LoanApplicationDTO {
  private long id;
  private double amount;
- private List<Integer> payments;
+ private Integer payments;
  private String numberAccountDestination;
 
     public LoanApplicationDTO() {
     }
 
-    public LoanApplicationDTO(long id, double amount, List<Integer> payments, String numberAccountDestination) {
+    public LoanApplicationDTO(long id, double amount, Integer payments, String numberAccountDestination) {
         this.id = id;
         this.amount = amount;
         this.payments = payments;
@@ -26,7 +26,7 @@ public class LoanApplicationDTO {
         return amount;
     }
 
-    public List<Integer> getPayments() {
+    public Integer getPayments() {
         return payments;
     }
 
