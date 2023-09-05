@@ -5,6 +5,8 @@ import com.mindhub.homebanking.models.Account;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.AccountService;
+import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +27,11 @@ public class AccountController {
     @Autowired
     private AccountRepository accountRepository;
     @Autowired
-    private ClientRepository clientRepository;    private int numeroSecuencial = 0;
+    ClientService clientService;
+    @Autowired
+    AccountService accountService;
+    private int numeroSecuencial = 0;
+
     private String generarNumeroSecuencial() {
         String numeroFormateado;
         boolean numeroDuplicado;
@@ -42,38 +48,38 @@ public class AccountController {
 
     @RequestMapping("/accounts")
     public List<AccountDTO> getClients() {
-        return accountRepository.findAll().stream().map(account -> new AccountDTO(account)).collect(toList());
+        return accountService.getAccountsDTO();
     }
 
     @RequestMapping("/accounts/{id}")
     public AccountDTO getClient(@PathVariable Long id) {
-        return new AccountDTO(accountRepository.findById(id).orElse(null));
+        return accountService.findByIdDTO(id);
     }
 
     @RequestMapping("/clients/accounts/{id}")
-    public ResponseEntity<Object>  getAccount(@PathVariable Long id, Authentication authentication){
-        Client client = clientRepository.findByEmail(authentication.getName());
-        Account account = accountRepository.findById(id).orElse(null);
-        if (client.getId() == account.getOwner().getId()){
-            return new ResponseEntity<>(new AccountDTO(account),HttpStatus.OK);
-        }else{
+    public ResponseEntity<Object> getAccount(@PathVariable Long id, Authentication authentication) {
+        Client client = clientService.findByEmail(authentication.getName());
+        Account account = accountService.findById(id);
+        if (client.getId() == account.getOwner().getId()) {
+            return new ResponseEntity<>(new AccountDTO(account), HttpStatus.OK);
+        } else {
             return new ResponseEntity<>("Not your account.", HttpStatus.FORBIDDEN);
         }
     }
 
     @RequestMapping("/clients/current/accounts")
     public List<AccountDTO> getAccounts(Authentication authentication) {
-        Client client = clientRepository.findByEmail(authentication.getName());
+        Client client = clientService.findByEmail(authentication.getName());
         return client.getAccounts().stream().map(account -> new AccountDTO(account)).collect(toList());
     }
 
     @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)
     public ResponseEntity<Object> newAccount(Authentication authentication) {
-        if (clientRepository.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
+        if (clientService.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
             String accountNumber = generarNumeroSecuencial();
             Account newAccount = new Account(accountNumber, LocalDate.now(), 0);
-            clientRepository.findByEmail(authentication.getName()).addAccount(newAccount);
-            accountRepository.save(newAccount);
+            clientService.findByEmail(authentication.getName()).addAccount(newAccount);
+            accountService.addAccount(newAccount);
         } else {
             return new ResponseEntity<>("No more accounts", HttpStatus.FORBIDDEN);
         }

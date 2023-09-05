@@ -5,8 +5,8 @@ import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.CardColor;
 import com.mindhub.homebanking.models.CardType;
 import com.mindhub.homebanking.models.Client;
-import com.mindhub.homebanking.repositories.CardRepository;
-import com.mindhub.homebanking.repositories.ClientRepository;
+import com.mindhub.homebanking.services.CardService;
+import com.mindhub.homebanking.services.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,21 +16,16 @@ import org.springframework.security.core.Authentication;
 import java.time.LocalDate;
 import java.util.List;
 
-import static java.util.stream.Collectors.toList;
-
 @RestController
 @RequestMapping("/api")
 public class CardController {
     @Autowired
-    ClientRepository clientRepository;
+    CardService cardService;
     @Autowired
-    CardRepository cardRepository;
+    ClientService clientService;
 
     public static String CardNumber() {
-        return getRandomNumber(1000, 10000) + "-"
-                + getRandomNumber(1000, 10000) + "-" +
-                getRandomNumber(1000, 10000) + "-" +
-                getRandomNumber(1000, 10000);
+        return getRandomNumber(1000, 10000) + "-" + getRandomNumber(1000, 10000) + "-" + getRandomNumber(1000, 10000) + "-" + getRandomNumber(1000, 10000);
     }
 
     public static int getCardCVV() {
@@ -44,17 +39,17 @@ public class CardController {
 
     @RequestMapping("/cards")
     public List<CardDTO> getClients() {
-        return cardRepository.findAll().stream().map(card -> new CardDTO(card)).collect(toList());
+        return cardService.getClientsDTO();
     }
 
     @RequestMapping("/clients/current/cards")
     public List<CardDTO> getClients(Authentication authentication) {
-        return cardRepository.findAll().stream().map(card -> new CardDTO(card)).collect(toList());
+        return cardService.findAllAuth(authentication.getName());
     }
 
     @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
     public ResponseEntity<Object> createCard(@RequestParam CardType type, @RequestParam CardColor color, Authentication authentication) {
-        Client client = clientRepository.findByEmail(authentication.getName());
+        Client client = clientService.findByEmail(authentication.getName());
         if (type == null || color == null) {
             return new ResponseEntity<>("No data", HttpStatus.FORBIDDEN);
         }
@@ -62,15 +57,15 @@ public class CardController {
         int cvvNumber = getCardCVV();
         do {
             cardNumber = CardNumber();
-        } while (cardRepository.findByNumber(cardNumber) != null);
+        } while (cardService.findByNumber(cardNumber) != null);
         for (Card card : client.getCards()) {
             if (card.getCardColor().equals(color) && card.getType().equals(type)) {
                 return new ResponseEntity<>("Card already exists", HttpStatus.FORBIDDEN);
             }
         }
-        Card newCard = new Card(client.getFirstName()+" "+client.getLastName(), type, color, cardNumber, cvvNumber, LocalDate.now(), LocalDate.now().plusYears(5));
+        Card newCard = new Card(client.getFirstName() + " " + client.getLastName(), type, color, cardNumber, cvvNumber, LocalDate.now(), LocalDate.now().plusYears(5));
         client.addCard(newCard);
-        cardRepository.save(newCard);
+        cardService.addCard(newCard);
         return new ResponseEntity<>("Card created", HttpStatus.CREATED);
     }
 }
