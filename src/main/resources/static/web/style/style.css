@@ -874,6 +874,19 @@ footer {
     font-family: Helvetica, Arial, sans-serif;
 }
 
+/* boton de apply loans en accounts  */
+
+.btnApply {
+    background-color: rgb(6 33 70);
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 0;
+    padding: 0.190em 0.75em;
+    margin-left: 5rem;
+}
+
 /* boton de ver cards en accounts */
 
 #seeCards {
