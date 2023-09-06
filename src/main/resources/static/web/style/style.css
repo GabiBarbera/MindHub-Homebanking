@@ -977,6 +977,11 @@ footer {
     margin-bottom: 1.5rem;
 }
 
+.imgDibujo4 {
+    max-width: 100%;
+    height: 26rem;
+}
+
 /* index html  */
 
 #indexhtml {
@@ -1216,8 +1221,8 @@ select {
 /* section en transacciones  */
 
 .imgDibujo {
-    height: 16rem;
-    width: 28rem;
+    max-width: 100%;
+    height: auto;
     object-fit: contain;
 }
 
@@ -1278,4 +1283,16 @@ select {
 .regret {
     background-color: lightblue;
     padding: 4rem;
+}
+
+/* section noticias en loans */
+
+.imgNews {
+    max-width: 100%;
+    height: auto;
+    padding: 0.5rem;
+}
+
+.newsOfBank {
+    background-color: #004481;
 }

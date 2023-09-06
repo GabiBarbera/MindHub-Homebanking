@@ -23,7 +23,6 @@ createApp({
             axios.get(url)
                 .then(response => {
                     this.accounts = response.data
-                    console.log(this.accounts);
                 })
                 .catch(error => console.error('Error:', error));
         },
@@ -31,7 +30,6 @@ createApp({
             axios.get("/api/loans")
                 .then(response => {
                     this.loans = response.data
-                    console.log(this.loans);
                 })
                 .catch(error => console.error('Error:', error));
         },

@@ -5,10 +5,7 @@ import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.dtos.LoanDTO;
 import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.TransactionRepository;
-import com.mindhub.homebanking.services.AccountService;
-import com.mindhub.homebanking.services.ClientLoanService;
-import com.mindhub.homebanking.services.ClientService;
-import com.mindhub.homebanking.services.LoanService;
+import com.mindhub.homebanking.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,8 +31,7 @@ public class LoanController {
     @Autowired
     ClientLoanService clientLoanService;
     @Autowired
-    TransactionRepository transactionRepository;
-
+    TransactionService transactionService;
     @RequestMapping(path = "/loans")
     public List<LoanDTO> getLoans() {
         return loanService.getAllLoans();
@@ -87,7 +83,7 @@ public class LoanController {
         clientLoanService.addClientLoan(clientLoan);
         String transactionDescription = loan.getName() + "Loan approved.";
         Transaction transaction = new Transaction(loanApplicationDTO.getAmount(), transactionDescription, LocalDateTime.now(), TransactionType.CREDIT);
-        transactionRepository.save(transaction);
+        transactionService.addTransaction(transaction);
         accountService.addAccount(account);
         account.addTransaction(transaction);
         return new ResponseEntity<>("Loan request created successfully", HttpStatus.CREATED);
