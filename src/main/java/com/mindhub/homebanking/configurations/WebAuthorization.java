@@ -23,6 +23,7 @@ public class WebAuthorization {
                 .antMatchers("/web/scripts/**").permitAll()
                 .antMatchers("/web/style/**").permitAll()
                 .antMatchers("/web/images/**").permitAll()
+                .antMatchers("/api/loans").hasAuthority("CLIENT")
                 .antMatchers("/api/clients/current").hasAuthority("CLIENT")
                 .antMatchers("/api/clients/current/accounts").hasAuthority("CLIENT")
                 .antMatchers("/api/clients/accounts/**").hasAuthority("CLIENT")
@@ -38,7 +39,6 @@ public class WebAuthorization {
                 .antMatchers("/api/accounts").hasAuthority("ADMIN")
                 .antMatchers("/api/accounts/{id}").hasAuthority("ADMIN")
                 .antMatchers("/api/cards").hasAuthority("ADMIN")
-                .antMatchers("/api/loans").hasAuthority("ADMIN")
                 .anyRequest().denyAll();
         http.formLogin()
                 .usernameParameter("email")

@@ -17,7 +17,7 @@ createApp({
                     if (this.email.includes("admin.mindhub")) {
                         location.href = '../manager.html';
                     } else {
-                        location.href = './accounts.html';
+                        location.href = '../web/pages/accounts.html';
                     }
                 })
                 .catch(error => {

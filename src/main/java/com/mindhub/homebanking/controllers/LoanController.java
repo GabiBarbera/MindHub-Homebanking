@@ -52,6 +52,9 @@ public class LoanController {
         if (loan == null) {
             return new ResponseEntity<>("The requested loan does not exist.", HttpStatus.FORBIDDEN);
         }
+        if (client.getLoans().contains(loan.getName())){
+            return new ResponseEntity<>("You can't ask for the same loan",HttpStatus.FORBIDDEN);
+        }
         if (loan.getPayments() == null) {
             return new ResponseEntity<>("Number of payments not found.", HttpStatus.FORBIDDEN);
         }
