@@ -1,6 +1,5 @@
 const { createApp } = Vue
 
-const url = '/api/clients/accounts/'
 
 createApp({
     data() {
@@ -23,7 +22,7 @@ createApp({
             const parameter = location.search
             const parameters = new URLSearchParams(parameter)
             const idParameters = parameters.get("id")
-            axios.get(url + idParameters)
+            axios.get('/api/clients/accounts/' + idParameters) // {headers:{'accept':'application/xml'}}
                 .then(response => {
                     this.account = response.data
                     this.transactions = this.account.transactions.sort((a, b) => b.id - a.id)

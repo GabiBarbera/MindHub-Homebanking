@@ -1,6 +1,5 @@
 const { createApp } = Vue
 
-const url = '/api/clients/current'
 
 createApp({
     data() {
@@ -19,7 +18,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(url)
+            axios.get('/api/clients/current')
                 .then(response => {
                     this.clients = response.data
                     this.cards = this.clients.cards.sort((a, b) => b.id - a.id)

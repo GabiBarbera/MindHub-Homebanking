@@ -1,7 +1,5 @@
 const { createApp } = Vue
 
-const url = '/rest/clients'
-
 createApp({
     data() {
         return {
@@ -17,7 +15,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(url)
+            axios.get('/rest/clients')
                 .then(response => {
                     this.clients = response.data._embedded.clients
                     this.jsonRest = JSON.stringify(response.data, null, 1);

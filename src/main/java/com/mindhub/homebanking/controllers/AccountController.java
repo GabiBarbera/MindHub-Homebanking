@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -46,17 +43,17 @@ public class AccountController {
         return "VIN-" + numeroFormateado;
     }
 
-    @RequestMapping("/accounts")
+    @GetMapping("/accounts")
     public List<AccountDTO> getClients() {
         return accountService.getAccountsDTO();
     }
 
-    @RequestMapping("/accounts/{id}")
+    @GetMapping("/accounts/{id}")
     public AccountDTO getClient(@PathVariable Long id) {
         return accountService.findByIdDTO(id);
     }
 
-    @RequestMapping("/clients/accounts/{id}")
+    @GetMapping("/clients/accounts/{id}")
     public ResponseEntity<Object> getAccount(@PathVariable Long id, Authentication authentication) {
         Client client = clientService.findByEmail(authentication.getName());
         Account account = accountService.findById(id);
@@ -67,13 +64,13 @@ public class AccountController {
         }
     }
 
-    @RequestMapping("/clients/current/accounts")
+    @GetMapping("/clients/current/accounts")
     public List<AccountDTO> getAccounts(Authentication authentication) {
         Client client = clientService.findByEmail(authentication.getName());
         return client.getAccounts().stream().map(account -> new AccountDTO(account)).collect(toList());
     }
 
-    @RequestMapping(path = "/clients/current/accounts", method = RequestMethod.POST)
+    @PostMapping("/clients/current/accounts")
     public ResponseEntity<Object> newAccount(Authentication authentication) {
         if (clientService.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
             String accountNumber = generarNumeroSecuencial();

@@ -1,7 +1,5 @@
 const { createApp } = Vue
 
-const url = '/api/clients/current/accounts'
-
 createApp({
     data() {
         return {
@@ -20,7 +18,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(url)
+            axios.get('/api/clients/current/accounts')
                 .then(response => {
                     this.accounts = response.data
                 })

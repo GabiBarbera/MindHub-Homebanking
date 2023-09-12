@@ -37,17 +37,17 @@ public class CardController {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
-    @RequestMapping("/cards")
+    @GetMapping("/cards")
     public List<CardDTO> getClients() {
         return cardService.getClientsDTO();
     }
 
-    @RequestMapping("/clients/current/cards")
+    @GetMapping("/clients/current/cards")
     public List<CardDTO> getClients(Authentication authentication) {
         return cardService.findAllAuth(authentication.getName());
     }
 
-    @RequestMapping(path = "/clients/current/cards", method = RequestMethod.POST)
+    @PostMapping("/clients/current/cards")
     public ResponseEntity<Object> createCard(@RequestParam CardType type, @RequestParam CardColor color, Authentication authentication) {
         Client client = clientService.findByEmail(authentication.getName());
         if (type == null || color == null) {

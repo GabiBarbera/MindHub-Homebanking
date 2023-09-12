@@ -1,6 +1,5 @@
 const { createApp } = Vue
 
-const url = '/api/clients/current'
 
 createApp({
     data() {
@@ -14,7 +13,7 @@ createApp({
     },
     methods: {
         loadData() {
-            axios.get(url)
+            axios.get('/api/clients/current')
                 .then(response => {
                 })
                 .catch(error => console.error('Error:', error));
