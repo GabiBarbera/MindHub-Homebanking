@@ -4,7 +4,6 @@ package com.mindhub.homebanking.controllers;
 import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.dtos.LoanDTO;
 import com.mindhub.homebanking.models.*;
-import com.mindhub.homebanking.repositories.TransactionRepository;
 import com.mindhub.homebanking.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
