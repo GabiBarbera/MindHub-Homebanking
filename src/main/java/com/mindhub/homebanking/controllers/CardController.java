@@ -67,9 +67,27 @@ public class CardController {
                 return new ResponseEntity<>("Card already exists", HttpStatus.FORBIDDEN);
             }
         }
-        Card newCard = new Card(client.getFirstName() + " " + client.getLastName(), type, color, cardNumber, cvvNumber, LocalDate.now(), LocalDate.now().plusYears(5));
+        Card newCard = new Card(client.getFirstName() + " " + client.getLastName(), type, color, cardNumber, cvvNumber, LocalDate.now(), LocalDate.now().plusYears(5), true);
         client.addCard(newCard);
         cardService.addCard(newCard);
         return new ResponseEntity<>("Card created", HttpStatus.CREATED);
+    }
+    @PatchMapping("/clients/current/cards/deactivate")
+    public ResponseEntity<Object> disableCard(@RequestParam long id, Authentication authentication){
+        Card card = cardService.findById(id);
+        Client client = clientService.findByEmail(authentication.getName());
+        boolean existCard = client.getCards().contains(card);
+        if(card == null){
+            return  new ResponseEntity<>("The card you want to delete does not exist.", HttpStatus.FORBIDDEN);
+        }
+        if (existCard){
+            return  new ResponseEntity<>("This card does not belong to this customer.", HttpStatus.FORBIDDEN);
+        }
+        if(card.isActive() == false){
+            return new ResponseEntity<>("This card has already been deleted.", HttpStatus.FORBIDDEN);
+        }
+        card.setActive(false);
+        cardService.addCard(card);
+        return  new ResponseEntity<>("The card has been deleted successfully.", HttpStatus.OK);
     }
 }

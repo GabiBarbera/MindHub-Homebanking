@@ -13,4 +13,6 @@ public interface CardService {
     void addCard(Card card);
 
     Card findByNumber(String number);
+
+    Card findById(long id);
 }
