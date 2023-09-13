@@ -16,6 +16,9 @@ import org.springframework.security.core.Authentication;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.mindhub.homebanking.utils.CardUtils.getCardNumber;
+import static com.mindhub.homebanking.utils.CardUtils.getCvvNumber;
+
 @RestController
 @RequestMapping("/api")
 public class CardController {
@@ -23,14 +26,15 @@ public class CardController {
     CardService cardService;
     @Autowired
     ClientService clientService;
+    private String cardNumber = getCardNumber();
+    private int cvvNumber = getCvvNumber();
 
     public static String CardNumber() {
-        return getRandomNumber(1000, 10000) + "-" + getRandomNumber(1000, 10000) + "-" + getRandomNumber(1000, 10000) + "-" + getRandomNumber(1000, 10000);
+        return getCardNumber();
     }
 
     public static int getCardCVV() {
-        int cvv = getRandomNumber(100, 1000);
-        return cvv;
+        return getCvvNumber();
     }
 
     public static int getRandomNumber(int min, int max) {
