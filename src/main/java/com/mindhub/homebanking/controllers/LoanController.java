@@ -78,7 +78,7 @@ public class LoanController {
         clientLoan.setLoan(loan);
         clientLoanService.addClientLoan(clientLoan);
         String transactionDescription = loan.getName() + "Loan approved.";
-        Transaction transaction = new Transaction(loanApplicationDTO.getAmount(), transactionDescription, LocalDateTime.now(), TransactionType.CREDIT);
+        Transaction transaction = new Transaction(loanApplicationDTO.getAmount(), transactionDescription, LocalDateTime.now(), TransactionType.CREDIT, account.getBalance());
         transactionService.addTransaction(transaction);
         accountService.addAccount(account);
         account.addTransaction(transaction);

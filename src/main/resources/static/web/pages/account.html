@@ -130,6 +130,7 @@
                                         <th>Amount</th>
                                         <th>Date</th>
                                         <th>Description</th>
+                                        <th>Balance</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -141,6 +142,7 @@
                                             <td>$ {{transaction.amount.toLocaleString(1)}}</td>
                                             <td>{{dateForm.date[index]}} {{dateForm.hour[index]}}</td>
                                             <td>{{transaction.description}}</td>
+                                            <td>{{transaction.balance}}</td>
                                         </tr>
                                     </template>
                                 </tbody>
