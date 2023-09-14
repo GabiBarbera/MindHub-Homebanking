@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
 
@@ -90,29 +91,36 @@ public class AccountController {
     }
 
     @PatchMapping("/clients/current/accounts/deactivate")
-    public ResponseEntity<Object> disableAccount(@RequestParam long id, Authentication authentication){
+    public ResponseEntity<Object> disableAccount(@RequestParam long id, Authentication authentication) {
         Client client = clientService.findByEmail(authentication.getName());
         Account account = accountService.findById(id);
         boolean existsAccount = client.getAccounts().contains(account);
-        Set<Transaction>transactionSet = account.getTransactions();
+        Set<Transaction> transactionSet = account.getTransactions();
+        Set<Account> accounts = client.getAccounts();
+        long accountActive = accounts.stream().filter(account1 -> account1.isActive()).count();
 
-        if (account == null){
-            return new ResponseEntity<>("la cuenta no existe",HttpStatus.FORBIDDEN);
+        if (account == null) {
+            return new ResponseEntity<>("The account does not exist.", HttpStatus.FORBIDDEN);
         }
-        if (existsAccount){
-            return new ResponseEntity<>("Lacuenta no te perteneceee", HttpStatus.FORBIDDEN);
+        if (existsAccount) {
+            return new ResponseEntity<>("This account does not belong to you.", HttpStatus.FORBIDDEN);
+        }
+        if(accountActive <= 1){
+            return new ResponseEntity<>("You cannot delete the only account you have.", HttpStatus.FORBIDDEN);
         }
         if (account.getBalance() > 0) {
-            return new ResponseEntity<>("No se puede eliminar si hay dinero", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("You cannot delete an account with a positive balance.", HttpStatus.FORBIDDEN);
+        }
+        if (account.getBalance() < 0) {
+            return new ResponseEntity<>("You cannot delete an account with a negative balance.", HttpStatus.FORBIDDEN);
         }
         transactionSet.forEach(transaction -> {
-            transaction.setActive(false);
-            transactionService.addTransaction(transaction);
+                    transaction.setActive(false);
+                    transactionService.addTransaction(transaction);
                 }
-
         );
         account.setActive(false);
         accountService.addAccount(account);
-        return new ResponseEntity<>("correcto", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("This account was successfully deactivated.", HttpStatus.ACCEPTED);
     }
 }

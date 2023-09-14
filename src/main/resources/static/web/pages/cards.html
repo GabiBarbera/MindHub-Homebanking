@@ -155,7 +155,8 @@
                                 <p v-if="dateCredit[index] < dateNao" class="text-danger fw-bold m-2">This card is
                                     expired.
                                 </p>
-                                <button class="btnApply m-1" @click.prevent="deactiveCard(card.id)">Eliminate</button>
+                                <button class="btnApply m-1 eliminate"
+                                    @click.prevent="deactiveCard(card.id)">Eliminate</button>
                             </div>
                         </template>
                         <h2 v-else>You do not have cards</h2>
@@ -221,7 +222,8 @@
                                 <p v-if="dateDebit[index] < dateNao" class="text-danger fw-bold m-2">This card is
                                     expired.
                                 </p>
-                                <button class="btnApply m-1" @click.prevent="deactiveCard(card.id)">Eliminate</button>
+                                <button class="btnApply m-1 eliminate"
+                                    @click.prevent="deactiveCard(card.id)">Eliminate</button>
                             </div>
                         </template>
                         <h2 v-else>You do not have cards</h2>

@@ -91,6 +91,7 @@ const url =
                                 Swal.fire({
                                     icon: 'error',
                                     title: error.response.data,
+                                    text: "If you want to delete this account, please transfer your money to another account.",
                                     confirmButtonText: 'OK',
                                     customClass: {
                                         popup: 'custom-alert',

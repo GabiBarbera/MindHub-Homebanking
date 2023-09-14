@@ -101,6 +101,8 @@
                     <template v-if="accounts.length > 0" v-for="account of accounts" :key="account.id">
                         <div>
                             <div class="plan">
+                                <button class="btnEliminate m-1"
+                                    @click.prevent="deactiveAccount(account.id)">Eliminate</button>
                                 <div class="inner d-flex flex-column justify-content-around">
                                     <p class="titleP">Account: {{account.number}}</p>
                                     <p class="infoP fw-bolder">{{clients.firstName}} {{clients.lastName}}</p>
@@ -110,8 +112,7 @@
                                         <a class="button" :href="'./account.html?id=' + account.id">
                                             Details
                                         </a>
-                                        <button class="btnApply m-1"
-                                            @click.prevent="deactiveAccount(account.id)">Eliminate</button>
+
                                     </div>
                                 </div>
                             </div>

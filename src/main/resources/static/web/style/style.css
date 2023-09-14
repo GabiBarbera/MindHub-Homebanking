@@ -1340,3 +1340,24 @@ select {
     font-size: 1.2rem;
     margin-bottom: 0.25rem;
 }
+
+.btnEliminate {
+    background-color: #d0e2ff;
+    border-radius: 6px;
+    color: black;
+    font-weight: 500;
+    font-size: 1rem;
+    border: 0;
+    padding: 0.190em 0.75em;
+    margin-left: 5rem;
+}
+
+.btnEliminate:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid red;
+}
+
+.eliminate:hover {
+    border: solid 2px red;
+}

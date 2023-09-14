@@ -16,7 +16,6 @@ public class Account {
     private String number;
     private LocalDate creationDate;
     private double balance;
-
     private boolean isActive;
 
     @ManyToOne(fetch = FetchType.EAGER)
