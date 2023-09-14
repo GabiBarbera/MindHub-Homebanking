@@ -16,6 +16,8 @@ public class Transaction {
     private String description;
     private LocalDateTime date;
     private double balance;
+    private boolean isActive;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_id")
     private Account account;
@@ -23,12 +25,13 @@ public class Transaction {
     public Transaction() {
     }
 
-    public Transaction(double amount, String description, LocalDateTime date, TransactionType type, double balance) {
+    public Transaction(double amount, String description, LocalDateTime date, TransactionType type, double balance, boolean isActive) {
         this.amount = amount;
         this.description = description;
         this.date = date;
         this.type = type;
         this.balance = balance;
+        this.isActive = isActive;
     }
 
     public long getId() {
@@ -85,5 +88,13 @@ public class Transaction {
 
     public Account getAccount() {
         return account;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
     }
 }

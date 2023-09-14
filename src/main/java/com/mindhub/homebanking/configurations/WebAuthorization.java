@@ -29,7 +29,7 @@ public class WebAuthorization {
                 .antMatchers("/api/clients/current/accounts").hasAuthority("CLIENT")
                 .antMatchers("/api/clients/accounts/**").hasAuthority("CLIENT")
                 .antMatchers("/web/**").hasAuthority("CLIENT")
-                .antMatchers(HttpMethod.PATCH,"/api/clients/current/cards/deactivate").hasAuthority("CLIENT")
+                .antMatchers(HttpMethod.PATCH,"/api/clients/current/cards/deactivate","/api/clients/current/accounts/deactivate").hasAuthority("CLIENT")
                 .antMatchers(HttpMethod.POST,"/api/clients/current/**").hasAuthority("CLIENT")
                 .antMatchers(HttpMethod.POST,"/api/transactions").hasAuthority("CLIENT")
                 .antMatchers(HttpMethod.POST,"/api/loans").hasAuthority("CLIENT")

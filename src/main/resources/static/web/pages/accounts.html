@@ -98,7 +98,7 @@
             <h4 v-else class="ms-5">You own the maximum number of accounts possible</h4>
             <div class="d-flex flex-column align-items-start m-5 flex-wrap sectionAccounts" data-aos="zoom-out">
                 <div class="d-flex flex-row justify-content-center ms-3 me-5 mt-5 gap-5 flex-wrap">
-                    <template v-if="accounts.length > 0" v-for="account of accounts">
+                    <template v-if="accounts.length > 0" v-for="account of accounts" :key="account.id">
                         <div>
                             <div class="plan">
                                 <div class="inner d-flex flex-column justify-content-around">
@@ -106,10 +106,12 @@
                                     <p class="infoP fw-bolder">{{clients.firstName}} {{clients.lastName}}</p>
                                     <p class="amountP">Amount: $ {{account.balance.toLocaleString(1)}}</p>
                                     <p class="creationDateP">creation date: {{account.creationDate}}</p>
-                                    <div class="action">
+                                    <div class="action d-flex flex-column">
                                         <a class="button" :href="'./account.html?id=' + account.id">
                                             Details
                                         </a>
+                                        <button class="btnApply m-1"
+                                            @click.prevent="deactiveAccount(account.id)">Eliminate</button>
                                     </div>
                                 </div>
                             </div>

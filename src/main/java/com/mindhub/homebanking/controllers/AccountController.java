@@ -2,11 +2,14 @@ package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.AccountDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.Card;
 import com.mindhub.homebanking.models.Client;
+import com.mindhub.homebanking.models.Transaction;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.services.AccountService;
 import com.mindhub.homebanking.services.ClientService;
+import com.mindhub.homebanking.services.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
 
@@ -27,6 +31,8 @@ public class AccountController {
     ClientService clientService;
     @Autowired
     AccountService accountService;
+    @Autowired
+    TransactionService transactionService;
     private int numeroSecuencial = 0;
 
     private String generarNumeroSecuencial() {
@@ -74,12 +80,39 @@ public class AccountController {
     public ResponseEntity<Object> newAccount(Authentication authentication) {
         if (clientService.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
             String accountNumber = generarNumeroSecuencial();
-            Account newAccount = new Account(accountNumber, LocalDate.now(), 0);
+            Account newAccount = new Account(accountNumber, LocalDate.now(), 0, true);
             clientService.findByEmail(authentication.getName()).addAccount(newAccount);
             accountService.addAccount(newAccount);
         } else {
             return new ResponseEntity<>("No more accounts", HttpStatus.FORBIDDEN);
         }
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @PatchMapping("/clients/current/accounts/deactivate")
+    public ResponseEntity<Object> disableAccount(@RequestParam long id, Authentication authentication){
+        Client client = clientService.findByEmail(authentication.getName());
+        Account account = accountService.findById(id);
+        boolean existsAccount = client.getAccounts().contains(account);
+        Set<Transaction>transactionSet = account.getTransactions();
+
+        if (account == null){
+            return new ResponseEntity<>("la cuenta no existe",HttpStatus.FORBIDDEN);
+        }
+        if (existsAccount){
+            return new ResponseEntity<>("Lacuenta no te perteneceee", HttpStatus.FORBIDDEN);
+        }
+        if (account.getBalance() > 0) {
+            return new ResponseEntity<>("No se puede eliminar si hay dinero", HttpStatus.FORBIDDEN);
+        }
+        transactionSet.forEach(transaction -> {
+            transaction.setActive(false);
+            transactionService.addTransaction(transaction);
+                }
+
+        );
+        account.setActive(false);
+        accountService.addAccount(account);
+        return new ResponseEntity<>("correcto", HttpStatus.ACCEPTED);
     }
 }

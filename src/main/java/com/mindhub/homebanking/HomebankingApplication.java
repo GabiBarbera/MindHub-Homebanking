@@ -47,11 +47,11 @@ public class HomebankingApplication {
             repositoryClient.save(admin2);
 
             Client gabrielBarbera = new Client("Gabriel", "Barbera", "gabriel.barberaa@gmail.com", passwordEnconder.encode("1234"));
-            Account account1 = new Account("VIN-00000001", this.date, 5000);
-            Account account2 = new Account("VIN-00000002", this.date1, 7500);
-            Transaction transaction1 = new Transaction(-1500, "Shopping", date2, TransactionType.DEBIT, account1.getBalance());
-            Transaction transaction2 = new Transaction(+2500, "Food", date3, TransactionType.CREDIT, account1.getBalance());
-            Transaction transaction5 = new Transaction(-5000, "Dinner", date4, TransactionType.DEBIT, account1.getBalance());
+            Account account1 = new Account("VIN-00000001", this.date, 5000,true);
+            Account account2 = new Account("VIN-00000002", this.date1, 7500,true);
+            Transaction transaction1 = new Transaction(-1500, "Shopping", date2, TransactionType.DEBIT, account1.getBalance(),true);
+            Transaction transaction2 = new Transaction(+2500, "Food", date3, TransactionType.CREDIT, account1.getBalance(),true);
+            Transaction transaction5 = new Transaction(-5000, "Dinner", date4, TransactionType.DEBIT, account1.getBalance(),true);
             ClientLoan gabrielBarberaLoanM = new ClientLoan(400000.0, 60);
             ClientLoan gabrielBarberaLoanP = new ClientLoan(50000.0, 12);
             Card cardGolGb = new Card(gabrielBarbera.getFirstName() + " " + gabrielBarbera.getLastName(), CardType.DEBIT, CardColor.GOLD, "1234-1234-1234-1234", 123, date6, dateYears, true);
@@ -85,10 +85,10 @@ public class HomebankingApplication {
             cardRepository.save(cardSilverGb2);
 
             Client brunoFerreira = new Client("Bruno", "Ferreira", "fbrunomarcos@gmail.com", passwordEnconder.encode("1234"));
-            Account account3 = new Account("VIN-00000003", this.date, 50000);
-            Account account4 = new Account("VIN-00000004", this.date1, 75000);
-            Transaction transaction3 = new Transaction(2000, "Food", date2, TransactionType.CREDIT, account4.getBalance());
-            Transaction transaction4 = new Transaction(-10000, "Car", date3, TransactionType.DEBIT, account4.getBalance());
+            Account account3 = new Account("VIN-00000003", this.date, 50000,true);
+            Account account4 = new Account("VIN-00000004", this.date1, 75000,true);
+            Transaction transaction3 = new Transaction(2000, "Food", date2, TransactionType.CREDIT, account4.getBalance(),true);
+            Transaction transaction4 = new Transaction(-10000, "Car", date3, TransactionType.DEBIT, account4.getBalance(),true);
             ClientLoan brunoFerreiraLoanP = new ClientLoan(10000.0, 24);
             ClientLoan brunoFerreiraLoanA = new ClientLoan(20000.0, 36);
             Card cardSilverBf = new Card(brunoFerreira.getFirstName() + " " + brunoFerreira.getLastName(), CardType.DEBIT, CardColor.SILVER, "4567-4567-4567-4567", 345, date, dateYears, true);

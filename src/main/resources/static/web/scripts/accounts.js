@@ -19,7 +19,7 @@ const url =
                 axios.get('/api/clients/current')
                     .then(response => {
                         this.clients = response.data
-                        this.accounts = this.clients.accounts.sort((a, b) => a.id - b.id)
+                        this.accounts = this.clients.accounts.sort((a, b) => a.id - b.id).filter(account => account.active)
                         this.loans = this.clients.loans.sort((a, b) => b.id - a.id)
                         this.loansConvert = this.loans.map(loan => loan.amount.toLocaleString(1))
                         localStorage.setItem('clients', JSON.stringify(this.clients));
@@ -51,6 +51,46 @@ const url =
                                     icon: 'error',
                                     title: error.response.data,
                                     text: "You can only have a maximum of three accounts.",
+                                    confirmButtonText: 'OK',
+                                    customClass: {
+                                        popup: 'custom-alert',
+                                    }
+                                });
+                            })
+                    },
+                    allowOutsideClick: () => !Swal.isLoading(),
+                })
+            },
+            deactiveAccount(id) {
+                Swal.fire({
+                    title: 'Do you want to eliminate a account?',
+                    inputAttributes: {
+                        autocapitalize: 'off',
+                    },
+                    showCancelButton: true,
+                    confirmButtonText: 'Sure',
+                    showLoaderOnConfirm: true,
+                    preConfirm: (login) => {
+                        axios.patch('/api/clients/current/accounts/deactivate', `id=${id}`)
+                            .then(response => {
+                                Swal.fire({
+                                    icon: 'succes',
+                                    title: response.data,
+                                    text: `Your account was eliminated successfully.`,
+                                    confirmButtonText: 'OK',
+                                    customClass: {
+                                        popup: 'custom-alert',
+                                    }
+                                });
+                                setTimeout(() => {
+                                    location.href = './accounts.html';
+                                }, 2000);
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: error.response.data,
                                     confirmButtonText: 'OK',
                                     customClass: {
                                         popup: 'custom-alert',
