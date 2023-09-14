@@ -11,6 +11,7 @@ createApp({
             fromDateDebit: [],
             dateCredit: [],
             fromDateCredit: [],
+            dateNao: new Date().toISOString().slice(2, 7).replace(/-/g, '/'),
         }
     },
     created() {
@@ -28,7 +29,8 @@ createApp({
                     this.fromDateDebit = this.debit.map(date => date.fromDate.slice(2, 7).replace(/-/g, '/'))
                     this.dateCredit = this.credit.map(date => date.thruDate.slice(2, 7).replace(/-/g, '/'))
                     this.fromDateCredit = this.credit.map(date => date.fromDate.slice(2, 7).replace(/-/g, '/'))
-                    console.log(this.cards);
+                    console.log(this.dateCredit);
+                    console.log(this.dateNao);
                 })
                 .catch(error => console.error('Error:', error));
         },

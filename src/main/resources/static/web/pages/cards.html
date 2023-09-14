@@ -141,7 +141,9 @@
                                         <div class="card__valid-thru" aria-label="Valid thru">Valid<br>from</div>
                                         <div class="card__exp-date w-50">{{fromDateCredit[index]}}</div>
                                         <div class="card__valid-thru w-25" aria-label="Valid thru">Valid<br>thru</div>
-                                        <div class="card__exp-date">{{dateCredit[index]}}</div>
+                                        <div
+                                            :class="{'thruDate':dateCredit > dateNao,'thruDateExpired':dateCredit < dateNao}">
+                                            {{dateCredit[index]}}</div>
                                         <div class="card__exp-number card__number">{{card.number}}</div>
                                         <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
                                         <div class="card__vendor" role="img" aria-labelledby="card-vendor">
@@ -150,14 +152,16 @@
                                         <div class="card__texture"></div>
                                     </div>
                                 </div>
-                                <button class="btnApply m-2 p-2" @click.prevent="deactiveCard(card.id)">Eliminate
-                                    X</button>
+                                <p v-if="dateCredit[index] < dateNao" class="text-danger fw-bold m-2">This card is
+                                    expired.
+                                </p>
+                                <button class="btnApply m-1" @click.prevent="deactiveCard(card.id)">Eliminate</button>
                             </div>
                         </template>
                         <h2 v-else>You do not have cards</h2>
                     </div>
                 </section>
-                <section class="debit w-100">
+                <section class="debit w-100" data-aos="zoom-out">
                     <h2>Debit:</h2>
                     <div class="sectionCards d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
                         <template v-if="debit.length > 0" v-for="(card, index) of debit" :key="card.id">
@@ -203,7 +207,9 @@
                                         <div class="card__valid-thru" aria-label="Valid thru">Valid<br>from</div>
                                         <div class="card__exp-date w-50">{{fromDateDebit[index]}}</div>
                                         <div class="card__valid-thru w-25" aria-label="Valid thru">Valid<br>thru</div>
-                                        <div class="card__exp-date">{{dateDebit[index]}}</div>
+                                        <div
+                                            :class="{'thruDate':dateDebit[index] > dateNao,'thruDateExpired':dateDebit[index] < dateNao}">
+                                            {{dateDebit[index]}}</div>
                                         <div class="card__exp-number card__number">{{card.number}}</div>
                                         <div class="card__name" aria-label="Dee Stroyer">{{card.cardColor}}</div>
                                         <div class="card__vendor" role="img" aria-labelledby="card-vendor">
@@ -212,8 +218,10 @@
                                         <div class="card__texture"></div>
                                     </div>
                                 </div>
-                                <button class="btnApply m-2 p-2" @click.prevent="deactiveCard(card.id)">Eliminate
-                                    X</button>
+                                <p v-if="dateDebit[index] < dateNao" class="text-danger fw-bold m-2">This card is
+                                    expired.
+                                </p>
+                                <button class="btnApply m-1" @click.prevent="deactiveCard(card.id)">Eliminate</button>
                             </div>
                         </template>
                         <h2 v-else>You do not have cards</h2>

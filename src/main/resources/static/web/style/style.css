@@ -1071,6 +1071,7 @@ label {
 }
 
 /*Register*/
+
 .register {
     background: #eee;
     border-radius: 60% / 10%;
@@ -1312,4 +1313,30 @@ select {
 
 .newsOfBank {
     background-color: #004481;
+}
+
+/* vencimiento de tarjetas  */
+
+.thruDate {
+    background: linear-gradient(hsl(0, 0%, 100%), hsl(0deg 0% 0%) 15% 55%, hsl(0deg 0% 0%) 70%);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Courier Prime", monospace;
+    filter: drop-shadow(0 0.05rem hsla(0, 0%, 0%, 0.3));
+    padding-left: 0.25rem;
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.thruDateExpired {
+    background: linear-gradient(hsl(0, 98%, 49%), hsl(0, 98%, 49%) 15% 55%, hsl(0, 97%, 49%) 70%);
+    background-clip: inherit;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: "Courier Prime", monospace;
+    filter: drop-shadow(0 0.05rem hsla(0, 0%, 0%, 0.3));
+    padding-left: 0.25rem;
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
 }
