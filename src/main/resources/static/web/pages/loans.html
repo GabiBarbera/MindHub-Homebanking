@@ -88,53 +88,54 @@
         </header>
 
         <main class="flex-grow-1 w-100">
-            <h1 class=" text-center m-4">Loans: <i class="bi bi-currency-dollar"></i></h1>
-            <h2 class=" ms-5 me-5 mt-5">Choose your loan here:</h2>
-            <div class="d-flex flex-wrap sectionCreateCard justify-content-center ms-5 me-5 mb-5 gap-5"
-                data-aos="zoom-out">
-                <div class="d-flex flex-column align-items-start justify-content-center">
-                    <div v-if="loanSelect" class="d-flex align-items-center ">
-                        <p class="text-black fw-bolder me-5">The maximum loan amount is:
-                            ${{loanSelect.maxAmount.toLocaleString(1)}}
-                        </p>
+            <section>
+                <h1 class=" text-center m-4">Loans: <i class="bi bi-currency-dollar"></i></h1>
+                <h2 class=" ms-5 me-5 mt-5">Choose your loan here:</h2>
+                <div class="d-flex flex-wrap sectionCreateCard justify-content-center ms-5 me-5 mb-5 gap-5">
+                    <div class="d-flex flex-column align-items-start justify-content-center">
+                        <div v-if="loanSelect" class="d-flex align-items-center ">
+                            <p class="text-black fw-bolder me-5">The maximum loan amount is:
+                                ${{loanSelect.maxAmount.toLocaleString(1)}}
+                            </p>
+                        </div>
+                        <div v-if="amount" class="d-flex align-items-center">
+                            <p class="text-black fw-bolder me-5">The final amount to pay (20% interest):
+                                ${{(amount * 1.2).toLocaleString(1)}}
+                            </p>
+                        </div>
                     </div>
-                    <div v-if="amount" class="d-flex align-items-center">
-                        <p class="text-black fw-bolder me-5">The final amount to pay (20% interest):
-                            ${{(amount * 1.2).toLocaleString(1)}}
-                        </p>
-                    </div>
+                    <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createLoans">
+                        <label for="loanName">Choose your loan:</label>
+                        <select name="loanName" id="loanName" v-model="loanSelect" required>
+                            <option value="" disabled>Choose your loan</option>
+                            <template v-for="loan of loans">
+                                <option :value="loan">{{loan.name}}</option>
+                            </template>
+                        </select>
+                        <label for="accounts">Choose your account:</label>
+                        <select name="accounts" id="accounts" v-model="accountSelect" required>
+                            <option value="" disabled>Choose your account</option>
+                            <template v-for="account of accounts">
+                                <option :value="account.number">{{account.number}}</option>
+                            </template>
+                        </select>
+
+                        <label for="amount">Amount:</label>
+                        <input class="inputTransactions" type="text" name="amount" id="amount" v-model="amount">
+
+                        <label for="selectPayment">Choose your payment:</label>
+                        <select name="selectPayment" id="selectPayment" v-model="paymentSelect" required>
+                            <option value="" disabled>Choose your payment</option>
+                            <template v-for="payment of loanSelect.payments">
+                                <option>{{payment}}</option>
+                            </template>
+                        </select>
+
+                        <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
+                    </form>
                 </div>
-                <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createLoans">
-                    <label for="loanName">Choose your loan:</label>
-                    <select name="loanName" id="loanName" v-model="loanSelect" required>
-                        <option value="" disabled>Choose your loan</option>
-                        <template v-for="loan of loans">
-                            <option :value="loan">{{loan.name}}</option>
-                        </template>
-                    </select>
-                    <label for="accounts">Choose your account:</label>
-                    <select name="accounts" id="accounts" v-model="accountSelect" required>
-                        <option value="" disabled>Choose your account</option>
-                        <template v-for="account of accounts">
-                            <option :value="account.number">{{account.number}}</option>
-                        </template>
-                    </select>
-
-                    <label for="amount">Amount:</label>
-                    <input class="inputTransactions" type="text" name="amount" id="amount" v-model="amount">
-
-                    <label for="selectPayment">Choose your payment:</label>
-                    <select name="selectPayment" id="selectPayment" v-model="paymentSelect" required>
-                        <option value="" disabled>Choose your payment</option>
-                        <template v-for="payment of loanSelect.payments">
-                            <option>{{payment}}</option>
-                        </template>
-                    </select>
-
-                    <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
-                </form>
-            </div>
-            <section class="regret m-5" data-aos="fade-right">
+            </section>
+            <section class="regret m-5">
                 <div class="d-flex justify-content-around">
                     <div class="d-flex flex-column">
                         <h4>Regret button.</h4>
@@ -143,7 +144,7 @@
                     <button class="btnCreateAccount">Enter here</button>
                 </div>
             </section>
-            <section class="d-flex flex-column align-items-center justify-content-center newsOfBank" data-aos="flip-up">
+            <section class="d-flex flex-column align-items-center justify-content-center newsOfBank">
                 <h2 class="text-white">News about Mindhub-Brothers Bank</h2>
                 <div class="d-flex ms-5 me-5 mb-5 mt-2 gap-5">
                     <article class="articleTransactionsTransfers d-flex flex-column align-items-center">
@@ -178,8 +179,7 @@
                     </article>
                 </div>
             </section>
-            <section class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5"
-                data-aos="fade-left">
+            <section class="d-flex flex-column align-items-center justify-content-center mt-5 mb-5">
                 <div class="d-flex ms-5 me-5 mb-5 mt-2 gap-5 flex-wrap">
                     <article class="articleTransactionsTransfers d-flex flex-column align-items-center">
                         <i class="bi bi-info-circle-fill fs-1"></i>

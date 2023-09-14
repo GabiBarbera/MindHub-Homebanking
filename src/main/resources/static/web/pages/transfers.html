@@ -88,86 +88,88 @@
         </header>
 
         <main class="flex-grow-1 w-100">
-            <h1 class=" text-center m-4">Transactions: <i class="bi bi-send-plus"></i></h1>
-            <h2 class=" ms-5 me-5 mt-5">Make your transfer here:</h2>
-            <div class="d-flex flex-wrap sectionCreateCard justify-content-center ms-5 me-5 mb-5 gap-5"
-                data-aos="zoom-out">
-                <div class="d-flex flex-column align-items-start justify-content-center">
-                    <div v-if="accountOrigin" class="d-flex align-items-center">
-                        <p class="text-black fw-bolder me-5">Available balance in the source account: ${{
-                            getAvailableBalance(accountOrigin).toLocaleString(1)}}
-                        </p>
+            <section data-aos="zoom-out">
+                <h1 class=" text-center m-4">Transactions: <i class="bi bi-send-plus"></i></h1>
+                <h2 class=" ms-5 me-5 mt-5">Make your transfer here:</h2>
+                <div class="d-flex flex-wrap sectionCreateCard justify-content-center ms-5 me-5 mb-5 gap-5">
+                    <div class="d-flex flex-column align-items-start justify-content-center">
+                        <div v-if="accountOrigin" class="d-flex align-items-center">
+                            <p class="text-black fw-bolder me-5">Available balance in the source account: ${{
+                                getAvailableBalance(accountOrigin).toLocaleString(1)}}
+                            </p>
+                        </div>
+                        <div v-if="accountDestiny" class="d-flex align-items-center">
+                            <p v-show="isVisible" class="text-black fw-bolder me-5">Available balance in the destination
+                                account: ${{
+                                getAvailableBalance(accountDestiny).toLocaleString(1)}}
+                            </p>
+                        </div>
                     </div>
-                    <div v-if="accountDestiny" class="d-flex align-items-center">
-                        <p v-show="isVisible" class="text-black fw-bolder me-5">Available balance in the destination
-                            account: ${{
-                            getAvailableBalance(accountDestiny).toLocaleString(1)}}
-                        </p>
+                    <div class="d-flex flex-column align-items-center justify-content-center gap-2">
+                        <label class="inputLabel align-items-center" for="own">Own account</label>
+                        <input @click="toggleVisibility" class="input" type="radio" name="account" id="own"
+                            v-model="selectedAccountType" value="own">
+
+                        <label class="inputLabel align-items-center" for="third">Transaction to third parties</label>
+                        <input @click="toggleVisibility" class="input" type="radio" name="account" id="third"
+                            v-model="selectedAccountType" value="third">
                     </div>
+
+                    <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createTransfer"
+                        v-if="selectedAccountType === 'third'">
+                        <label for="source">Source account:</label>
+                        <select name="source" id="source" v-model="accountOrigin" required>
+                            <option value="" disabled>Choose your account</option>
+                            <option value="">-</option>
+                            <template v-if="numbers.length > 0" v-for="number of numbers">
+                                <option>{{number}}</option>
+                            </template>
+                        </select>
+
+                        <label for="destiny">Destiny account:</label>
+                        <input class="inputTransactions" v-model="accountDestiny" type="text" name="destiny"
+                            id="destiny">
+
+                        <label for="amount">Amount:</label>
+                        <input class="inputTransactions" v-model="amount" type="text" name="amout" id="amount">
+
+                        <label for="description">Description</label>
+                        <input class="inputTransactions" v-model="description" type="text" name="desciption"
+                            id="description">
+
+                        <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
+                    </form>
+
+                    <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createTransfer"
+                        v-else-if="selectedAccountType === 'own'">
+                        <label for="source2">Source account:</label>
+                        <select name="source" id="source2" v-model="accountOrigin" required>
+                            <option value="" disabled>Choose your account</option>
+                            <option value="">-</option>
+                            <template v-if="numbers.length > 0" v-for="number of numbers">
+                                <option :disabled="number === accountDestiny">{{number}}</option>
+                            </template>
+                        </select>
+
+                        <label for="source">Destiny account:</label>
+                        <select name="source" id="source" v-model="accountDestiny" required>
+                            <option value="" disabled>Choose your other account</option>
+                            <template v-for="number of numbers">
+                                <option :disabled="number === accountOrigin">{{number}}</option>
+                            </template>
+                        </select>
+
+                        <label for="amount">Amount:</label>
+                        <input class="inputTransactions" v-model="amount" type="text" name="amout" id="amount">
+
+                        <label for="description">Description</label>
+                        <input class="inputTransactions" v-model="description" type="text" name="desciption"
+                            id="description">
+
+                        <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
+                    </form>
                 </div>
-                <div class="d-flex flex-column align-items-center justify-content-center gap-2">
-                    <label class="inputLabel align-items-center" for="own">Own account</label>
-                    <input @click="toggleVisibility" class="input" type="radio" name="account" id="own"
-                        v-model="selectedAccountType" value="own">
-
-                    <label class="inputLabel align-items-center" for="third">Transaction to third parties</label>
-                    <input @click="toggleVisibility" class="input" type="radio" name="account" id="third"
-                        v-model="selectedAccountType" value="third">
-                </div>
-
-                <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createTransfer"
-                    v-if="selectedAccountType === 'third'">
-                    <label for="source">Source account:</label>
-                    <select name="source" id="source" v-model="accountOrigin" required>
-                        <option value="" disabled>Choose your account</option>
-                        <option value="">-</option>
-                        <template v-if="numbers.length > 0" v-for="number of numbers">
-                            <option>{{number}}</option>
-                        </template>
-                    </select>
-
-                    <label for="destiny">Destiny account:</label>
-                    <input class="inputTransactions" v-model="accountDestiny" type="text" name="destiny" id="destiny">
-
-                    <label for="amount">Amount:</label>
-                    <input class="inputTransactions" v-model="amount" type="text" name="amout" id="amount">
-
-                    <label for="description">Description</label>
-                    <input class="inputTransactions" v-model="description" type="text" name="desciption"
-                        id="description">
-
-                    <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
-                </form>
-
-                <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createTransfer"
-                    v-else-if="selectedAccountType === 'own'">
-                    <label for="source2">Source account:</label>
-                    <select name="source" id="source2" v-model="accountOrigin" required>
-                        <option value="" disabled>Choose your account</option>
-                        <option value="">-</option>
-                        <template v-if="numbers.length > 0" v-for="number of numbers">
-                            <option :disabled="number === accountDestiny">{{number}}</option>
-                        </template>
-                    </select>
-
-                    <label for="source">Destiny account:</label>
-                    <select name="source" id="source" v-model="accountDestiny" required>
-                        <option value="" disabled>Choose your other account</option>
-                        <template v-for="number of numbers">
-                            <option :disabled="number === accountOrigin">{{number}}</option>
-                        </template>
-                    </select>
-
-                    <label for="amount">Amount:</label>
-                    <input class="inputTransactions" v-model="amount" type="text" name="amout" id="amount">
-
-                    <label for="description">Description</label>
-                    <input class="inputTransactions" v-model="description" type="text" name="desciption"
-                        id="description">
-
-                    <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
-                </form>
-            </div>
+            </section>
             <section class="d-flex flex-column align-items-center justify-content-center" data-aos="fade-right">
                 <h2>Manage your finances easier, faster and safer.</h2>
                 <h6>We have digital solutions and tools for you.</h6>

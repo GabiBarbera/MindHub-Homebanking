@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="../style/style.css">
     <link rel="shortcut icon" href="../images/banco.png" type="image/x-icon">
@@ -94,11 +95,11 @@
                     <a href="create-cards.html"> <button class="btnCreateAccount">Create</button></a>
                 </div>
                 <h4 v-else class="ms-1">You have the maximum number of cards allowed</h4>
-                <section class="credit w-100 mt-4">
+                <section class="credit w-100 mt-4" data-aos="zoom-out">
                     <h2>Credit:</h2>
                     <div class="sectionCards d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
-                        <template v-if="credit.length > 0" v-for="(card,index) of credit">
-                            <div data-aos="zoom-out">
+                        <template v-if="credit.length > 0" v-for="(card,index) of credit" :key="card.id">
+                            <div class="d-flex flex-column align-items-center">
                                 <div
                                     :class="{'cards cardGold':card.cardColor == 'GOLD','cards cardTitanium':card.cardColor == 'TITANIUM','cards cardSilver':card.cardColor == 'SILVER'}">
                                     <div class="card__info">
@@ -149,6 +150,8 @@
                                         <div class="card__texture"></div>
                                     </div>
                                 </div>
+                                <button class="btnApply m-2 p-2" @click.prevent="deactiveCard(card.id)">Eliminate
+                                    X</button>
                             </div>
                         </template>
                         <h2 v-else>You do not have cards</h2>
@@ -157,8 +160,8 @@
                 <section class="debit w-100">
                     <h2>Debit:</h2>
                     <div class="sectionCards d-flex flex-row justify-content-center ms-5 mb-5 me-5 gap-5 flex-wrap">
-                        <template v-if="debit.length > 0" v-for="(card, index) of debit">
-                            <div data-aos="zoom-out">
+                        <template v-if="debit.length > 0" v-for="(card, index) of debit" :key="card.id">
+                            <div class="d-flex flex-column align-items-center">
                                 <div
                                     :class="{'cards cardGold':card.cardColor == 'GOLD','cards cardTitanium':card.cardColor == 'TITANIUM','cards cardSilver':card.cardColor == 'SILVER'}">
                                     <div class="card__info">
@@ -209,13 +212,15 @@
                                         <div class="card__texture"></div>
                                     </div>
                                 </div>
+                                <button class="btnApply m-2 p-2" @click.prevent="deactiveCard(card.id)">Eliminate
+                                    X</button>
                             </div>
                         </template>
                         <h2 v-else>You do not have cards</h2>
                     </div>
                 </section>
             </div>
-            <section class="d-flex flex-column align-items-center justify-content-center" data-aos="fade-right">
+            <section class="d-flex flex-column align-items-center justify-content-center">
                 <h2>Find everything you are looking for in MB.</h2>
                 <h6>Enjoy all the benefits we have for you.</h6>
                 <div class="d-flex ms-5 me-5 mb-5 mt-2 gap-5 flex-wrap">
@@ -240,8 +245,7 @@
                     </article>
                 </div>
             </section>
-            <section class="requestCard d-flex flex-column align-items-center justify-content-around pt-5"
-                data-aos="fade-left">
+            <section class="requestCard d-flex flex-column align-items-center justify-content-around pt-5">
                 <h2 class="mt-1">Discover the ideal MB card for you and try it. A bonus year!</h2>
                 <div class="d-flex align-items-center">
                     <h5 class="h5">What are you waiting for to be a MB customer?
@@ -252,8 +256,7 @@
                     </div>
                 </div>
             </section>
-            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore"
-                data-aos="fade-right">
+            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
                 <img src="../images/customer_comes_first.svg" class="imgKnow" alt="">
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
@@ -328,6 +331,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

@@ -96,10 +96,10 @@
                 <button @click.prevent="createAccount" class="btnCreateAccount">Create</button>
             </div>
             <h4 v-else class="ms-5">You own the maximum number of accounts possible</h4>
-            <div class="d-flex flex-column align-items-start m-5 flex-wrap sectionAccounts">
+            <div class="d-flex flex-column align-items-start m-5 flex-wrap sectionAccounts" data-aos="zoom-out">
                 <div class="d-flex flex-row justify-content-center ms-3 me-5 mt-5 gap-5 flex-wrap">
                     <template v-if="accounts.length > 0" v-for="account of accounts">
-                        <div data-aos="zoom-out">
+                        <div>
                             <div class="plan">
                                 <div class="inner d-flex flex-column justify-content-around">
                                     <p class="titleP">Account: {{account.number}}</p>
@@ -115,8 +115,7 @@
                             </div>
                         </div>
                     </template>
-                    <section v-if="loans.length > 0" data-aos="zoom-out"
-                        class="d-flex flex-column align-items-center mb-5 ms-3">
+                    <section v-if="loans.length > 0" class="d-flex flex-column align-items-center mb-5 ms-3">
                         <h2 class="mb-4">These are your loans: <i class="bi bi-cash-coin fs-3 text-center"></i></h2>
                         <div>
                             <a href="./loans.html"><button class="btnApply">Apply</button></a>
@@ -155,7 +154,7 @@
                     <h2 v-else class="text-center m-5">This account has no loans.</h2>
                 </div>
             </div>
-            <section class=" d-flex flex-column align-items-center m-5" id="people" data-aos="fade-right">
+            <section class=" d-flex flex-column align-items-center m-5" id="people">
                 <h2 class="styleText mt-2">Your salary in MB, your way of traveling</h2>
                 <img class="imgPeople rounded pt-2" src="../images/gente.jpg" alt="">
                 <h4 class="styleText mt-3"> Collecting your salary at MB, you participate in 10 monthly draws for
@@ -163,8 +162,7 @@
                     MB Points to
                     travel.</h4>
             </section>
-            <section class="d-flex flex-column align-items-center justify-content-around" id="turnos"
-                data-aos="fade-left">
+            <section class="d-flex flex-column align-items-center justify-content-around" id="turnos">
                 <div>
                     <h2 class="text-white text-center mb-4"><i class="bi bi-calendar-date text-white"></i> Request your
                         turn:</h2>
@@ -176,7 +174,7 @@
                     <button type="button" class="btn btn-outline-light btnTurno fw-bold">I do not have access</button>
                 </div>
             </section>
-            <section class="d-flex flex-column align-items-center justify-content-center m-5" data-aos="fade-right">
+            <section class="d-flex flex-column align-items-center justify-content-center m-5">
                 <h2> Know what we have to offer.</h2>
                 <h6>All the benefits are focused so that you can make the most of being a MB customer.</h6>
                 <div class="d-flex ms-5 me-5 mb-5 mt-2 gap-5">
@@ -202,8 +200,7 @@
                     </article>
                 </div>
             </section>
-            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore"
-                data-aos="fade-left">
+            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
                 <img src="../images/customer_comes_first.svg" class="imgKnow" alt="">
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
