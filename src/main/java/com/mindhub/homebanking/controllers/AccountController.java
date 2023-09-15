@@ -1,10 +1,7 @@
 package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.AccountDTO;
-import com.mindhub.homebanking.models.Account;
-import com.mindhub.homebanking.models.Card;
-import com.mindhub.homebanking.models.Client;
-import com.mindhub.homebanking.models.Transaction;
+import com.mindhub.homebanking.models.*;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.repositories.ClientRepository;
 import com.mindhub.homebanking.services.AccountService;
@@ -78,10 +75,13 @@ public class AccountController {
     }
 
     @PostMapping("/clients/current/accounts")
-    public ResponseEntity<Object> newAccount(Authentication authentication) {
+    public ResponseEntity<Object> newAccount(@RequestParam AccountType type, Authentication authentication) {
+        if (type == null){
+            return new ResponseEntity<>("Type is required",HttpStatus.FORBIDDEN);
+        }
         if (clientService.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
             String accountNumber = generarNumeroSecuencial();
-            Account newAccount = new Account(accountNumber, LocalDate.now(), 0, true);
+            Account newAccount = new Account(accountNumber, LocalDate.now(), 0, true, type);
             clientService.findByEmail(authentication.getName()).addAccount(newAccount);
             accountService.addAccount(newAccount);
         } else {

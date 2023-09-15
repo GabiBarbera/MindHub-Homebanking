@@ -2,6 +2,7 @@ package com.mindhub.homebanking.controllers;
 
 import com.mindhub.homebanking.dtos.ClientDTO;
 import com.mindhub.homebanking.models.Account;
+import com.mindhub.homebanking.models.AccountType;
 import com.mindhub.homebanking.models.Client;
 import com.mindhub.homebanking.repositories.AccountRepository;
 import com.mindhub.homebanking.services.ClientService;
@@ -59,7 +60,7 @@ public class ClientController {
     @PostMapping("/clients")
     public ResponseEntity<Object> register(
             @RequestParam String firstName, @RequestParam String lastName,
-            @RequestParam String email, @RequestParam String password) {
+            @RequestParam String email, @RequestParam String password, @RequestParam AccountType type) {
         if (firstName.isBlank()) {
             return new ResponseEntity<>("The name is missing, please enter it.", HttpStatus.FORBIDDEN);
         }
@@ -78,7 +79,7 @@ public class ClientController {
         Client newClient = new Client(firstName, lastName, email, passwordEncoder.encode(password));
         clientService.addClient(newClient);
         String accountNumber = generarNumeroSecuencial();
-        Account newAccount = new Account(accountNumber, LocalDate.now(), 0,true);
+        Account newAccount = new Account(accountNumber, LocalDate.now(), 0,true, type);
         newClient.addAccount(newAccount);
         accountRepository.save(newAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);
