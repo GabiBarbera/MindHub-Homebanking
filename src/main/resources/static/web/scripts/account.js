@@ -10,6 +10,7 @@ createApp({
             hour: [],
             dateForm: {},
             client: [],
+            balance: "",
         }
     },
     created() {
@@ -25,6 +26,7 @@ createApp({
             axios.get('/api/clients/accounts/' + idParameters) // {headers:{'accept':'application/xml'}}
                 .then(response => {
                     this.account = response.data
+                    this.balance = this.account.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
                     this.transactions = this.account.transactions.sort((a, b) => b.id - a.id)
                     this.date = this.transactions.map(tr => tr.date.slice(0, -16))
                     this.hour = this.transactions.map(tr => tr.date.slice(11, -7))

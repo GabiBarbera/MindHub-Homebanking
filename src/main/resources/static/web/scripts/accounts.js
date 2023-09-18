@@ -37,11 +37,15 @@ const url = createApp({
                 title: 'Do you want to create a new account?',
                 html: `
                 <div class="radio-group">
-                <p class="text-black fw-bold">Account type:</p>
-                <label class="text-black" for="current">Current:</label>
-                <input class="text-black" type="radio" name="account" id="current" value="CURRENT">
-                <label class="text-black" for="savings">Savings:</label>
-                <input class="text-black" type="radio" name="account" id="savings" value="SAVINGS">
+                      <p class="text-black fw-bold">Choose the type of account you want.</p>
+                  <div class="d-flex justify-content-center gap-4">
+                    <label class="text-black" for="current">Current:</label>
+                      <input class="text-black" type="radio" name="account" id="current" value="CURRENT">
+                  </div>
+                  <div class="d-flex justify-content-center gap-4 mt-2">
+                      <label class="text-black" for="savings">Savings:</label>
+                      <input class="text-black" type="radio" name="account" id="savings" value="SAVINGS">
+                  </div>
                 </div>
                 `,
                 inputAttributes: {
@@ -84,8 +88,7 @@ const url = createApp({
                         .then(response => {
                             Swal.fire({
                                 icon: 'succes',
-                                title: response.data,
-                                text: `Your account was eliminated successfully.`,
+                                title: error.response.data,
                                 confirmButtonText: 'OK',
                                 customClass: {
                                     popup: 'custom-alert',
@@ -100,7 +103,6 @@ const url = createApp({
                             Swal.fire({
                                 icon: 'error',
                                 title: error.response.data,
-                                text: "If you want to delete this account, please transfer your money to another account.",
                                 confirmButtonText: 'OK',
                                 customClass: {
                                     popup: 'custom-alert',
