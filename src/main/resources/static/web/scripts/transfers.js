@@ -41,7 +41,7 @@ createApp({
                 confirmButtonText: 'Sure',
                 showLoaderOnConfirm: true,
                 preConfirm: (login) => {
-                    return axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&accountOrigin=${this.accountOrigin}&accountDestiny=${this.accountDestiny}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+                    return axios.post('/api/transactions', `amount=${this.amount}&description=${this.description}&accountOrigin=${this.accountOrigin}&accountDestiny=${this.accountDestiny}`)
                         .then(response => {
                             Swal.fire({
                                 icon: 'succes',

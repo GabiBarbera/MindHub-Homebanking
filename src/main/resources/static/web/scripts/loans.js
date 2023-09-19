@@ -46,6 +46,7 @@ createApp({
                 "payments": this.paymentSelect,
                 "numberAccountDestination": this.accountSelect
             }
+            console.log(object);
             Swal.fire({
                 title: 'Do you want to create a new loan?',
                 inputAttributes: {
@@ -98,8 +99,12 @@ createApp({
     },
     computed: {
         calculateInterest() {
-            if (this.paymentSelect == 6) {
-                this.finalAmount = this.amount + (this.amount * 0.075)
+            if (this.paymentSelect == 3) {
+                this.finalAmount = this.amount + (this.amount * 0.030)
+                return this.finalAmount;
+            }
+            else if (this.paymentSelect == 6) {
+                this.finalAmount = this.amount + (this.amount * 0.75)
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 12) {

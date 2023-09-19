@@ -13,6 +13,7 @@ public class LoanUtils {
             interest = initialInterest;
             initialInterest += 0.5;
         }
+        System.out.println(interest);
         return interest;
     }
 }
