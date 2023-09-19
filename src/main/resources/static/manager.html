@@ -64,43 +64,50 @@
 
         <main class="flex-grow-1 w-100">
             <div class="d-flex flex-wrap">
-                <div class="d-flex align-items-start flex-column m-4 w-50">
-                    <h2 class="text-center m-3">Enter your details to register:</h2>
-                    <form class="d-flex flex-column gap-1 shadow-lg p-3 mb-5 border border-black rounded">
-                        <label for="first-name" class="form-label text-black">First Name:</label>
-                        <input type="text" class="form-control inputManager border border-black" id="first-name"
-                            placeholder="Gabriel" v-model="firstName">
-                        <label for="last-name" class="form-label text-black">Last Name:</label>
-                        <input type="text" class="form-control inputManager border border-black" id="last-name"
-                            placeholder="Barbera" v-model="lastName">
-                        <label for="email-user" class="form-label text-black">Email ddress:</label>
-                        <input type="email" class="form-control inputManager border border-black" id="email-user"
-                            placeholder="name@example.com" v-model="email">
-                        <button type="submit" class="btn btn-dark w-50 m-2 border border-black"
-                            @click.prevent="inputCheck">Add
-                            client</button>
-                    </form>
-                    <h2 class="text-center m-3">Table of registered customers:</h2>
-                    <table class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded">
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <template v-if="clients.length > 0" v-for="(client,index) of clients">
-                                <tr>
-                                    <td>{{index+1}}</td>
-                                    <td>{{client.firstName}}</td>
-                                    <td>{{client.lastName}}</td>
-                                    <td>{{client.email}}</td>
-                                </tr>
-                            </template>
-                        </tbody>
-                    </table>
+                <div class="d-flex justify-content-around gap-5 m-2 w-100">
+                    <div>
+                        <h2 class="text-center m-3">Enter your details to register:</h2>
+                        <form class="d-flex flex-column gap-1 shadow-lg p-3 mb-5 border border-black rounded">
+                            <label for="first-name" class="form-label text-black">First Name:</label>
+                            <input type="text" class="form-control inputManager border border-black" id="first-name"
+                                placeholder="Gabriel" v-model="firstName">
+                            <label for="last-name" class="form-label text-black">Last Name:</label>
+                            <input type="text" class="form-control inputManager border border-black" id="last-name"
+                                placeholder="Barbera" v-model="lastName">
+                            <label for="email-user" class="form-label text-black">Email ddress:</label>
+                            <input type="email" class="form-control inputManager border border-black" id="email-user"
+                                placeholder="name@example.com" v-model="email">
+                            <button type="submit" class="btn btn-dark w-50 m-2 border border-black"
+                                @click.prevent="inputCheck">Add
+                                client</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h2 class="text-center m-3">Table of registered customers:</h2>
+                        <div class="tableResponsive tableManager">
+                            <table
+                                class="table table-primary table-bordered border-black text-center shadow-lg p-3 rounded">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <template v-if="clients.length > 0" v-for="(client,index) of clients">
+                                        <tr>
+                                            <td>{{index+1}}</td>
+                                            <td>{{client.firstName}}</td>
+                                            <td>{{client.lastName}}</td>
+                                            <td>{{client.email}}</td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
                 <div class="list d-flex flex-column align-items-center flex-end w-50 m-4">
                     <h2 class="text-center m-3">Client REST response:</h2>

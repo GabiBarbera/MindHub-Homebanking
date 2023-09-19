@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
+import org.springframework.web.cors.CorsConfiguration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -19,6 +21,7 @@ public class WebAuthorization {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/api/clients", "/api/login", "api/logout").permitAll()
+//                .antMatchers("/api/clients").permitAll()
                 .antMatchers("/web/index.html").permitAll()
                 .antMatchers("/web/scripts/**").permitAll()
                 .antMatchers("/web/style/**").permitAll()
@@ -48,7 +51,7 @@ public class WebAuthorization {
                 .loginPage("/api/login")
                 .permitAll();
         http.logout().logoutUrl("/api/logout").deleteCookies("JSESSIONID");
-        http.csrf().disable();
+        http.csrf().disable(); //.cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
         http.headers().frameOptions().disable();
         http.exceptionHandling().authenticationEntryPoint((req, res, exc) -> res.sendError(HttpServletResponse.SC_UNAUTHORIZED));
         http.formLogin().successHandler((req, res, auth) -> clearAuthenticationAttributes(req));

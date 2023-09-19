@@ -10,6 +10,7 @@ createApp({
             accountSelect: "",
             accounts: null,
             paymentSelect: "",
+            finalAmount: null,
         }
     },
     created() {
@@ -28,6 +29,7 @@ createApp({
             axios.get("/api/loans")
                 .then(response => {
                     this.loans = response.data
+                    console.log(this.finalAmount);
                 })
                 .catch(error => console.error('Error:', error));
         },
@@ -93,6 +95,34 @@ createApp({
         toggleVisibility() {
             this.isVisible = !this.isVisible;
         },
+    },
+    computed: {
+        calculateInterest() {
+            if (this.paymentSelect == 6) {
+                this.finalAmount = this.amount + (this.amount * 0.075)
+                return this.finalAmount;
+            }
+            else if (this.paymentSelect == 12) {
+                this.finalAmount = this.amount + (this.amount * 0.105)
+                return this.finalAmount;
+            }
+            else if (this.paymentSelect == 24) {
+                this.finalAmount = this.amount + (this.amount * 0.165)
+                return this.finalAmount;
+            }
+            else if (this.paymentSelect == 36) {
+                this.finalAmount = this.amount + (this.amount * 0.225)
+                return this.finalAmount;
+            }
+            else if (this.paymentSelect == 48) {
+                this.finalAmount = this.amount + (this.amount * 0.335)
+                return this.finalAmount;
+            }
+            else if (this.paymentSelect == 60) {
+                this.finalAmount = this.amount + (this.amount * 0.395)
+                return this.finalAmount;
+            } else { return 0 };
+        }
     }
 }).mount('#app')
 

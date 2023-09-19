@@ -85,7 +85,7 @@ public class ClientController {
         Client newClient = new Client(firstName, lastName, email, passwordEncoder.encode(password));
         clientService.addClient(newClient);
         String accountNumber = generarNumeroSecuencial();
-        Account newAccount = new Account(accountNumber, LocalDate.now(), 0,true,AccountType.CURRENT);
+        Account newAccount = new Account(accountNumber, LocalDate.now(), 0,true,AccountType.SAVINGS);
         newClient.addAccount(newAccount);
         accountRepository.save(newAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);

@@ -45,6 +45,11 @@ nav {
 
 table {
     width: 30rem !important;
+
+}
+
+.tableManager {
+    height: 20rem !important;
 }
 
 form {

@@ -19,9 +19,9 @@ const url = createApp({
                 .then(response => {
                     this.clients = response.data
                     this.accounts = this.clients.accounts.sort((a, b) => a.id - b.id).filter(account => account.active)
-                    console.log(this.accounts);
                     this.loans = this.clients.loans.sort((a, b) => b.id - a.id)
                     this.loansConvert = this.loans.map(loan => loan.amount.toLocaleString(1))
+                    console.log(this.clients);
                     localStorage.setItem('clients', JSON.stringify(this.clients));
                 })
                 .catch(error => console.error('Error:', error));

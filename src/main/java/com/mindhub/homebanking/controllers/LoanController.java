@@ -15,6 +15,8 @@ import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import static com.mindhub.homebanking.utils.LoanUtils.calculateInterest;
+
 @RestController
 @RequestMapping("/api")
 public class LoanController {
@@ -72,8 +74,10 @@ public class LoanController {
         if (account.getOwner().getId() != client.getId()) {
             return new ResponseEntity<>("This account does not belong to you.", HttpStatus.UNAUTHORIZED);
         }
+        double calculate = calculateInterest(loan, loanApplicationDTO);
+        double amountTotal = loanApplicationDTO.getAmount() + (loanApplicationDTO.getAmount() * (calculate / 100));
         account.setBalance(account.getBalance() + loanApplicationDTO.getAmount());
-        ClientLoan clientLoan = new ClientLoan(loanApplicationDTO.getAmount() * 1.2, loanApplicationDTO.getPayments());
+        ClientLoan clientLoan = new ClientLoan(amountTotal,loanApplicationDTO.getPayments());
         clientLoan.setClient(client);
         clientLoan.setLoan(loan);
         clientLoanService.addClientLoan(clientLoan);

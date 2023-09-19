@@ -23,7 +23,7 @@ createApp({
             const parameter = location.search
             const parameters = new URLSearchParams(parameter)
             const idParameters = parameters.get("id")
-            axios.get('/api/clients/accounts/' + idParameters) // {headers:{'accept':'application/xml'}}
+            axios.get('/api/clients/accounts/' + idParameters)
                 .then(response => {
                     this.account = response.data
                     this.balance = this.account.balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')

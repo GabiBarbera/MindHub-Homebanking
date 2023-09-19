@@ -7,15 +7,17 @@ public class LoanApplicationDTO {
  private double amount;
  private Integer payments;
  private String numberAccountDestination;
+ private double interest;
 
     public LoanApplicationDTO() {
     }
 
-    public LoanApplicationDTO(long id, double amount, Integer payments, String numberAccountDestination) {
+    public LoanApplicationDTO(long id, double amount, Integer payments, String numberAccountDestination, double interest) {
         this.id = id;
         this.amount = amount;
         this.payments = payments;
         this.numberAccountDestination = numberAccountDestination;
+        this.interest = interest;
     }
 
     public long getId() {
@@ -32,5 +34,9 @@ public class LoanApplicationDTO {
 
     public String getNumberAccountDestination() {
         return numberAccountDestination;
+    }
+
+    public double getInterest() {
+        return interest;
     }
 }

@@ -99,8 +99,8 @@
                             </p>
                         </div>
                         <div v-if="amount" class="d-flex align-items-center">
-                            <p class="text-black fw-bolder me-5">The final amount to pay (20% interest):
-                                ${{(amount * 1.2).toLocaleString(1)}}
+                            <p class="text-black fw-bolder me-5">The final amount to pay:
+                                ${{calculateInterest.toLocaleString(1)}}
                             </p>
                         </div>
                     </div>
@@ -121,7 +121,7 @@
                         </select>
 
                         <label for="amount">Amount:</label>
-                        <input class="inputTransactions" type="text" name="amount" id="amount" v-model="amount">
+                        <input class="inputTransactions" type="number" name="amount" id="amount" v-model="amount">
 
                         <label for="selectPayment">Choose your payment:</label>
                         <select name="selectPayment" id="selectPayment" v-model="paymentSelect" required>
@@ -130,7 +130,6 @@
                                 <option>{{payment}}</option>
                             </template>
                         </select>
-
                         <button type="submit" class="btn buttonCreate m-2 fw-bold">Create</button>
                     </form>
                 </div>

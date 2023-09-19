@@ -35,7 +35,7 @@ createApp({
                 lastName: this.lastName,
                 email: this.email,
             }
-            axios.post(url, clientNew)
+            axios.post("/rest/clients", clientNew)
                 .then(response => {
                     this.firstName = '';
                     this.lastName = '';
