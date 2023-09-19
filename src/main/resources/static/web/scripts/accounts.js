@@ -21,7 +21,6 @@ const url = createApp({
                     this.accounts = this.clients.accounts.sort((a, b) => a.id - b.id).filter(account => account.active)
                     this.loans = this.clients.loans.sort((a, b) => b.id - a.id)
                     this.loansConvert = this.loans.map(loan => loan.amount.toLocaleString(1))
-                    console.log(this.clients);
                     localStorage.setItem('clients', JSON.stringify(this.clients));
                 })
                 .catch(error => console.error('Error:', error));
@@ -88,7 +87,7 @@ const url = createApp({
                         .then(response => {
                             Swal.fire({
                                 icon: 'succes',
-                                title: error.response.data,
+                                title: "Your account was successfully deleted.",
                                 confirmButtonText: 'OK',
                                 customClass: {
                                     popup: 'custom-alert',

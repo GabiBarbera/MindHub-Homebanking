@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import javax.transaction.Transactional;
@@ -87,5 +88,26 @@ public class LoanController {
         accountService.addAccount(account);
         account.addTransaction(transaction);
         return new ResponseEntity<>("Loan request created successfully", HttpStatus.CREATED);
+    }
+    @PostMapping("/create/loans")
+    public ResponseEntity<Object> createLoan(@RequestBody LoanDTO loanDTO){
+        Loan loan = loanService.findByName(loanDTO.getName());
+        double amount = loanDTO.getMaxAmount();
+        List<Integer> payments = loanDTO.getPayments();
+        if (loan != null){
+            return new ResponseEntity<>("the loan already exists",HttpStatus.FORBIDDEN);
+        }
+        if (amount == 0){
+            return new ResponseEntity<>("Missing data",HttpStatus.FORBIDDEN);
+        }
+        if (payments == null){
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
+        if (amount < 0) {
+            return new ResponseEntity<>("The amount cannot be negative",HttpStatus.FORBIDDEN);
+        }
+        Loan newLoan = new Loan(loanDTO.getName(),amount,payments, loanDTO.getInterest());
+        loanService.addLoan(newLoan);
+        return new ResponseEntity<>("Loan create",HttpStatus.OK);
     }
 }

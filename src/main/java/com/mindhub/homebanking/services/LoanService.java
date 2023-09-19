@@ -9,4 +9,7 @@ public interface LoanService {
     List<LoanDTO> getAllLoans();
 
     Loan findById(long id);
+    Loan findByName(String name);
+
+    Loan addLoan(Loan loan);
 }
