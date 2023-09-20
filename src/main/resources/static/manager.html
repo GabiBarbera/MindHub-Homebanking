@@ -65,7 +65,7 @@
 
         <main class="flex-grow-1 w-100">
             <div class="d-flex flex-wrap">
-                <div class="d-flex justify-content-around gap-5 m-2 w-100">
+                <div class="d-flex justify-content-around gap-5 m-2 w-100 flex-wrap">
                     <div>
                         <h2 class="text-center m-3">Enter your details to register:</h2>
                         <form class="d-flex flex-column gap-1 shadow-lg p-3 mb-5 border border-black rounded">
@@ -109,57 +109,58 @@
                             </table>
                         </div>
                     </div>
+                    <div>
+                        <h2 class="text-center m-3">Create the new loan here:</h2>
+                        <form class="d-flex flex-column gap-1 shadow-lg p-3 mb-5 border border-black rounded">
+                            <label for="nameLoan" class="form-label text-black">Name of loan:</label>
+                            <input type="text" class="form-control inputManager border border-black" id="nameLoan"
+                                placeholder="Personal" v-model="loanName">
+                            <label for="maxAmount" class="form-label text-black">Max amount of loan:</label>
+                            <input type="number" class="form-control inputManager border border-black" id="maxAmount"
+                                placeholder="50.000" v-model="maxAmountLoan">
+                            <label for="paymentLoan" class="form-label text-black">Choose payments:</label>
+                            <div class="d-flex flex-wrap justify-content-center">
+                                <div class="ms-4 mt-2 ">
+                                    <input type="checkbox" id="cbox1" value="3" v-model="paymentsLoan" />
+                                    <label class="text-black" for="cbox1">3</label>
+                                </div>
+                                <div class="ms-4 mt-2 ">
+                                    <input type="checkbox" id="cbox2" value="6" v-model="paymentsLoan" />
+                                    <label class="text-black" for="cbox2">6</label>
+                                </div>
+                                <div class="ms-4 mt-2 ">
+                                    <input type="checkbox" id="cbox3" value="12" v-model="paymentsLoan" />
+                                    <label class="text-black" for="cbox3">12</label>
+                                </div>
+                                <div class="ms-4 mt-2 ">
+                                    <input type="checkbox" id="cbox4" value="24" v-model="paymentsLoan" />
+                                    <label class="text-black" for="cbox4">24</label>
+                                </div>
+                                <div class="ms-4 mt-2 ">
+                                    <input type="checkbox" id="cbox5" value="36" v-model="paymentsLoan" />
+                                    <label class="text-black" for="cbox5">36</label>
+                                </div>
+                                <div class="ms-4 mt-2 ">
+                                    <input type="checkbox" id="cbox6" value="48" v-model="paymentsLoan" />
+                                    <label class="text-black" for="cbox26">48</label>
+                                </div>
+                                <div class="ms-4 mt-2 ">
+                                    <input type="checkbox" id="cbox7" value="60" v-model="paymentsLoan" />
+                                    <label class="text-black" for="cbox27">60</label>
+                                </div>
+                                <label for="interestloan" class="form-label text-black">Choose the initial
+                                    interest:</label>
+                                <input type="number" class="form-control inputManager border border-black"
+                                    id="interestloan" placeholder="5" v-model="interestLoan">
+                                <button type="submit" class="btn btn-dark w-50 m-2 border border-black"
+                                    @click.prevent="createLoan">Create</button>
+                        </form>
+                    </div>
                 </div>
-                <div>
-                    <h2 class="text-center m-3">Create the new loan here:</h2>
-                    <form class="d-flex flex-column gap-1 shadow-lg p-3 mb-5 border border-black rounded">
-                        <label for="nameLoan" class="form-label text-black">Name of loan:</label>
-                        <input type="text" class="form-control inputManager border border-black" id="nameLoan"
-                            placeholder="Personal" v-model="loanName">
-                        <label for="maxAmount" class="form-label text-black">Max amount of loan:</label>
-                        <input type="number" class="form-control inputManager border border-black" id="maxAmount"
-                            placeholder="50.000" v-model="maxAmountLoan">
-                        <label for="paymentLoan" class="form-label text-black">Choose payments:</label>
-                        <div class="d-flex flex-wrap justify-content-center">
-                            <div class="ms-4 mt-2 ">
-                                <input type="checkbox" id="" value="3" v-model="paymentsLoan" />
-                                <label class="text-black" for="cbox2">3</label>
-                            </div>
-                            <div class="ms-4 mt-2 ">
-                                <input type="checkbox" id="" value="6" v-model="paymentsLoan" />
-                                <label class="text-black" for="cbox2">6</label>
-                            </div>
-                            <div class="ms-4 mt-2 ">
-                                <input type="checkbox" id="" value="12" v-model="paymentsLoan" />
-                                <label class="text-black" for="cbox2">12</label>
-                            </div>
-                            <div class="ms-4 mt-2 ">
-                                <input type="checkbox" id="" value="24" v-model="paymentsLoan" />
-                                <label class="text-black" for="cbox2">24</label>
-                            </div>
-                            <div class="ms-4 mt-2 ">
-                                <input type="checkbox" id="" value="36" v-model="paymentsLoan" />
-                                <label class="text-black" for="cbox2">36</label>
-                            </div>
-                            <div class="ms-4 mt-2 ">
-                                <input type="checkbox" id="" value="48" v-model="paymentsLoan" />
-                                <label class="text-black" for="cbox2">48</label>
-                            </div>
-                            <div class="ms-4 mt-2 ">
-                                <input type="checkbox" id="" value="60" v-model="paymentsLoan" />
-                                <label class="text-black" for="cbox2">60</label>
-                            </div>
-                            <label for="interestloan" class="form-label text-black">Choose the initial interest:</label>
-                            <input type="number" class="form-control inputManager border border-black" id="interestloan"
-                                placeholder="5" v-model="interestLoan">
-                            <button type="submit" class="btn btn-dark w-50 m-2 border border-black"
-                                @click.prevent="createLoan">Create</button>
-                    </form>
-                </div>
-                <div class="list d-flex flex-column align-items-center flex-end w-50 m-4">
-                    <h2 class="text-center m-3">Client REST response:</h2>
-                    <pre class="fw-bold fs-6">{{jsonRest}}</pre>
-                </div>
+            </div>
+            <div class="list d-flex flex-column align-items-center flex-end w-50 m-4">
+                <h2 class="text-center m-3">Client REST response:</h2>
+                <pre class="fw-bold fs-6">{{jsonRest}}</pre>
             </div>
         </main>
     </div>

@@ -8,8 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -37,9 +35,9 @@ public class HomebankingApplication {
     @Bean
     public CommandLineRunner initData(ClientRepository repositoryClient, AccountRepository accountRepository, TransactionRepository transactionRepository, LoanRepository loanRepository, ClientLoanRepository clientLoanRepository, CardRepository cardRepository) {
         return (args) -> {
-            Loan loanMortgage = new Loan("Mortgage", 500000.0, Arrays.asList(12, 24, 36, 48, 60),10);
-            Loan loanPersonal = new Loan("Personal", 100000.0, Arrays.asList(6, 12, 24),5);
-            Loan loanAutomotive = new Loan("Automotive", 300000.0, Arrays.asList(6, 12, 24, 36),5);
+            Loan loanMortgage = new Loan("Mortgage", 500000.0, Arrays.asList(12, 24, 36, 48, 60), 5);
+            Loan loanPersonal = new Loan("Personal", 100000.0, Arrays.asList(6, 12, 24), 5);
+            Loan loanAutomotive = new Loan("Automotive", 300000.0, Arrays.asList(6, 12, 24, 36), 5);
             loanRepository.save(loanMortgage);
             loanRepository.save(loanPersonal);
             loanRepository.save(loanAutomotive);

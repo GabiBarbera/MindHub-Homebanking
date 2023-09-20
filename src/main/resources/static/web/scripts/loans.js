@@ -100,31 +100,31 @@ createApp({
     computed: {
         calculateInterest() {
             if (this.paymentSelect == 3) {
-                this.finalAmount = this.amount + (this.amount * 0.030)
+                this.finalAmount = this.amount + (this.amount * 0.05)
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 6) {
-                this.finalAmount = this.amount + (this.amount * 0.75)
+                this.finalAmount = this.amount + (this.amount * 0.10)
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 12) {
-                this.finalAmount = this.amount + (this.amount * 0.105)
+                this.finalAmount = this.amount + (this.amount * 0.20)
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 24) {
-                this.finalAmount = this.amount + (this.amount * 0.165)
+                this.finalAmount = this.amount + (this.amount * 0.45)
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 36) {
-                this.finalAmount = this.amount + (this.amount * 0.225)
+                this.finalAmount = this.amount + (this.amount * 0.65)
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 48) {
-                this.finalAmount = this.amount + (this.amount * 0.335)
+                this.finalAmount = this.amount + (this.amount * 0.70)
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 60) {
-                this.finalAmount = this.amount + (this.amount * 0.395)
+                this.finalAmount = this.amount + (this.amount * 0.75)
                 return this.finalAmount;
             } else { return 0 };
         }

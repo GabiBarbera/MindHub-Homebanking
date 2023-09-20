@@ -103,20 +103,3 @@ createApp({
         }
     }
 }).mount('#app')
-
-// createLoan() {
-//     let newLoan = {
-//         name: this.loanName,
-//         maxAmount: this.maxAmountLoan,
-//         payments: this.paymentsLoan,
-//         interest: this.interestLoan
-//     }
-//     axios.post('/api/create/loans', newLoan)
-//         .then(response => {
-//             console.log(this.loanName);
-//             console.log(this.maxAmountLoan);
-//             console.log(this.paymentsLoan);
-//             console.log(this.interestLoan);
-//         })
-//         .catch(error => console.error('Error:', error));
-// }
