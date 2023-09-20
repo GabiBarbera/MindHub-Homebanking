@@ -4,11 +4,12 @@ import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.models.Loan;
 
 public class LoanUtils {
-    public static double calculateInterest(LoanApplicationDTO loanApplicationDTO) {
-        int[] interest = {5, 10, 20, 45, 65, 70, 75};
+    public static double calculateInterest(LoanApplicationDTO loanApplicationDTO,Loan loan) {
+        int[] interestPayments = {5, 10, 20, 45, 65, 70, 75};
         int interestIndex = 0;
         int payments = loanApplicationDTO.getPayments();
         double amount = loanApplicationDTO.getAmount();
+        double interest = loan.getInterest();
 
         if (payments == 3) {
             interestIndex = 0;
@@ -27,19 +28,8 @@ public class LoanUtils {
         } else {
             throw new IllegalArgumentException("This payments is not available.");
         }
-        double interestRate = (double) interest[interestIndex] / 100;
+        double interestRate = (interest + (double) interestPayments[interestIndex]) / 100;
         double totalAmountWithInterest = amount * (1 + interestRate);
         return totalAmountWithInterest;
     }
-//    public static Double calculateInterest(Loan loan, LoanApplicationDTO loanAppDTO) {
-//        int payment = loanAppDTO.getPayments();
-//        double initialInterest = loan.getInterest();
-//        double interest = 0;
-//
-//        for (int i = 0; i < payment; i++) {
-//            interest = initialInterest;
-//            initialInterest += 0.5;
-//        }
-//        return interest;
-//    }
 }

@@ -12,7 +12,7 @@ createApp({
     },
     methods: {
         login() {
-            axios.post('/api/login', `email=${this.email}&password=${this.password}`, { headers: { 'content-type': 'application/x-www-form-urlencoded' } })
+            axios.post('/api/login', `email=${this.email}&password=${this.password}`)
                 .then(response => {
                     if (this.email.includes("admin.mindhub")) {
                         location.href = '../manager.html';
@@ -25,6 +25,7 @@ createApp({
                     Swal.fire({
                         icon: 'error',
                         title: error.response.data,
+                        text: "Error",
                         confirmButtonText: 'OK',
                         customClass: {
                             popup: 'custom-alert',

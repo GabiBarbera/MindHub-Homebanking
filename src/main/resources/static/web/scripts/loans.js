@@ -11,6 +11,7 @@ createApp({
             accounts: null,
             paymentSelect: "",
             finalAmount: null,
+            interest: null,
         }
     },
     created() {
@@ -29,7 +30,6 @@ createApp({
             axios.get("/api/loans")
                 .then(response => {
                     this.loans = response.data
-                    console.log(this.finalAmount);
                 })
                 .catch(error => console.error('Error:', error));
         },
@@ -46,7 +46,6 @@ createApp({
                 "payments": this.paymentSelect,
                 "numberAccountDestination": this.accountSelect
             }
-            console.log(object);
             Swal.fire({
                 title: 'Do you want to create a new loan?',
                 inputAttributes: {
@@ -100,31 +99,31 @@ createApp({
     computed: {
         calculateInterest() {
             if (this.paymentSelect == 3) {
-                this.finalAmount = this.amount + (this.amount * 0.05)
+                this.finalAmount = this.amount + (this.amount * (0.05 + (this.loanSelect.interest / 100)))
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 6) {
-                this.finalAmount = this.amount + (this.amount * 0.10)
+                this.finalAmount = this.amount + (this.amount * (0.10 + (this.loanSelect.interest / 100)))
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 12) {
-                this.finalAmount = this.amount + (this.amount * 0.20)
+                this.finalAmount = this.amount + (this.amount * (0.20 + (this.loanSelect.interest / 100)))
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 24) {
-                this.finalAmount = this.amount + (this.amount * 0.45)
+                this.finalAmount = this.amount + (this.amount * (0.45 + (this.loanSelect.interest / 100)))
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 36) {
-                this.finalAmount = this.amount + (this.amount * 0.65)
+                this.finalAmount = this.amount + (this.amount * (0.65 + (this.loanSelect.interest / 100)))
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 48) {
-                this.finalAmount = this.amount + (this.amount * 0.70)
+                this.finalAmount = this.amount + (this.amount * (0.70 + (this.loanSelect.interest / 100)))
                 return this.finalAmount;
             }
             else if (this.paymentSelect == 60) {
-                this.finalAmount = this.amount + (this.amount * 0.75)
+                this.finalAmount = this.amount + (this.amount * (0.75 + (this.loanSelect.interest / 100)))
                 return this.finalAmount;
             } else { return 0 };
         }

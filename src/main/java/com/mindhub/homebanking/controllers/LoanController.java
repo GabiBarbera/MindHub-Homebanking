@@ -75,8 +75,7 @@ public class LoanController {
         if (account.getOwner().getId() != client.getId()) {
             return new ResponseEntity<>("This account does not belong to you.", HttpStatus.UNAUTHORIZED);
         }
-        double amountTotal = calculateInterest(loanApplicationDTO);
-//        double amountTotal = loanApplicationDTO.getAmount() + (loanApplicationDTO.getAmount() * (calculate));
+        double amountTotal = calculateInterest(loanApplicationDTO,loan);
         account.setBalance(account.getBalance() + loanApplicationDTO.getAmount());
         ClientLoan clientLoan = new ClientLoan(amountTotal,loanApplicationDTO.getPayments());
         clientLoan.setClient(client);
