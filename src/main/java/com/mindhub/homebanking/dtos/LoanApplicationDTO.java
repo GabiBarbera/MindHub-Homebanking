@@ -3,14 +3,11 @@ package com.mindhub.homebanking.dtos;
 import java.util.List;
 
 public class LoanApplicationDTO {
- private long id;
- private double amount;
- private Integer payments;
- private String numberAccountDestination;
- private double interest;
-
-    public LoanApplicationDTO() {
-    }
+    private long id;
+    private double amount;
+    private Integer payments;
+    private String numberAccountDestination;
+    private double interest;
 
     public LoanApplicationDTO(long id, double amount, Integer payments, String numberAccountDestination, double interest) {
         this.id = id;

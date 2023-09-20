@@ -15,11 +15,7 @@ public class CardDTO {
     private int cvv;
     private LocalDate fromDate;
     private LocalDate thruDate;
-
     private boolean isActive;
-
-    public CardDTO() {
-    }
 
     public CardDTO(Card card) {
         this.id = card.getId();

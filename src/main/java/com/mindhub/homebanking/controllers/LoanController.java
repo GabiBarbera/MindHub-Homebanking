@@ -94,19 +94,19 @@ public class LoanController {
         double amount = loanDTO.getMaxAmount();
         List<Integer> payments = loanDTO.getPayments();
         if (loan != null){
-            return new ResponseEntity<>("the loan already exists",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("the loan already exists.",HttpStatus.FORBIDDEN);
         }
         if (amount == 0){
-            return new ResponseEntity<>("Missing data",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("The amount cannot be zero.",HttpStatus.FORBIDDEN);
         }
         if (payments == null){
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Payments are missing.", HttpStatus.FORBIDDEN);
         }
         if (amount < 0) {
-            return new ResponseEntity<>("The amount cannot be negative",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("The amount cannot be negative.",HttpStatus.FORBIDDEN);
         }
         Loan newLoan = new Loan(loanDTO.getName(),amount,payments, loanDTO.getInterest());
         loanService.addLoan(newLoan);
-        return new ResponseEntity<>("Loan create",HttpStatus.OK);
+        return new ResponseEntity<>("Loan create.",HttpStatus.CREATED);
     }
 }

@@ -24,12 +24,6 @@
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav d-flex align-items-center justify-content-around w-100">
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page"
-                                    href="http://localhost:8080/h2-console/login.jsp?jsessionid=8c6277a6bb19c64c73a1cc4d2215dd8a"
-                                    target="_blank">H2
-                                    CONSOLE</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="http://localhost:8080/rest/clients"
                                     target="_blank">REST/CLIENTS </a>
                             </li>
@@ -111,7 +105,7 @@
                     </div>
                     <div>
                         <h2 class="text-center m-3">Create the new loan here:</h2>
-                        <form class="d-flex flex-column gap-1 shadow-lg p-3 mb-5 border border-black rounded">
+                        <form class="d-flex flex-column gap-2 shadow-lg p-3 mb-5 border border-black rounded">
                             <label for="nameLoan" class="form-label text-black">Name of loan:</label>
                             <input type="text" class="form-control inputManager border border-black" id="nameLoan"
                                 placeholder="Personal" v-model="loanName">
@@ -148,7 +142,7 @@
                                     <input type="checkbox" id="cbox7" value="60" v-model="paymentsLoan" />
                                     <label class="text-black" for="cbox27">60</label>
                                 </div>
-                                <label for="interestloan" class="form-label text-black">Choose the initial
+                                <label for="interestloan" class="form-label text-black mt-2">Choose the initial
                                     interest:</label>
                                 <input type="number" class="form-control inputManager border border-black"
                                     id="interestloan" placeholder="5" v-model="interestLoan">

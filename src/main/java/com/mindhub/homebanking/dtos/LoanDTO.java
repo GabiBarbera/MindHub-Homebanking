@@ -1,18 +1,16 @@
 package com.mindhub.homebanking.dtos;
 
 import com.mindhub.homebanking.models.Loan;
+
 import java.util.List;
 
 
 public class LoanDTO {
-private long id;
-private String name;
-private Double maxAmount;
-private List<Integer> payments;
-private double interest;
-
-    public LoanDTO() {
-    }
+    private long id;
+    private String name;
+    private Double maxAmount;
+    private List<Integer> payments;
+    private double interest;
 
     public LoanDTO(Loan loan) {
         this.id = loan.getId();
