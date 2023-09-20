@@ -15,4 +15,5 @@ public interface ClientService {
     ClientDTO getClientDTO(String email);
 
     ClientDTO findById(long id);
+    Client findByIdNoDTO(long id);
 }
