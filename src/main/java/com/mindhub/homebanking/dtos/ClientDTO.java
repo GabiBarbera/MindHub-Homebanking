@@ -6,13 +6,16 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ClientDTO {
-    private final long id;
-    private final String firstName;
-    private final String lastName;
-    private final String email;
-    private final Set<AccountDTO> accounts;
-    private final Set<ClientLoanDTO> loans;
-    private final Set<CardDTO> cards;
+    private long id;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Set<AccountDTO> accounts;
+    private Set<ClientLoanDTO> loans;
+    private Set<CardDTO> cards;
+
+    public ClientDTO() {
+    }
 
     public ClientDTO(Client client) {
         this.id = client.getId();

@@ -9,6 +9,9 @@ public class LoanApplicationDTO {
     private String numberAccountDestination;
     private double interest;
 
+    public LoanApplicationDTO() {
+    }
+
     public LoanApplicationDTO(long id, double amount, Integer payments, String numberAccountDestination, double interest) {
         this.id = id;
         this.amount = amount;

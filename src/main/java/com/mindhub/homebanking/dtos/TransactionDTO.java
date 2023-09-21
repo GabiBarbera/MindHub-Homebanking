@@ -14,6 +14,9 @@ public class TransactionDTO {
     private double balance;
     private boolean isActive;
 
+    public TransactionDTO() {
+    }
+
     public TransactionDTO(Transaction transaction) {
         this.id = transaction.getId();
         this.type = transaction.getType();

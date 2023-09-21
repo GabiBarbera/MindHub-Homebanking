@@ -9,6 +9,9 @@ public class ClientLoanDTO {
     private Double amount;
     private Integer payments;
 
+    public ClientLoanDTO() {
+    }
+
     public ClientLoanDTO(ClientLoan clientLoan) {
         this.id = clientLoan.getId();
         this.loanId = clientLoan.getLoan().getId();

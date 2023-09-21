@@ -6,6 +6,9 @@ public class PosnetDTO {
     private double amount;
     private String description;
 
+    public PosnetDTO() {
+    }
+
     public PosnetDTO(String number, int cvv, double amount, String description) {
         this.number = number;
         this.cvv = cvv;

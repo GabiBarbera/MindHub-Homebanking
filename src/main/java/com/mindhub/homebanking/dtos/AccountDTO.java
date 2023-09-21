@@ -16,6 +16,9 @@ public class AccountDTO {
     private boolean isActive;
     private AccountType accountType;
 
+    public AccountDTO() {
+    }
+
     public AccountDTO(Account account) {
         this.id = account.getId();
         this.number = account.getNumber();
