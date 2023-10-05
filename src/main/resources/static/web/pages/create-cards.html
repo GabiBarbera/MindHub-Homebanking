@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="../style/style.css">
+    <link rel="shortcut icon" href="../images/banco.png" type="image/x-icon">
+    <title> Create cards | HomeBanking</title>
+</head>
+
+<body>
+    <div id="app" class="layout" v-cloak>
+        <header class="col-12">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav d-flex align-items-center justify-content-around w-100">
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="accounts.html">Accounts <i
+                                        class="bi bi-person-circle text-white"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="cards.html">Cards <i
+                                        class="bi bi-credit-card-2-back text-white"></i></a>
+                            </li>
+                            <div class="d-flex align-items-center">
+                                <p class="textNameNav fs-4">Mindhub</p>
+                                <img src="../images/word.png" id="logo" alt="">
+                                <p class="textNameNav fs-4">Brothers</p>
+                                <div>
+                                    <p class="textBank">BANK</p>
+                                </div>
+                            </div>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./loans.html">Loans <i
+                                        class="bi bi-currency-dollar text-white"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="./transfers.html">Transactions <i
+                                        class="bi bi-globe-americas text-white"></i></a>
+                            </li>
+                        </ul>
+                        <button class="Btn" @click="logout">
+                            <div class="sign"><svg viewBox="0 0 512 512">
+                                    <path
+                                        d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="text">Logout</div>
+                        </button>
+
+                    </div>
+                </div>
+            </nav>
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="../images/banner10.jpg" class="d-block w-100 imgCarousel" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../images/banner11.jpg" class="d-block w-100 imgCarousel" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="../images/banner12.jpg" class="d-block w-100 imgCarousel imgCarrouselAjust" alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="flex-grow-1 w-100">
+            <section class="d-flex sectionCreateCard m-5" data-aos="zoom-out">
+                <h2 class="m-4">Choose your card configuration:</h2>
+                <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createCard">
+                    <div class="mb-3">
+                        <label for="cardType" class="form-label">Card Type:</label>
+                        <select v-model="cardType" id="cardType" class="form-select" required>
+                            <option value="" disabled>Choose card type</option>
+                            <option value="CREDIT">Credit</option>
+                            <option value="DEBIT">Debit</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cardColor" class="form-label">Card Color:</label>
+                        <select v-model="cardColor" id="cardColor" class="form-select" required>
+                            <option value="" disabled>Choose card color</option>
+                            <option value="GOLD">Gold</option>
+                            <option value="TITANIUM">Titanium</option>
+                            <option value="SILVER">Silver</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn buttonCreate m-2">Create</button>
+                </form>
+            </section>
+            <section class="d-flex flex-column align-items-center justify-content-center sectionCreate mb-5">
+                <h2>Find everything you are looking for in MB.</h2>
+                <h6>Enjoy all the benefits we have for you.</h6>
+                <div class="d-flex flex-wrap">
+                    <article class="articleTransactions d-flex align-items-center sectionCreate">
+                        <div>
+                            <img class="imgDibujo" src="../images/card-12.im1683318482639im.avif" alt="">
+                            <h2 class="text-center">Know the benefits of MB.</h2>
+                            <h6 class="text-center">Know the benefits and promotions of MB. <br>
+                                From trips to exclusive discounts, find out what MB has for you
+                                benefits
+                            </h6>
+                        </div>
+                        <div class="text-center">
+                            <img class="imgDibujo2" src="../images/card-23onoffx.im1677789266395im.avif" alt="">
+                            <h3 class="text-center">MB points.</h3>
+                            <h6 class="text-center">Buy, add and travel <br>
+                                For every purchase you make with your credit card, you earn MB Points to exchange for
+                                trips, experiences and much more. <br>
+                                Bills, cards, receipts. Bills, cards, receipts. <br>
+                                Do everything from the MB app. <br>
+                                Do everything from the MB app.</h6>
+                        </div>
+                        <div class="text-center">
+                            <img class="imgDibujo2" src="../images/imagen-go-023x.im1678460587405im.avif" alt="">
+                            <h3 class="text-center">Referral Program.</h3>
+                            <h6 class="text-center">For each registration you get $10,000. <br>
+                                Earn up to $200,000 by referring whoever you want! <br>
+                                MB Wallet.</h6>
+                        </Div>
+                        <div class="text-center">
+                            <img class="imgDibujo2" src="../images/imagen-go-033x.im1668710783984im.avif" alt="">
+                            <h3 class="text-center">Digital Branches.</h3>
+                            <h6 class="text-center">I discovered the functionalities available for you to carry out your
+                                operations safely. <br>
+                                I discovered the functionalities available for you to carry out your operations safely.
+                            </h6>
+                        </div>
+                    </article>
+                </div>
+            </section>
+            <section class="requestCard d-flex flex-column align-items-center justify-content-around pt-5">
+                <h2 class="mt-1">Discover the ideal MB card for you and try it. A bonus year!</h2>
+                <div class="d-flex align-items-center">
+                    <h5 class="h5">What are you waiting for to be a MB customer?
+                        <br> Get your card and start traveling around the world with Mindhub Brothers.
+                    </h5>
+                    <div class="d-flex justify-content-end w-100">
+                        <img class="cardImg" src="../images/tarjeta.png" alt="">
+                    </div>
+                </div>
+            </section>
+            <section class="d-flex gap-5 align-items-center justify-content-center flex-wrap" id="knowMore">
+                <img src="../images/customer_comes_first.svg" class="imgKnow" alt="">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <h2><i class="bi bi-info-square"></i> We want to ensure inclusive and accessible care</h2>
+                    <h6>If you need help, go to a branch and request a sign language interpreter to assist you.</h6>
+                </div>
+                <div class="btn btn-dark d-flex" id="btnKnow">
+                    <button type="button" class="btn btn-dark fw-bold">Know more</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="col-12">
+            <div class="d-flex align-items-center justify-content-around">
+                <div class="footer-logo d-flex flex-column gap-4">
+                    <div class="d-flex align-items-center">
+                        <p class="textNameNav fs-4">Mindhub</p>
+                        <img src="../images/word.png" id="logo" alt="">
+                        <p class="textNameNav fs-4">Brothers</p>
+                        <div>
+                            <p class="textBank">BANK</p>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row">
+                        <a href="https://github.com/GabiBarbera" target="_blank"> <button class="buttonGit">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M12 0.296997C5.37 0.296997 0 5.67 0 12.297C0 17.6 3.438 22.097 8.205 23.682C8.805 23.795 9.025 23.424 9.025 23.105C9.025 22.82 9.015 22.065 9.01 21.065C5.672 21.789 4.968 19.455 4.968 19.455C4.422 18.07 3.633 17.7 3.633 17.7C2.546 16.956 3.717 16.971 3.717 16.971C4.922 17.055 5.555 18.207 5.555 18.207C6.625 20.042 8.364 19.512 9.05 19.205C9.158 18.429 9.467 17.9 9.81 17.6C7.145 17.3 4.344 16.268 4.344 11.67C4.344 10.36 4.809 9.29 5.579 8.45C5.444 8.147 5.039 6.927 5.684 5.274C5.684 5.274 6.689 4.952 8.984 6.504C9.944 6.237 10.964 6.105 11.984 6.099C13.004 6.105 14.024 6.237 14.984 6.504C17.264 4.952 18.269 5.274 18.269 5.274C18.914 6.927 18.509 8.147 18.389 8.45C19.154 9.29 19.619 10.36 19.619 11.67C19.619 16.28 16.814 17.295 14.144 17.59C14.564 17.95 14.954 18.686 14.954 19.81C14.954 21.416 14.939 22.706 14.939 23.096C14.939 23.411 15.149 23.786 15.764 23.666C20.565 22.092 24 17.592 24 12.297C24 5.67 18.627 0.296997 12 0.296997Z"
+                                        fill="white"></path>
+                                </svg>
+                            </button>
+                        </a>
+                        <a href="https://www.instagram.com/gabibarbera/" target="_blank">
+                            <button class="BtnInsta">
+                                <span class="svgContainer2">
+                                    <svg fill="white" class="svgIcon2" viewBox="0 0 448 512" height="1.5em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <span class="BG2"></span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <ul>
+                        <li><a href="accounts.html">Home</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Loans</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Branch Offices</a></li>
+                        <li><a href="#">Frequent Questions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact d-flex flex-column gap-5">
+                    <a class="text-decoration-none text-white" href="tel:+1139145523"><i
+                            class="bi bi-telephone-forward"></i> Phone: +11-3914-5523</a>
+                    <a class="text-decoration-none text-white" href="mailto:gabriel.barberaa@gmail.com"><i
+                            class="bi bi-envelope-at"></i> Email:
+                        gabriel.barberaa@gmail.com</a>
+                    <p><i class="bi bi-geo-alt"></i> Address: Street of Bank, 1234</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>All rights reserved &copy; Bank of Mindhub cohort-49</p>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.20/dist/sweetalert2.all.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../scripts/create-cards.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
