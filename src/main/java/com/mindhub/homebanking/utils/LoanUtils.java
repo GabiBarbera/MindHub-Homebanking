@@ -4,7 +4,7 @@ import com.mindhub.homebanking.dtos.LoanApplicationDTO;
 import com.mindhub.homebanking.models.Loan;
 
 public class LoanUtils {
-    public static double calculateInterest(LoanApplicationDTO loanApplicationDTO,Loan loan) {
+    public static double calculateInterest(LoanApplicationDTO loanApplicationDTO, Loan loan) {
         int[] interestPayments = {5, 10, 20, 45, 65, 70, 75};
         int interestIndex = 0;
         int payments = loanApplicationDTO.getPayments();

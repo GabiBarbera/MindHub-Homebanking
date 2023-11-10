@@ -70,14 +70,14 @@ public class ClientController {
         if (email.isBlank()) {
             return new ResponseEntity<>("The email is missing, please enter it.", HttpStatus.FORBIDDEN);
         }
-        if (!email.matches("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$")){
-            return new ResponseEntity<>("Incorrect email format.",HttpStatus.FORBIDDEN);
+        if (!email.matches("^[\\w-]+(\\.[\\w-]+)*@([\\w-]+\\.)+[a-zA-Z]{2,7}$")) {
+            return new ResponseEntity<>("Incorrect email format.", HttpStatus.FORBIDDEN);
         }
         if (password.isBlank()) {
             return new ResponseEntity<>("The password is missing, please enter it.", HttpStatus.FORBIDDEN);
         }
-        if (!password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")){
-            return new ResponseEntity<>("The password must contain at least 8 characters, a capital letter, a number and a special character!",HttpStatus.FORBIDDEN);
+        if (!password.matches("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$")) {
+            return new ResponseEntity<>("The password must contain at least 8 characters, a capital letter, a number and a special character!", HttpStatus.FORBIDDEN);
         }
         if (clientService.findByEmail(email) != null) {
             return new ResponseEntity<>("Email already in use", HttpStatus.FORBIDDEN);
@@ -85,7 +85,7 @@ public class ClientController {
         Client newClient = new Client(firstName, lastName, email, passwordEncoder.encode(password));
         clientService.addClient(newClient);
         String accountNumber = generarNumeroSecuencial();
-        Account newAccount = new Account(accountNumber, LocalDate.now(), 0,true,AccountType.SAVINGS);
+        Account newAccount = new Account(accountNumber, LocalDate.now(), 0, true, AccountType.SAVINGS);
         newClient.addAccount(newAccount);
         accountRepository.save(newAccount);
         return new ResponseEntity<>(HttpStatus.CREATED);

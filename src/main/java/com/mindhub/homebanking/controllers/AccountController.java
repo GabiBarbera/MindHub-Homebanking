@@ -76,8 +76,8 @@ public class AccountController {
 
     @PostMapping("/clients/current/accounts")
     public ResponseEntity<Object> newAccount(@RequestParam AccountType type, Authentication authentication) {
-        if (type == null){
-            return new ResponseEntity<>("Type is required",HttpStatus.FORBIDDEN);
+        if (type == null) {
+            return new ResponseEntity<>("Type is required", HttpStatus.FORBIDDEN);
         }
         if (clientService.findByEmail(authentication.getName()).getAccounts().size() <= 2) {
             String accountNumber = generarNumeroSecuencial();
@@ -105,7 +105,7 @@ public class AccountController {
         if (existsAccount) {
             return new ResponseEntity<>("This account does not belong to you.", HttpStatus.FORBIDDEN);
         }
-        if(accountActive <= 1){
+        if (accountActive <= 1) {
             return new ResponseEntity<>("You cannot delete the only account you have.", HttpStatus.FORBIDDEN);
         }
         if (account.getBalance() > 0) {

@@ -101,18 +101,18 @@
                     <template v-if="accounts.length > 0" v-for="account of accounts" :key="account.id">
                         <div>
                             <div class="plan">
-                                <button class="btnEliminate m-1"
+                                <button class="btnEliminate m-1 fw-bold"
                                     @click.prevent="deactiveAccount(account.id)">Eliminate</button>
                                 <div class="inner d-flex flex-column justify-content-around">
-                                    <p class="titleP">Account: {{account.number}}</p>
                                     <p class="infoP fw-bolder">{{clients.firstName}} {{clients.lastName}}</p>
+                                    <p class="titleP m-0">Account: {{account.number}}</p>
+                                    <p class="amountP fs-5">type: {{account.accountType.toLowerCase()}}</p>
                                     <p class="amountP">Amount: $ {{account.balance.toLocaleString(1)}}</p>
                                     <p class="creationDateP">creation date: {{account.creationDate}}</p>
                                     <div class="action d-flex flex-column">
                                         <a class="button" :href="'./account.html?id=' + account.id">
                                             Details
                                         </a>
-                                        <p class="amountP fs-6 mt-4">Account type: {{account.accountType}}</p>
                                     </div>
                                 </div>
                             </div>
