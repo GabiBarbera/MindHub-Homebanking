@@ -94,17 +94,24 @@
                 <div class="d-flex flex-wrap sectionCreateCard justify-content-center ms-5 me-5 mb-5 gap-5">
                     <div class="d-flex flex-column align-items-start justify-content-center">
                         <div v-if="loanSelect" class="d-flex align-items-center ">
-                            <p class="text-black fw-bolder me-5">The maximum loan amount is:
+                            <p class="text-black fs-4 fw-bolder me-5">The maximum loan amount is:
                                 ${{loanSelect.maxAmount.toLocaleString(1)}}
                             </p>
                         </div>
                         <div v-if="amount" class="d-flex align-items-center">
-                            <p class="text-black fw-bolder me-5">The final amount to pay:
-                                ${{calculateInterest.toLocaleString(1)}}
+                            <p class="text-black fs-4 fw-bolder me-5">The final amount to pay:
+                                <span v-if="paymentSelect"> ${{calculateInterest.toLocaleString(1)}}</span> <span
+                                    v-else="amount">Choose a
+                                    quota.</span>
+                            </p>
+                        </div>
+                        <div v-if="paymentSelect" class="d-flex align-items-center">
+                            <p class="text-black fs-4 fw-bolder me-5">The fees to pay are:
+                                ${{(finalAmount / paymentSelect).toLocaleString(1)}}
                             </p>
                         </div>
                     </div>
-                    <form class="m-5 p-2 formCreateCard d-flex flex-column" @submit.prevent="createLoans">
+                    <form class="m-5 p-2 formCreateCard d-flex flex-column ps-4 pe-4" @submit.prevent="createLoans">
                         <label for="loanName">Choose your loan:</label>
                         <select name="loanName" id="loanName" v-model="loanSelect" required>
                             <option value="" disabled>Choose your loan</option>

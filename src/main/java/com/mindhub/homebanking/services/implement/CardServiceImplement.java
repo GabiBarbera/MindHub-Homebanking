@@ -36,7 +36,7 @@ public class CardServiceImplement implements CardService {
         return cardRepository.findByNumber(number);
     }
 
-    public Card findById(long id){
+    public Card findById(long id) {
         return cardRepository.findById(id).orElse(null);
     }
 }

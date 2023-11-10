@@ -31,6 +31,7 @@ public class LoanController {
     ClientLoanService clientLoanService;
     @Autowired
     TransactionService transactionService;
+
     @GetMapping("/loans")
     public List<LoanDTO> getLoans() {
         return loanService.getAllLoans();
@@ -47,8 +48,8 @@ public class LoanController {
         if (loan == null) {
             return new ResponseEntity<>("The requested loan does not exist.", HttpStatus.FORBIDDEN);
         }
-        if (client.getLoans().contains(loan.getName())){
-            return new ResponseEntity<>("You can't ask for the same loan",HttpStatus.FORBIDDEN);
+        if (client.getLoans().contains(loan.getName())) {
+            return new ResponseEntity<>("You can't ask for the same loan", HttpStatus.FORBIDDEN);
         }
         if (loan.getPayments() == null) {
             return new ResponseEntity<>("Number of payments not found.", HttpStatus.FORBIDDEN);
@@ -63,21 +64,21 @@ public class LoanController {
             return new ResponseEntity<>("The chosen payment is not available.", HttpStatus.FORBIDDEN);
         }
         if (loanApplicationDTO.getNumberAccountDestination() == null) {
-            return new ResponseEntity<>("Account destination no exist.",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Account destination no exist.", HttpStatus.FORBIDDEN);
         }
         Account account = accountService.findByNumber(loanApplicationDTO.getNumberAccountDestination());
         if (account == null) {
             return new ResponseEntity<>("Destination account does not exist.", HttpStatus.FORBIDDEN);
         }
-        if (!client.getAccounts().contains(account)){
-            return new ResponseEntity<>("The account does not belong to an authenticated client",HttpStatus.FORBIDDEN);
+        if (!client.getAccounts().contains(account)) {
+            return new ResponseEntity<>("The account does not belong to an authenticated client", HttpStatus.FORBIDDEN);
         }
         if (account.getOwner().getId() != client.getId()) {
             return new ResponseEntity<>("This account does not belong to you.", HttpStatus.UNAUTHORIZED);
         }
-        double amountTotal = calculateInterest(loanApplicationDTO,loan);
+        double amountTotal = calculateInterest(loanApplicationDTO, loan);
         account.setBalance(account.getBalance() + loanApplicationDTO.getAmount());
-        ClientLoan clientLoan = new ClientLoan(amountTotal,loanApplicationDTO.getPayments());
+        ClientLoan clientLoan = new ClientLoan(amountTotal, loanApplicationDTO.getPayments());
         clientLoan.setClient(client);
         clientLoan.setLoan(loan);
         clientLoanService.addClientLoan(clientLoan);
@@ -88,25 +89,26 @@ public class LoanController {
         account.addTransaction(transaction);
         return new ResponseEntity<>("Loan request created successfully", HttpStatus.CREATED);
     }
+
     @PostMapping("/create/loans")
-    public ResponseEntity<Object> createLoan(@RequestBody LoanDTO loanDTO){
+    public ResponseEntity<Object> createLoan(@RequestBody LoanDTO loanDTO) {
         Loan loan = loanService.findByName(loanDTO.getName());
         double amount = loanDTO.getMaxAmount();
         List<Integer> payments = loanDTO.getPayments();
-        if (loan != null){
-            return new ResponseEntity<>("the loan already exists.",HttpStatus.FORBIDDEN);
+        if (loan != null) {
+            return new ResponseEntity<>("the loan already exists.", HttpStatus.FORBIDDEN);
         }
-        if (amount == 0){
-            return new ResponseEntity<>("The amount cannot be zero.",HttpStatus.FORBIDDEN);
+        if (amount == 0) {
+            return new ResponseEntity<>("The amount cannot be zero.", HttpStatus.FORBIDDEN);
         }
-        if (payments == null){
+        if (payments == null) {
             return new ResponseEntity<>("Payments are missing.", HttpStatus.FORBIDDEN);
         }
         if (amount < 0) {
-            return new ResponseEntity<>("The amount cannot be negative.",HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("The amount cannot be negative.", HttpStatus.FORBIDDEN);
         }
-        Loan newLoan = new Loan(loanDTO.getName(),amount,payments, loanDTO.getInterest());
+        Loan newLoan = new Loan(loanDTO.getName(), amount, payments, loanDTO.getInterest());
         loanService.addLoan(newLoan);
-        return new ResponseEntity<>("Loan create.",HttpStatus.CREATED);
+        return new ResponseEntity<>("Loan create.", HttpStatus.CREATED);
     }
 }

@@ -43,9 +43,15 @@ nav {
     width: 28rem;
 }
 
+th {
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
 table {
     width: 30rem !important;
-
+    font-weight: bold;
+    font-size: 18px;
 }
 
 .tableManager {
@@ -1208,6 +1214,7 @@ label {
 
 .formCreateCard {
     background-color: rgb(6 33 70);
+    gap: 20px;
 }
 
 .sectionCreateCard {
@@ -1234,11 +1241,15 @@ select {
 }
 
 .inputTransactions {
-    width: 29rem;
+    width: 27rem;
 }
 
 .inputLabel {
     color: black;
+}
+
+.nav-link.active {
+    color: rgb(3 193 240) !important;
 }
 
 /* section en transacciones  */
