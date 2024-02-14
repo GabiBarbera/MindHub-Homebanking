@@ -107,7 +107,8 @@
                         </div>
                         <div v-if="paymentSelect" class="d-flex align-items-center">
                             <p class="text-black fs-4 fw-bolder me-5">The fees to pay are:
-                                ${{(finalAmount / paymentSelect).toLocaleString(1)}}
+                                {{ (finalAmount / paymentSelect).toLocaleString('en-US', { style: 'currency', currency:
+                                'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }) }}
                             </p>
                         </div>
                     </div>
